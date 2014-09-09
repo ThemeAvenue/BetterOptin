@@ -1,0 +1,23 @@
+{
+  "name": "BetterOptin",
+  "version": "1.0.0",
+  "authors": [
+    "ThemeAvenue <hello@themeavenue.net>"
+  ],
+  "description": "BetterOptin is a lead generation and conversion optimization for WordPress",
+  "license": "MIT",
+  "homepage": "http://themeavenue.net",
+  "private": true,
+  "dependencies": {
+    "circliful": "~0.1.5",
+    "jquery-autosize": "~1.18.9",
+    "flot.tooltip": "~0.7.1",
+    "chosen_v1.1.0": "https://github.com/harvesthq/chosen/releases/download/v1.1.0/chosen_v1.1.0.zip",
+    "easyModal.js": "*",
+    "jquery.cookie": "~1.4.1",
+    "flot": "~0.8.3",
+    "preboot": "*",
+    "matchHeight": "~0.5.2",
+    "shepherd": "http://github.com/HubSpot/shepherd/archive/v0.5.1.zip"
+  }
+}

@@ -1,0 +1,279 @@
+// Namespace the whole thing
+.wpbo {
+	// Import stuff
+	@import "../../../bower_components/preboot/less/normalize.less";
+	@import "../../../bower_components/preboot/less/preboot.less";
+
+	@grid-columns:          5;
+	@grid-column-padding:   15px;
+	@font-size-base:          14px;
+
+	// Base structure
+	.wpbo-modal {
+		width: 640px;
+		position: relative;
+		background-color: white;
+		.box-shadow(0 1px 5px rgba(0,0,0,.25));
+	}
+	.wpbo-modal *,
+	.wpbo-modal *:before,
+	.wpbo-modal *:after {
+		.box-sizing(border-box);
+	}
+	.wpbo-inner {
+		font-size: @font-size-base;
+		padding: 30px;
+		font-family: @font-family-sans-serif;
+	}
+
+	// Reset elements
+	p {
+		font-size: inherit;
+		line-height: 1.6;
+		word-wrap: break-word;
+	}
+	p.wpbo-lead {
+		font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+		font-size: 24px;
+		margin: 0;
+		line-height: 1.2;
+	}
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+	hr {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		border: 0;
+		border-top: 1px solid #eee;
+	}
+	mark {
+		background-color: #FFFFCC;
+	}
+	// Restore original style of lists	
+	ul { 
+		list-style-type: disc;
+		list-style-position: inside;
+	}
+	ol { 
+		list-style-type: decimal;
+		list-style-position: inside;
+	}
+	ul ul, ol ul { 
+		list-style-type: circle;
+		list-style-position: inside;
+		margin-left: 15px;
+	}
+	ol ol, ul ol { 
+		list-style-type: lower-latin;
+		list-style-position: inside;
+		margin-left: 15px;
+	}
+	// Then add some style
+	ul, ol {
+		margin: 0 0 20px 0;
+		overflow: hidden;
+		li {
+			margin-bottom: 6px;
+		}
+	}
+	
+	// Utilities classes
+	.wpbo-list-unstyled {
+		list-style: none;
+		padding: 0;
+	}
+	.wpbo-center {
+		text-align: center;
+	}
+	.wpbo-sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+
+	///////////
+	// Grid //
+	///////////
+	.wpbo-grid {
+		.make-row();
+		.wpbo-col-2 {
+			.make-column(2);
+		}
+		.wpbo-col-3 {
+			.make-column(3);
+		}
+	}
+	.wpbo-grid-no-gutter {
+		.clearfix;
+		.wpbo-col-2 {
+			width: 40%;
+		}
+		.wpbo-col-3 {
+			width: 60%;
+		}
+		.wpbo-col-2,
+		.wpbo-col-3 {
+			float: left;
+		}
+	}
+	.wpbo-col p:first-child,
+	.wpbo-col h4:first-child {
+		margin-top: 0;
+		padding-top: 0;
+	}
+
+	////////////
+	// Forms //
+	////////////
+	.wpbo-form-group {
+		.clearfix();
+		margin-bottom: 15px;
+		label {
+			display: inline-block;
+			margin-bottom: 5px;
+		}
+		.wpbo-form-control {
+			display: block;
+			width: 100%;
+			height: 34px;
+			padding: 6px 12px;
+			font-size: 14px;
+			line-height: 1.42857143;
+			color: #555;
+			background-color: #fff;
+			background-image: none;
+			border: 1px solid #ccc;
+			border-radius: 0;
+			box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+			transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+		}
+		.wpbo-form-control:focus {
+			background-color: #ffd;
+			border-color: #66afe9;
+			outline: 0;
+			box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+		}
+	}
+	.wpbo-form-inline {
+		.clearfix;
+		.wpbo-center;
+		.wpbo-form-group {
+			display: inline-block;
+			margin-bottom: 0;
+			vertical-align: middle;
+		}
+		.wpbo-form-control {
+			display: inline-block;
+			width: auto;
+			vertical-align: middle;
+		}
+		.wpbo-btn {
+			height: 34px;
+			padding: 6px 12px;
+			font-size: 14px;
+		}
+	}
+	
+	//////////////
+	// Buttons //
+	//////////////
+	.wpbo-btn {
+		display: inline-block;
+		font-weight: normal;
+		text-align: center;
+		vertical-align: middle;
+		cursor: pointer;
+		border: 1px solid darken(@brand-success, 10%);
+		white-space: nowrap;
+		user-select: none;
+		color: #fff;
+		background-image: none;
+		background-color: @brand-success;
+		padding: 10px 16px;
+		font-size: 18px;
+		line-height: 1.33;
+		transition: background-color .25s ease;
+	}
+	.wpbo-btn:hover {
+		border-color: darken(@brand-success, 30%);
+		background-color: darken(@brand-success, 10%);
+	}
+	.wpbo-btn.disabled,
+	.wpbo-btn[disabled],
+	fieldset[disabled] .wpbo-btn {
+		pointer-events: none;
+		cursor: not-allowed;
+		box-shadow: none;
+		opacity: .65;
+	}
+	.wpbo-btn-block {
+		display: block;
+		width: 100%;
+	}
+	/* Close button */
+	.wpbo-close {
+		display: block;
+		.square(30px);
+		line-height: 30px;
+		font-size: 22px;
+		font-weight: normal;
+		text-align: center;
+		color: #fff;
+		text-decoration: none;
+		background-color: #ddd;
+		position: absolute;
+		top: 0;
+		right: 0;
+		transition: background-color .25s ease;
+	}
+	.wpbo-close:hover {
+		color: white;
+		background-color: #111;
+	}
+	/////////////////
+	// Animations //
+	/////////////////
+	@keyframes tada {
+		0% {
+			-webkit-transform: scale3d(1, 1, 1);
+			-ms-transform: scale3d(1, 1, 1);
+			transform: scale3d(1, 1, 1);
+		}
+		10%, 20% {
+			-webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+			-ms-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+			transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+		}
+		30%, 50%, 70%, 90% {
+			-webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+			-ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+			transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+		}
+		40%, 60%, 80% {
+			-webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+			-ms-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+			transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+		}
+		100% {
+			-webkit-transform: scale3d(1, 1, 1);
+			-ms-transform: scale3d(1, 1, 1);
+			transform: scale3d(1, 1, 1);
+		}
+	}
+	.wpbo-tada {
+		-webkit-animation-duration: 1s;
+		animation-duration: 1s;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+		-webkit-animation-name: tada;
+		animation-name: tada;
+	}
+}

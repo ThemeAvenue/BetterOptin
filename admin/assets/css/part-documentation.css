@@ -1,0 +1,96 @@
+/* Style for summary */
+.ta-summary {
+	display: none;
+	padding: 30px 0;
+}
+.ta-summary > ol > li {
+	font-weight: 400;
+	line-height: 1.6em;
+	font-size: 19px;
+}
+.ta-summary ol > li > a {
+	text-decoration: none;
+}
+
+/* Style for content */
+.ta-doc-content .ta-doc-totop {
+	text-decoration: none;
+	font-size: 12px;
+	vertical-align: top;
+	float: right;
+}
+.ta-doc-content .ta-doc-loading {
+	font-size: 26px;
+	text-align: center;
+	padding: 2em 0;
+}
+.ta-doc-content h2,
+.ta-doc-content h3,
+.ta-doc-content h4,
+.ta-doc-content h5,
+.ta-doc-content h6 {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+.ta-doc-content .ta-doc-section {
+	-webkit-transition: background-color .25s ease;
+	-moz-transition: background-color .25s ease;
+	-ms-transition: background-color .25s ease;
+	-o-transition: background-color .25s ease;
+	transition: background-color .25s ease;
+}
+.ta-doc-content .ta-doc-section-hl {
+	background-color: #FFFFED;
+}
+.ta-doc-content img {
+	border: 1px solid #ddd;
+	max-width: 100%;
+	height: auto;
+	background: white;
+	padding: 20px;
+}
+.ta-doc-content img.ta-doc-loading-img {
+	border: none;
+	background: none;
+	padding: 0;
+}
+
+/* Improve syntax highlighter */
+.ta-doc-content code,
+.ta-doc-content pre {
+	padding: 0 3px 2px;
+	font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+	font-size: 12px;
+	color: #333333;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.ta-doc-content code {
+	padding: 2px 4px;
+	color: #d14;
+	white-space: nowrap;
+	background-color: #f7f7f9;
+	border: 1px solid #e1e1e8;
+}
+
+/* Reset Lists */
+.ta-doc-content ul { 
+	list-style-type: disc; 
+	list-style-position: inside; 
+}
+.ta-doc-content ol { 
+	list-style-type: decimal; 
+	list-style-position: inside; 
+}
+.ta-doc-content ul ul, .ta-doc-content ol ul { 
+	list-style-type: circle; 
+	list-style-position: inside; 
+	margin-left: 15px; 
+}
+.ta-doc-content ol ol, .ta-doc-content ul ol { 
+	list-style-type: lower-latin; 
+	list-style-position: inside; 
+	margin-left: 15px; 
+}

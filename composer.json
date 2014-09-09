@@ -1,0 +1,16 @@
+{
+	"repositories": [{
+		"type": "package",
+		"package": {
+			"name": "titan-framework",
+			"version": "dev-master",
+			"dist": {
+				"url": "https://github.com/gambitph/Titan-Framework/archive/master.zip",
+				"type": "zip"
+			}
+		}
+	}],
+	"require": {
+		"titan-framework": "dev-master"
+	}
+}

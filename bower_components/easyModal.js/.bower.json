@@ -1,0 +1,29 @@
+{
+  "name": "easyModal.js",
+  "homepage": "http://flaviusmatis.github.io/easyModal.js/",
+  "authors": [
+    "Flavius Matis"
+  ],
+  "description": "A minimal jQuery modal that works with your CSS.",
+  "main": "jquery.easyModal.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jQuery": ">=1.7.0"
+  },
+  "_release": "8534d9914a",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "8534d9914a8bdc79e63919385c079f1d6a9644e4"
+  },
+  "_source": "git://github.com/flaviusmatis/easyModal.js.git",
+  "_target": "*",
+  "_originalSource": "easyModal.js",
+  "_direct": true
+}

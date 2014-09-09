@@ -1,0 +1,248 @@
+////////////
+// Mixins //
+////////////
+.transition {
+	transition: all .3s ease;
+}
+.clearfix{
+	zoom:1;
+	&:before, &:after{ content:""; display:table; }
+	&:after{ clear: both; }
+}
+
+////////////////////
+// Required style //
+// for modals
+////////////////////
+.wpbo {
+	position: relative;
+}
+.wpbo-modal {
+	display: block !important;
+	margin: 30px auto;
+	.transition;
+}
+.taed-admin-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #000;
+	opacity: 0.5;
+	z-index: -1;
+	pointer-events: none;
+}
+.wrap {
+	.transition;
+}
+
+//////////////////
+// Google Fonts //
+//////////////////
+.taed-webfontload {
+	display: none;
+	font-size: 24px;
+	text-align: center;
+	padding: 10em 0;
+	img {
+		display: block;
+		margin: 1em auto;
+	}
+}
+.wf-loading {
+	.wpbo-modal {
+		.transition;
+		opacity: 0;
+	}
+	.taed-webfontload {
+		display: block;
+	}
+}
+
+/////////////
+// Sidebar //
+/////////////
+.wrap-has-sidebar {
+	padding-right: 300px;
+	margin-right: 0px;
+}
+.taed-sidebar {
+	.transition;
+	display: block !important;
+	padding-top: 32px;
+	padding-bottom: 30px;
+
+	width: 300px;
+	height: 100%;
+	position: fixed;
+	right: -300px;
+	top: 0;
+	bottom: 0;
+	background: #fff;
+	overflow-y: auto;
+	z-index: 999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+
+	p {
+		margin-bottom: 0;
+	}
+}
+.taed-sidebar-active {
+	right: 0;
+	box-shadow: 0 0 20px rgba(0,0,0,.25);
+	.taed-buttons {
+		display: block;
+		opacity: 1;
+	}
+}
+.taed-sidebar-info {
+	padding: 15px;
+	color: white;
+	background-color: #0074a2;
+	text-align: center;
+	font-size: 14px;
+
+	div:first-child {
+		margin-bottom: 5px;
+	}
+	div:last-child {
+		font-weight: 600;
+		font-size: 1.3em;
+		line-height: 1.4;
+	}
+}
+.taed-field {
+	.clearfix;
+}
+.taed-field,
+.taed-buttons {
+	.transition;
+	padding: 15px;
+	border-bottom: 1px solid #ddd;
+	display: none;
+
+	label {
+		display: block;
+		line-height: 1.3;
+		font-weight: 600;
+		font-size: 14px;
+		padding-bottom: 5px;
+	}
+	textarea {
+		padding: 10px;
+	}
+	td {
+		margin: 0;
+		padding: 0;
+	}
+}
+.taed-helper {
+	.wpbo-danger {
+		color: red;
+	}
+}
+.taed-buttons {
+	.taed-cancel {}
+	.taed-reset {
+		float: right;
+		background-color: #f2dede;
+		border-color: #ebccd1;
+		color: #a94442;
+	}
+}
+.taed-field-active {
+	display: block;
+}
+.taed-field:hover {
+	background-color: #f5f5f5;
+}
+.taed-field textarea {
+	width: 100%;
+}
+.taed-buttons {
+	.transition;
+	background-color: #222;
+	opacity: 0;
+}
+.taed-textAlign-select > .mce-btn {
+	margin-right: 10px;
+}
+
+.taed-half,
+.taed-third {
+	width: 50%;
+	float: left;
+	input {
+		width: 100%;
+	}
+}
+.taed-third {
+	width: 33.33%;
+}
+#taed-modalsize-reset {
+	float: right;
+}
+.wp-core-ui {
+	.wpbo-back-btn {
+		display: block;
+		margin: 60px auto 0px auto;
+		width: 240px;
+		text-align: center;
+	}
+}
+
+///////////////////////////////////
+// Highlight active element/node //
+///////////////////////////////////
+*[data-editable]:hover {
+	outline: 2px dashed orange !important;
+}
+.taed-elem-empty {
+	width: 100%;
+	min-height: 75px;
+	background-color: red;
+}
+.taed-elem-active {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-user-drag: none;
+	user-drag: none;
+}
+.taed-elem-active,
+.taed-elem-active:hover {
+	outline: 3px solid orange !important;
+}
+
+/////////////////////////////////
+// Editing WordPress Dashboard //
+/////////////////////////////////
+#wpfooter {
+	margin-left: 160px;
+	margin-right: 0px;
+	padding: 10px 20px;
+	background: white;
+}
+.folded #wpcontent, .folded #wpfooter {
+	margin-left: 36px;
+}
+
+@media screen and (max-height: 768px){
+	.taed-sidebar p {
+		display: none;
+	}
+}
+@media screen and (max-height: 1024px){
+	.taed-field,
+	.taed-buttons {
+		.transition;
+		padding: 10px 15px;
+	}
+	.taed-sidebar {
+		overflow: visible;
+	}
+}

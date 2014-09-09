@@ -1,0 +1,126 @@
+////////////////////////
+// Template preview //
+////////////////////////
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	border: 0;
+}
+.reset-all {
+	margin: 0;
+	padding: 0;
+	line-height: 0;
+}
+
+/* jQuery Radio Image Select */
+.ta-ri-wrap {
+	.reset-all;
+	float: left;
+	width: 240px;
+	height: 190px;
+	margin: 0 25px 25px 0;
+	position: relative;
+	background: #dcdcdc url('../images/loading.gif') no-repeat 50% 50%;
+	overflow: hidden;
+
+	label {
+		.reset-all;
+		cursor: pointer;
+		cursor: -webkit-zoom-in;
+		cursor: -moz-zoom-in;
+	}
+	img {
+		.reset-all;
+		box-sizing: border-box;
+		max-width: 100%;
+		height: auto;
+		border: solid 5px transparent;
+	}
+	.ta-ri-crtl {
+		color: white;
+		background-color: #2f2f2f;
+		text-align: center;
+		padding: 10px;
+
+		position: absolute;
+		bottom: -48px;
+		left: 0;
+		right: 0;
+		transition: bottom .25s ease;
+
+		.button-primary  {
+			float: left;
+		}
+		.button-secondary  {
+			float: right;
+		}
+	}
+	.ta-ri-crtl-ico {
+		display: none;
+		position: absolute;
+		top: 0;
+		right: 0;
+		pointer-events: none;
+
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		background-color: #d54e21;
+		color: white;
+		text-align: center;
+		font-size: 22px;
+	}
+	&:hover {
+		.ta-ri-crtl {
+			bottom: 0;
+		}
+		img {
+			border-color: #2f2f2f;
+		}
+	}
+	&.ta-ri-selected {
+		img {
+			border-color: #d54e21;
+		}
+		.ta-ri-crtl-ico {
+			display: block;
+		}
+	}
+}
+
+/* Thumbnail Hover Preview */
+/* 740 x 580 pixels */
+.ta-view-full {
+	max-width: 100%;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin: -290px 0 0 -370px;
+	z-index: 250000;
+	user-select: none;
+}
+.ta-view-full,
+.ta-overlay-preview {
+	cursor: -webkit-zoom-out;
+	cursor: -moz-zoom-out;
+}
+.ta-loading-notice {
+	max-width: 100%;
+	position: fixed;
+	width: 300px;
+	height: 150px;
+	line-height: 90px;
+	background: white url('../images/loading.gif') no-repeat 50% 60%;
+	font-size: 18px;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	margin: -100px 0 0 -150px;
+	z-index: 250000;
+	user-select: none;	
+}

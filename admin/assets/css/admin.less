@@ -1,0 +1,138 @@
+////////////
+// Mixins //
+////////////
+.clearfix {
+	zoom:1;
+	&:before, &:after{ content:""; display:table; }
+	&:after{ clear: both; }
+}
+
+///////////////
+// Utilities //
+///////////////
+.tav-clearfix {
+	.clearfix;
+}
+.tav-fr {
+	float: right;
+}
+.tav-fl {
+	float: left;
+}
+.ta-shadow {
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+/////////////////////
+// Alerts from BS3 //
+/////////////////////
+.wpbo-warning,
+.wpbo-success {
+	padding: 15px;
+	margin: 10px 0;
+	border: 1px solid transparent;
+
+	background-color: #f2dede;
+	border-color: #ebccd1;
+	color: #a94442;
+
+	p {
+		margin: 0;
+		padding: 0;
+	}
+}
+.wpbo-success {
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	color: #3c763d;
+}
+
+/* Hide the sidebar */
+.taed-sidebar {
+	display: none;
+}
+/* Highlight the addons link in left menu */
+#menu-posts-wpbo-popup > .wp-submenu > li.Addons a {
+	color: orange;
+}
+/* Various styling */
+#wpbo-select-template {
+	margin-top: 20px;
+}
+.wpbo-post-type-all {
+	display: block;
+	margin-top: 10px;
+}
+.wpbo-tag {
+	display: inline;
+	padding: .2em .6em .3em;
+	line-height: 1;
+	color: white;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	border-radius: .25em;
+	background-color: #999;
+	transition: background-color .25s linear;
+}
+.wpbo-tag:hover {
+	color: white;
+	background-color: #111;
+}
+.ta-video-helper {
+	display: block;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	color: orange;
+	background-color: #222222;
+}
+
+/* Step Summary */
+#wpbo-summary-list {
+	margin-left: 0;
+	margin-right: 0;
+	li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		margin-bottom: 0.75em;
+		font-size: 16px;
+		i:before {
+			content: '\f158';
+			display: inline-block;
+			-webkit-font-smoothing: antialiased;
+			font: normal 16px/1 'dashicons';
+			vertical-align: middle;
+		}
+	}
+	li.wpbo-step-completed {
+		color: green;
+		span {
+			text-decoration: line-through;
+		}
+		i:before {
+			content: '\f147';
+		}
+	}
+}
+
+/* Fixing style for jQuery Chosen */
+.chosen-container-multi {
+	width: 450px !important;
+
+	.chosen-choices li.search-field input[type=text] {
+		box-sizing: content-box;
+	}
+	
+	.chosen-loading {
+		background: white url('../images/loading.gif') no-repeat 98% 50% !important;
+	}
+}
+
+////////////////
+// Components //
+////////////////
+@import 'part-addons.less';
+@import 'part-analytics.less';
+@import 'part-template-selection.less';
