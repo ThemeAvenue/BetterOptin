@@ -22,7 +22,7 @@ class Better_Optin {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.0.1';
+	const VERSION = '1.2.0';
 
 	/**
 	 * The variable name is used as the text domain when internationalizing strings
@@ -237,21 +237,6 @@ class Better_Optin {
 
 		/* Write database version */
 		update_option( 'wpbo_db_version', WPBO_Analytics::$db_version );
-
-		/* Default options */
-		$options = array(
-			'mc_double_optin'        => '1',
-			'mc_update_existing'     => '1',
-			'mc_welcome'             => '1',
-			'mailing_provider'       => 'wordpress',
-			'return_url'             => 'google',
-			'wp_default_role'        => 'betteroptin',
-			'anonymize_ip'           => '0',
-			'wp_delete_users_marker' => '1'
-		);
-
-		/*if( false === get_option( 'wpbo_options' ) )
-			update_option( 'wpbo_options', $options );*/
 
 		/**
          * Add an option in DB to know when the plugin has just been activated.
