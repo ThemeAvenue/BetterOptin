@@ -76,6 +76,9 @@ var DEBUG = false;
 				wpboForm.submit(function () {
 					wpboForm.find('[type=submit]').prop('disabled', true).text('Please wait...');
 				});
+
+				// Add Credit
+				wpboModal.append('<a class="wpbo-credit" href="http://betteropt.in/" target="_blank">Popup created with <strong>BetterOptin</strong></a>');
 			}
 		});
 
