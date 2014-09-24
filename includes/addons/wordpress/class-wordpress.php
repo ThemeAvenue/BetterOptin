@@ -12,8 +12,12 @@ class WPBO_WordPress extends WPBO_Submit {
 		$this->role       = isset( $options['wp_default_role'] ) ? $options['wp_default_role'] : 'betteroptin';
 		$this->password   = false;
 
-		if( !is_admin() && $this->is_submission() )
+		/* Add direct link to leads. */
+		add_action( 'admin_menu', array( $this, 'add_leads_menu' ), 9 );
+
+		if ( !is_admin() && $this->is_submission() ) {
 			add_action( 'init', array( $this, 'submit' ) );
+		}
 
 	}
 
@@ -26,6 +30,22 @@ class WPBO_WordPress extends WPBO_Submit {
 		add_filter( 'wpbo_mailing_providers', array( 'WPBO_WordPress', 'provider' ) );
 		add_filter( 'wpbo_plugin_settings', array( 'WPBO_WordPress', 'settings' ) );
 		add_filter( 'wpbo_registered_providers', array( 'WPBO_WordPress', 'provider_class' ) );
+	}
+
+	/**
+	 * Add link to leads.
+	 *
+	 * Add a direct link to the list of leads
+	 * collected by BetterOptin.
+	 *
+	 * @since    1.2.1
+	 */
+	public function add_leads_menu() {
+
+		$role        = wpbo_get_option( 'wp_default_role' );
+		$page        = add_query_arg( array( 'role' => $role ), 'users.php' );
+		$this->leads = add_submenu_page( 'edit.php?post_type=wpbo-popup', __( 'Leads', 'wpbo' ), __( 'Leads', 'wpbo' ), 'administrator', $page );
+
 	}
 
 	/**
