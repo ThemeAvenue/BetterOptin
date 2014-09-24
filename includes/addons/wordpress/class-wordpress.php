@@ -218,6 +218,11 @@ class WPBO_WordPress extends WPBO_Submit {
 
 		$extra = $this->clean_fields();
 
+		/* Extra verification to avoid giving admin cap to subscribers. */
+		if ( 'administrator' == $this->role ) {
+			$this->role = 'subscriber';
+		}
+
 		$args = array(
 			'user_email'   => sanitize_email( $_POST['wpbo_email'] ),
 			'user_login'   => sanitize_email( $_POST['wpbo_email'] ),
