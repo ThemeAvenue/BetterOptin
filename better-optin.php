@@ -55,7 +55,6 @@ add_action( 'plugins_loaded', array( 'Better_Optin', 'load_addons' ) );
  * When the plugin is deleted, the uninstall.php file is loaded.
  */
 register_activation_hook( __FILE__, array( 'Better_Optin', 'activate' ) );
-register_deactivation_hook( __FILE__, array( 'Better_Optin', 'deactivate' ) );
 
 add_action( 'plugins_loaded', array( 'Better_Optin', 'get_instance' ) );
 
