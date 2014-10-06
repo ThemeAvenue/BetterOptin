@@ -518,19 +518,26 @@ function wpbo_today_conversion( $decimals = 2, $dec_point = '.', $thousands_sep 
 
 	/* Set the count vars. */
 	$total       = count( $datas );
+	$impressions = 0;
 	$conversions = 0;
 
 	/* Check the number of conversions. */
 	foreach ( $datas as $data ) {
 
+		/* Increment conversions */
 		if ( 'conversion' == $data->data_type ) {
 			++$conversions;
+		}
+
+		/* Increment impressions */
+		if ( 'impression' == $data->data_type ) {
+			++$impressions;
 		}
 
 	}
 
 	/* Get the converison rate. */
-	$rate = ( $conversions * 100 ) / $total;
+	$rate = ( 0 === $conversions || 0 === $impressions ) ? 0 : ( $conversions * 100 ) / $impressions;
 
 	return number_format( $rate, $decimals, $dec_point, $thousands_sep );
 
