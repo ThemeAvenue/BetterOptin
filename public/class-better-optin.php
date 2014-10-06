@@ -52,31 +52,36 @@ class Better_Optin {
 	 */
 	private function __construct() {
 
-		/* Load plugin text domain */
-		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
-
-		/* Activate plugin when new blog is added */
-		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
-
-		/* Load public-facing style sheet and JavaScript. */
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-
-		/* Register post type */
-		add_action( 'init', array( $this, 'register_post_type' ) );
-		add_filter( 'post_updated_messages', array( $this, 'popup_updated_messages' ) );
-
-		/* Add popup settings and markup */
-		add_action( 'wp_head', array( $this, 'popup_settings' ) );
-		add_action( 'wp_footer', array( $this, 'popup' ) );
-		add_action( 'wp_footer', array( $this, 'submission_confirmation' ), 999 );
-
 		/* Check posts associations */
 		add_action( 'wp_ajax_wpbo_new_impression',  array( $this, 'new_impression' ) );
 		add_action( 'wp_ajax_nopriv_wpbo_new_impression',  array( $this, 'new_impression' ) );
 
-		/* Add a direct link to today's stats */
-		add_action( 'admin_bar_menu', array( $this, 'admin_bar_conversion_rate' ), 999 );
+		/* The following shouldn't be loaded during Ajax requests */
+		if ( !defined( 'DOING_AJAX' ) || !DOING_AJAX ) {
+
+			/* Load plugin text domain */
+			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+
+			/* Activate plugin when new blog is added */
+			add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
+
+			/* Load public-facing style sheet and JavaScript. */
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
+			/* Register post type */
+			add_action( 'init', array( $this, 'register_post_type' ) );
+			add_filter( 'post_updated_messages', array( $this, 'popup_updated_messages' ) );
+
+			/* Add popup settings and markup */
+			add_action( 'wp_head', array( $this, 'popup_settings' ) );
+			add_action( 'wp_footer', array( $this, 'popup' ) );
+			add_action( 'wp_footer', array( $this, 'submission_confirmation' ), 999 );
+
+			/* Add a direct link to today's stats */
+			add_action( 'admin_bar_menu', array( $this, 'admin_bar_conversion_rate' ), 999 );
+
+		}
 
 	}
 
@@ -287,6 +292,11 @@ class Better_Optin {
 			return;
 
 		$settings = get_post_meta( $this->is_popup_available(), '_wpbo_settings', true );
+
+		/**
+		 * Check if we can display the credit.
+		 */
+		$settings['credit'] = wpbo_get_option( 'show_credit', true );
 
 		/**
 		 * Use booleans
@@ -574,8 +584,9 @@ class Better_Optin {
 		$popup_id = $this->is_popup_available();
 		$output   = false;
 
-		if( false === $popup_id )
+		if ( false === $popup_id ) {
 			return;
+		}
 
 		/**
 		 * wpbo_popup_output hook

@@ -97,12 +97,14 @@ class Better_Optin_Admin {
 			add_action( 'save_post', array( $this, 'save_custom_fields' ) );
 
 			/* Save the customized templates */
-			if( isset( $_GET['wpbo_popup'] ) && isset( $_POST['wpbo_nonce'] ) )
+			if ( isset( $_GET['wpbo_popup'] ) && isset( $_POST['wpbo_nonce'] ) ) {
 				add_action( 'init', array( $this, 'save_templates' ) );
+			}
 
 			/* Reset to default template */
-			if( isset( $_GET['wpbo_reset'] ) && isset( $_GET['wpbo_popup'] ) && wp_verify_nonce( $_GET['wpbo_reset'], 'reset_template' ) )
+			if ( isset( $_GET['wpbo_reset'] ) && isset( $_GET['wpbo_popup'] ) && wp_verify_nonce( $_GET['wpbo_reset'], 'reset_template' ) ) {
 				add_action( 'init', array( $this, 'reset_template' ) );
+			}
 
 			/* Register metaboxes */
 			add_action( 'add_meta_boxes', array( $this, 'register_metabox_steps' ) );
@@ -111,11 +113,11 @@ class Better_Optin_Admin {
 			add_action( 'before_delete_post', array( $this, 'delete_post_relationships' ) );
 
 			/* Customize footer text */
-			add_filter( 'admin_footer_text', array( $this, 'copyright' ), 10, 2);
+			add_filter( 'admin_footer_text', array( $this, 'copyright' ), 10, 2 );
 
 			/* Add custom column */
-			add_filter( 'manage_wpbo-popup_posts_columns', array( $this, 'relationships' ), 10, 2);
-			add_action( 'manage_wpbo-popup_posts_custom_column', array( $this, 'relationships_content' ), 10, 2);
+			add_filter( 'manage_wpbo-popup_posts_columns', array( $this, 'relationships' ), 10, 2 );
+			add_action( 'manage_wpbo-popup_posts_custom_column', array( $this, 'relationships_content' ), 10, 2 );
 
 		}
 
@@ -275,7 +277,14 @@ class Better_Optin_Admin {
 					'id'      => 'hide_admins',
 					'type'    => 'checkbox',
 					'desc'    => __( 'Hide the popups for admins? No popup will ever show up for site administrators.', 'wpbo' ),
-					'desfult' => true
+					'default' => true
+				),
+				array(
+					'name'    => __( 'Show Credit', 'wpbo' ),
+					'id'      => 'show_credit',
+					'type'    => 'checkbox',
+					'desc'    => __( 'Display a credit link at the bottom of the popups. <strong>Thanks for supporting the plugin</strong>.', 'wpbo' ),
+					'default' => true
 				)
 			)
 		);
