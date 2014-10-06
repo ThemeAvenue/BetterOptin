@@ -52,21 +52,21 @@ class Better_Optin {
 	 */
 	private function __construct() {
 
-		// Load plugin text domain
+		/* Load plugin text domain */
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
-		// Activate plugin when new blog is added
+		/* Activate plugin when new blog is added */
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
-		// Load public-facing style sheet and JavaScript.
+		/* Load public-facing style sheet and JavaScript. */
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
-		// Register post type
+		/* Register post type */
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_filter( 'post_updated_messages', array( $this, 'popup_updated_messages' ) );
 
-		// Add popup settings and markup
+		/* Add popup settings and markup */
 		add_action( 'wp_head', array( $this, 'popup_settings' ) );
 		add_action( 'wp_footer', array( $this, 'popup' ) );
 		add_action( 'wp_footer', array( $this, 'submission_confirmation' ), 999 );
@@ -74,6 +74,9 @@ class Better_Optin {
 		/* Check posts associations */
 		add_action( 'wp_ajax_wpbo_new_impression',  array( $this, 'new_impression' ) );
 		add_action( 'wp_ajax_nopriv_wpbo_new_impression',  array( $this, 'new_impression' ) );
+
+		/* Add a direct link to today's stats */
+		add_action( 'admin_bar_menu', array( $this, 'admin_bar_conversion_rate' ), 999 );
 
 	}
 
@@ -797,6 +800,34 @@ class Better_Optin {
 		}
 
 		return 'unknown';
+
+	}
+
+	/**
+	 * Today's Conversion Rate.
+	 *
+	 * Adds today's conversion rate in the admin bar with
+	 * a direct link to the stats page.
+	 *
+	 * @since  1.2.2
+	 * @param  object $wp_admin_bar The global admin bar object
+	 * @return void
+	 */
+	public function admin_bar_conversion_rate( $wp_admin_bar ) {
+
+		/* Get today's conversion rate. */
+		$rate = wpbo_today_conversion();
+
+		/* Set the node parameters. */
+		$args = array(
+			'id'    => 'wpbo_today_conversion',
+			'title' => sprintf( __( 'Today\'s Conversion: %s', 'wpbo' ), "$rate%" ),
+			'href'  => admin_url( 'edit.php?popup=all&period=today&post_type=wpbo-popup&page=wpbo-analytics' ),
+			'meta'  => array( 'class' => 'wpbo-today-conversion' )
+		);
+
+		/* Add the new node. */
+		$wp_admin_bar->add_node( $args );
 
 	}
 
