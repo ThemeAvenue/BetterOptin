@@ -64,6 +64,7 @@ class Better_Optin {
 
 		// Register post type
 		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_filter( 'post_updated_messages', array( $this, 'popup_updated_messages' ) );
 
 		// Add popup settings and markup
 		add_action( 'wp_head', array( $this, 'popup_settings' ) );
@@ -366,6 +367,57 @@ class Better_Optin {
 
 		register_post_type( 'wpbo-popup', $args );
 
+	}
+
+	/**
+	 * Popup update messages.
+	 *
+	 * See /wp-admin/edit-form-advanced.php
+	 *
+	 * @since  1.2.2
+	 * @param  array $messages Existing post update messages.
+	 * @return array           Amended post update messages with new CPT update messages.
+	 */
+	function popup_updated_messages( $messages ) {
+
+		$post             = get_post();
+		$post_type        = get_post_type( $post );
+		$post_type_object = get_post_type_object( $post_type );
+
+		$messages['wpbo-popup'] = array(
+			0  => '', // Unused. Messages start at index 1.
+			1  => __( 'Popup updated.', 'wpbo' ),
+			2  => __( 'Custom field updated.', 'wpbo' ),
+			3  => __( 'Custom field deleted.', 'wpbo' ),
+			4  => __( 'Popup updated.', 'wpbo' ),
+			/* translators: %s: date and time of the revision */
+			5  => isset( $_GET['revision'] ) ? sprintf( __( 'Popup restored to revision from %s', 'wpbo' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+			6  => __( 'Popup published.', 'wpbo' ),
+			7  => __( 'Popup saved.', 'wpbo' ),
+			8  => __( 'Popup submitted.', 'wpbo' ),
+			9  => sprintf(
+				__( 'Popup scheduled for: <strong>%1$s</strong>.', 'wpbo' ),
+				// translators: Publish box date format, see http://php.net/date
+				date_i18n( __( 'M j, Y @ G:i', 'wpbo' ), strtotime( $post->post_date ) )
+			),
+			10 => __( 'Popup draft updated.', 'wpbo' )
+		);
+
+		if ( $post_type_object->publicly_queryable ) {
+			$permalink = get_permalink( $post->ID );
+
+			$view_link = sprintf( ' <a href="%s">%s</a>', esc_url( $permalink ), __( 'View popup', 'wpbo' ) );
+			$messages[ $post_type ][1] .= $view_link;
+			$messages[ $post_type ][6] .= $view_link;
+			$messages[ $post_type ][9] .= $view_link;
+
+			$preview_permalink = add_query_arg( 'preview', 'true', $permalink );
+			$preview_link = sprintf( ' <a target="_blank" href="%s">%s</a>', esc_url( $preview_permalink ), __( 'Preview popup', 'wpbo' ) );
+			$messages[ $post_type ][8]  .= $preview_link;
+			$messages[ $post_type ][10] .= $preview_link;
+		}
+
+		return $messages;
 	}
 
 	/**
