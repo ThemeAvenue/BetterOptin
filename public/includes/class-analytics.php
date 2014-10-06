@@ -496,3 +496,42 @@ function wpbo_insert_data( $data = array(), $wp_error = true ) {
 	return $insert;
 
 }
+
+/**
+ * Today's Conversion Rate.
+ *
+ * Get today's conversion rate using the stats class.
+ *
+ * @since  1.2.2
+ * @param  integer $decimals      Number of decimal to return for the conversion rate
+ * @param  integer $dec_point     Separator for the decimal point
+ * @param  integer $thousnads_sep Separator for the thousands
+ * @return integer                Conversion rate for the day
+ */
+function wpbo_today_conversion( $decimals = 2, $dec_point = '.', $thousands_sep = ',' ) {
+
+	/* Prepare the query. */
+	$query = array( 'data_type' => 'any', 'limit' => -1, 'period' => strtotime( 'today') );
+
+	/* Get the datas. */
+	$datas = wpbo_get_datas( $query, 'OBJECT' );
+
+	/* Set the count vars. */
+	$total       = count( $datas );
+	$conversions = 0;
+
+	/* Check the number of conversions. */
+	foreach ( $datas as $data ) {
+
+		if ( 'conversion' == $data->data_type ) {
+			++$conversions;
+		}
+
+	}
+
+	/* Get the converison rate. */
+	$rate = ( $conversions * 100 ) / $total;
+
+	return number_format( $rate, $decimals, $dec_point, $thousands_sep );
+
+}
