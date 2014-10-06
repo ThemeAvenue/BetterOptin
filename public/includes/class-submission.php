@@ -43,7 +43,7 @@ class WPBO_Submit {
 		add_action( 'init', array( $this, 'load_provider_class' ), 9 );
 
 		/* Initialize the submission related actions */
-		if( $this->is_submission() ) {
+		if ( $this->is_submission() ) {
 
 			$this->popup_id = intval( $_POST['wpbo_id'] );
 			$this->post_id  = intval( $_POST['post_id'] );
@@ -54,6 +54,15 @@ class WPBO_Submit {
 
 	}
 
+	/**
+	 * Load provider class.
+	 *
+	 * Load the provider main class where all the provider-specific
+	 * functions and methods are.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
 	public function load_provider_class() {
 
 		/* Get user mailing provider */
@@ -153,25 +162,45 @@ class WPBO_Submit {
 		return apply_filters( 'wpbo_provider_ready', false );
 	}
 
+	/**
+	 * Check submission validity.
+	 *
+	 * Checks the validity of a popup submission.
+	 *
+	 * @since  1.0.0
+	 * @return boolean True if the submission is valid.
+	 */
 	public function is_valid_submission() {
 
-		if( isset( $_POST['wpbo_nonce'] ) || wp_verify_nonce( $_POST['wpbo_nonce'], 'subscribe' ) )
+		if( isset( $_POST['wpbo_nonce'] ) || wp_verify_nonce( $_POST['wpbo_nonce'], 'subscribe' ) ) {
 			return true;
+		}
 
-		else
+		else {
 			return false;
+		}
 
 	}
 
+	/**
+	 * Check for submission.
+	 *
+	 * Checks if the current page load has a popup form submission.
+	 *
+	 * @since  1.0.0
+	 * @return boolean True if there is a submission
+	 */
 	public function is_submission() {
 
 		$submission = false;
 
-		if( isset( $_POST['wpbo_nonce'] ) && true === $this->is_valid_submission() && isset( $_POST['wpbo_email'] ) && isset( $_POST['wpbo_id'] ) )
+		if ( isset( $_POST['wpbo_nonce'] ) && true === $this->is_valid_submission() && isset( $_POST['wpbo_email'] ) && isset( $_POST['wpbo_id'] ) ) {
 			return true;
+		}
 
-		else
+		else {
 			return false;
+		}
 
 	}
 
