@@ -34,6 +34,20 @@ var DEBUG = false;
 			wpboModal = $('.wpbo-modal').hide(),
 			wpboForm = wpboModal.parent('.optform');
 
+		// Preload images
+		function preload(arrayOfImages) {
+			$(arrayOfImages).each(function () {
+				$('<img />').attr('src', this).appendTo('body').hide();
+			});
+		}
+		if ($('.wpbo-featured-img').length) {
+			var wpboImages = $('.wpbo-featured-img').attr('src');
+			if (DEBUG) {
+				console.log(wpboImages);
+			}
+			preload([wpboImages]);
+		}
+
 		wpboModal.easyModal({
 			top: 200,
 			overlayOpacity: wpboObj.overlay_opacity,
@@ -104,7 +118,7 @@ var DEBUG = false;
 		}
 
 		// Trigger the modal manually
-		$('.wpbo-trigger').on('click', function(e) {
+		$('.wpbo-trigger').on('click', function (e) {
 			e.preventDefault();
 			wpboModal.trigger('openModal').addClass('wpbo-modal-active');
 		});
