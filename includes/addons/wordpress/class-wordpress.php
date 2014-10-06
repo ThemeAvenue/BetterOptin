@@ -65,9 +65,6 @@ class WPBO_WordPress extends WPBO_Submit {
 		/* Insertion is successfull */
 		if( !is_wp_error( $user ) ) {
 
-			/* Notify admin and user */
-			wp_new_user_notification( $user, $this->password );
-
 			/* Add a marker in user meta */
 			add_user_meta( $user, 'wpbo_subscription', 'yes', true );
 
