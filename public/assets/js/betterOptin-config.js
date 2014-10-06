@@ -20,7 +20,8 @@ var DEBUG = false;
 			animation: 'bounceIn',
 			popup_id: 'betterOpt',
 			overlayOpacity: 0.5,
-			overlayColor: '#000'
+			overlayColor: '#000',
+			credit: true
 		};
 	}
 
@@ -92,7 +93,9 @@ var DEBUG = false;
 				});
 
 				// Add Credit
-				wpboModal.append('<a class="wpbo-credit" href="http://betteropt.in/?utm_source=plugin&utm_medium=credit&utm_term=organic&utm_campaign=betteroptin" target="_blank">Popup created with <strong>BetterOptin</strong></a>');
+				if (wpboObj.credit === true) {
+					wpboModal.append('<a class="wpbo-credit" href="http://betteropt.in/?utm_source=plugin&utm_medium=credit&utm_term=organic&utm_campaign=betteroptin" target="_blank">Popup created with <strong>BetterOptin</strong></a>');
+				}
 			}
 		});
 

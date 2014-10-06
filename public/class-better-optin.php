@@ -296,7 +296,7 @@ class Better_Optin {
 		/**
 		 * Check if we can display the credit.
 		 */
-		$settings['credit'] = wpbo_get_option( 'show_credit', true );
+		$settings['credit'] = ( true === boolval( wpbo_get_option( 'show_credit', true ) ) ) ? true : false;
 
 		/**
 		 * Use booleans
