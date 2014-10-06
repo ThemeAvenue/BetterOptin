@@ -828,7 +828,7 @@ class Better_Optin_Admin {
 					update_post_meta( $post_id, '_wpbo_display_' . $pt, 'all' );
 
 				elseif( !isset( $_POST['wpbo_display_' . $pt . '_all'] ) && '' != $current )
-					delete_post_meta( $post_id, '_wpbo_display_' . $pt, $meta_value );
+					delete_post_meta( $post_id, '_wpbo_display_' . $pt );
 
 				/**
 				 * Remove the relationships
