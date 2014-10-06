@@ -175,7 +175,7 @@ $grand_total = count( $datas );
 						$popup        = get_post( $data->popup_id );
 						$impressions  = wpbo_get_datas( array( 'popup_id' => $data->popup_id, 'data_type' => 'impression', 'limit' => -1, 'period' => $timeframe ), 'ARRAY_A' );
 						$conversions  = wpbo_get_datas( array( 'popup_id' => $data->popup_id, 'data_type' => 'conversion', 'limit' => -1, 'period' => $timeframe ), 'ARRAY_A' );
-						$rate         = ( 0 === count( $conversions ) || 0 === count( $impressions ) ) ? 0 : ( 100 * count( $conversions ) ) / $grand_total;
+						$rate         = ( 0 === count( $conversions ) || 0 === $grand_total ) ? 0 : ( 100 * count( $conversions ) ) / $grand_total;
 						$status       = 'publish' == $popup->post_status ? __( 'Active', 'wpbo' ) : __( 'Inactive', 'wpbo' );
 						$status_class = 'publish' == $popup->post_status ? 'wpbo-stats-active' : 'wpbo-stats-inactive';
 

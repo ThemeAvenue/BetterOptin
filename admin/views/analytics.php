@@ -114,7 +114,7 @@ $period = isset( $_GET['period'] ) ? $_GET['period'] : 'today';
 
 						<h3><span><?php printf( __( '%s\'s Stats Breakdown', 'wpbo' ), ucwords( str_replace( '_', ' ', $period ) ) ); ?></span></h3>
 						<?php
-						$total_rate = ( 0 === $total_conversions || 0 === $total_impressions ) ? 0 : ( 100 * $total_conversions ) / $grand_total;
+						$total_rate = ( 0 === $total_conversions || 0 === $grand_total ) ? 0 : ( 100 * $total_conversions ) / $grand_total;
 						$total_rate = number_format( $total_rate, 2 );
 						?>
 						<div class="inside">
