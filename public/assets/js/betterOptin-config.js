@@ -78,7 +78,7 @@ var DEBUG = false;
 				});
 
 				// Add Credit
-				wpboModal.append('<a class="wpbo-credit" href="http://betteropt.in/" target="_blank">Popup created with <strong>BetterOptin</strong></a>');
+				wpboModal.append('<a class="wpbo-credit" href="http://betteropt.in/?utm_source=plugin&utm_medium=credit&utm_term=organic&utm_campaign=betteroptin" target="_blank">Popup created with <strong>BetterOptin</strong></a>');
 			}
 		});
 
