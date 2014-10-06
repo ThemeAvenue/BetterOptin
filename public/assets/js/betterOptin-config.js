@@ -34,6 +34,20 @@ var DEBUG = false;
 			wpboModal = $('.wpbo-modal').hide(),
 			wpboForm = wpboModal.parent('.optform');
 
+		// Preload images
+		function preload(arrayOfImages) {
+			$(arrayOfImages).each(function () {
+				$('<img />').attr('src', this).appendTo('body').hide();
+			});
+		}
+		if ($('.wpbo-featured-img').length) {
+			var wpboImages = $('.wpbo-featured-img').attr('src');
+			if (DEBUG) {
+				console.log(wpboImages);
+			}
+			preload([wpboImages]);
+		}
+
 		wpboModal.easyModal({
 			top: 200,
 			overlayOpacity: wpboObj.overlay_opacity,
@@ -78,7 +92,7 @@ var DEBUG = false;
 				});
 
 				// Add Credit
-				wpboModal.append('<a class="wpbo-credit" href="http://betteropt.in/" target="_blank">Popup created with <strong>BetterOptin</strong></a>');
+				wpboModal.append('<a class="wpbo-credit" href="http://betteropt.in/?utm_source=plugin&utm_medium=credit&utm_term=organic&utm_campaign=betteroptin" target="_blank">Popup created with <strong>BetterOptin</strong></a>');
 			}
 		});
 
@@ -104,7 +118,7 @@ var DEBUG = false;
 		}
 
 		// Trigger the modal manually
-		$('.wpbo-trigger').on('click', function(e) {
+		$('.wpbo-trigger').on('click', function (e) {
 			e.preventDefault();
 			wpboModal.trigger('openModal').addClass('wpbo-modal-active');
 		});
