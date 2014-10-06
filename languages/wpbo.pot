@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BetterOptin\n"
-"POT-Creation-Date: 2014-09-08 16:08+0700\n"
-"PO-Revision-Date: 2014-09-08 16:08+0700\n"
+"POT-Creation-Date: 2014-10-06 12:02+0700\n"
+"PO-Revision-Date: 2014-10-06 12:02+0700\n"
 "Last-Translator: Julien Liabeuf <julien@liabeuf.fr>\n"
 "Language-Team: ThemeAvenue <web@themeavenue.net>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
@@ -60,117 +60,127 @@ msgid ""
 "administrators."
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:324
+#: ../admin/class-better-optin-admin.php:283
+msgid "Show Credit"
+msgstr ""
+
+#: ../admin/class-better-optin-admin.php:286
+msgid ""
+"Display a credit link at the bottom of the popups. <strong>Thanks for "
+"supporting the plugin</strong>."
+msgstr ""
+
+#: ../admin/class-better-optin-admin.php:331
 msgid "Analytics"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:325
+#: ../admin/class-better-optin-admin.php:332
 msgid "Addons"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:326
+#: ../admin/class-better-optin-admin.php:333
 msgid "About"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:327
+#: ../admin/class-better-optin-admin.php:334
 #: ../vendor/titan-framework/titan-framework.php:126
 msgid "Documentation"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:394
-#: ../admin/includes/class-titan-framework.php:72
-#: ../admin/views/analytics-stats.php:158
-#: ../admin/views/analytics-stats.php:191
+#: ../admin/class-better-optin-admin.php:401
+#: ../admin/includes/class-titan-framework.php:70
+#: ../admin/views/analytics-stats.php:159
+#: ../admin/views/analytics-stats.php:193
 msgid "Settings"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:410
+#: ../admin/class-better-optin-admin.php:417
 msgid "Step 1: Choose a Template"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:411
+#: ../admin/class-better-optin-admin.php:418
 msgid "Step 2: Edit Settings"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:412
+#: ../admin/class-better-optin-admin.php:419
 msgid "Step 3: Choose where to Display"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:413
+#: ../admin/class-better-optin-admin.php:420
 msgid "Step 4: Customize the Design"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:414
+#: ../admin/class-better-optin-admin.php:421
 msgid "Checklist"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:574
+#: ../admin/class-better-optin-admin.php:581
 #, php-format
 msgid ""
 "The page %s (#%s) is already used by the popup <a href=\"%s\" target=\"_blank"
 "\">%s</a> (#%s)."
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:592
+#: ../admin/class-better-optin-admin.php:599
 msgid ""
 "TIP: If you keep the conflicting page(s) selected, they will be removed from "
 "the other popup(s)."
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:1114
-#: ../admin/views/analytics-stats.php:154
+#: ../admin/class-better-optin-admin.php:1126
+#: ../admin/views/analytics-stats.php:155
 msgid "Impressions"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:1119
-#: ../admin/views/analytics-stats.php:155
+#: ../admin/class-better-optin-admin.php:1131
+#: ../admin/views/analytics-stats.php:156
 msgid "Conversions"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:1255
+#: ../admin/class-better-optin-admin.php:1267
 #: ../admin/views/metaboxes/checklist.php:26
 #: ../admin/views/metaboxes/design.php:16
 #: ../admin/views/metaboxes/template.php:21
 msgid "Customize"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:1259
+#: ../admin/class-better-optin-admin.php:1271
 msgid "Stats"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:1278
+#: ../admin/class-better-optin-admin.php:1290
 #, php-format
 msgid ""
 "<a href=\"%s\" target=\"_blank\">BetterOptin</a> version %s developed by <a "
 "href=\"%s\" target=\"_blank\">ThemeAvenue</a>."
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:1300
+#: ../admin/class-better-optin-admin.php:1312
 msgid "Appears On"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:1327
+#: ../admin/class-better-optin-admin.php:1339
 #: ../admin/views/metaboxes/display.php:13
 msgid "Everywhere"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:1344
+#: ../admin/class-better-optin-admin.php:1356
 #, php-format
 msgid "All %s"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:1466
+#: ../admin/class-better-optin-admin.php:1478
 #: ../admin/views/customizer-controls.php:27
 msgid "Save"
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:1486
+#: ../admin/class-better-optin-admin.php:1498
 msgid ""
 "This popup is still in draft mode and is <strong>not visible on the site</"
 "strong>. Don't forget to publish it when you're ready."
 msgstr ""
 
-#: ../admin/class-better-optin-admin.php:1606
+#: ../admin/class-better-optin-admin.php:1618
 #, php-format
 msgid ""
 "Oops! We were unable to fetche the documentation from our support site. "
@@ -186,27 +196,6 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
-#: ../admin/includes/class-titan-envato.php:28
-msgid "Check"
-msgstr ""
-
-#: ../admin/includes/class-titan-envato.php:31
-msgid "You did not enter your Envato purchase code."
-msgstr ""
-
-#: ../admin/includes/class-titan-envato.php:32
-msgid "Validation of your Envato purchase code failed."
-msgstr ""
-
-#: ../admin/includes/class-titan-envato.php:33
-msgid ""
-"We were not able to check your Envato purchase code. Please try again later."
-msgstr ""
-
-#: ../admin/includes/class-titan-envato.php:34
-msgid "The license you entered is valid."
-msgstr ""
-
 #: ../admin/views/about.php:117
 msgid "No items"
 msgstr ""
@@ -216,23 +205,23 @@ msgstr ""
 msgid "Posted %s"
 msgstr ""
 
-#: ../admin/views/analytics-stats.php:153
+#: ../admin/views/analytics-stats.php:154
 msgid "Popup Name"
 msgstr ""
 
-#: ../admin/views/analytics-stats.php:156
+#: ../admin/views/analytics-stats.php:157
 msgid "% Conversion"
 msgstr ""
 
-#: ../admin/views/analytics-stats.php:157
+#: ../admin/views/analytics-stats.php:158
 msgid "Status"
 msgstr ""
 
-#: ../admin/views/analytics-stats.php:177
+#: ../admin/views/analytics-stats.php:179
 msgid "Active"
 msgstr ""
 
-#: ../admin/views/analytics-stats.php:177
+#: ../admin/views/analytics-stats.php:179
 msgid "Inactive"
 msgstr ""
 
@@ -244,7 +233,7 @@ msgstr ""
 msgid "All popups"
 msgstr ""
 
-#: ../admin/views/analytics.php:58
+#: ../admin/views/analytics.php:58 ../public/class-better-optin.php:422
 msgid "View popup"
 msgstr ""
 
@@ -634,23 +623,27 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: ../includes/addons/wordpress/class-wordpress.php:121
-msgid "WordPress"
-msgstr ""
-
-#: ../includes/addons/wordpress/class-wordpress.php:124
-msgid "Default Role"
-msgstr ""
-
-#: ../includes/addons/wordpress/class-wordpress.php:128
-msgid "Role attributed to all subscribers"
-msgstr ""
-
-#: ../includes/addons/wordpress/class-wordpress.php:132
-msgid "Uninstallation"
+#: ../includes/addons/wordpress/class-wordpress.php:47
+msgid "Leads"
 msgstr ""
 
 #: ../includes/addons/wordpress/class-wordpress.php:138
+msgid "WordPress"
+msgstr ""
+
+#: ../includes/addons/wordpress/class-wordpress.php:141
+msgid "Default Role"
+msgstr ""
+
+#: ../includes/addons/wordpress/class-wordpress.php:145
+msgid "Role attributed to all subscribers"
+msgstr ""
+
+#: ../includes/addons/wordpress/class-wordpress.php:149
+msgid "Uninstallation"
+msgstr ""
+
+#: ../includes/addons/wordpress/class-wordpress.php:155
 #, php-format
 msgid ""
 "When the plugin is uninstalled (deleted from your site, not just "
@@ -659,91 +652,144 @@ msgid ""
 "full understanding of what you're doing."
 msgstr ""
 
-#: ../includes/addons/wordpress/class-wordpress.php:141
+#: ../includes/addons/wordpress/class-wordpress.php:158
 msgid "Delete Subscriber"
 msgstr ""
 
-#: ../includes/addons/wordpress/class-wordpress.php:145
+#: ../includes/addons/wordpress/class-wordpress.php:162
 msgid "YES, DELETE subscribers from my database. Can NOT be undone."
 msgstr ""
 
-#: ../includes/addons/wordpress/class-wordpress.php:148
+#: ../includes/addons/wordpress/class-wordpress.php:165
 msgid "Delete Marker"
 msgstr ""
 
-#: ../includes/addons/wordpress/class-wordpress.php:152
+#: ../includes/addons/wordpress/class-wordpress.php:169
 msgid ""
 "Delete the markers. You will not be able to differentiate the subscribers "
 "from the rest of your users."
 msgstr ""
 
-#: ../public/class-better-optin.php:346
+#: ../public/class-better-optin.php:333
 msgid "You have successfully registered!"
 msgstr ""
 
-#: ../public/class-better-optin.php:346
+#: ../public/class-better-optin.php:333
 msgid "Fail. Please try again."
 msgstr ""
 
-#: ../public/class-better-optin.php:361
+#: ../public/class-better-optin.php:348
 msgctxt "post type general name"
 msgid "Popups"
 msgstr ""
 
-#: ../public/class-better-optin.php:362
+#: ../public/class-better-optin.php:349
 msgctxt "post type singular name"
 msgid "Popup"
 msgstr ""
 
-#: ../public/class-better-optin.php:363
+#: ../public/class-better-optin.php:350
 msgctxt "admin menu"
 msgid "Popups"
 msgstr ""
 
-#: ../public/class-better-optin.php:364
+#: ../public/class-better-optin.php:351
 msgctxt "add new on admin bar"
 msgid "Popup"
 msgstr ""
 
-#: ../public/class-better-optin.php:365
+#: ../public/class-better-optin.php:352
 msgctxt "book"
 msgid "Add New"
 msgstr ""
 
-#: ../public/class-better-optin.php:366
+#: ../public/class-better-optin.php:353
 msgid "Add New Popup"
 msgstr ""
 
-#: ../public/class-better-optin.php:367
+#: ../public/class-better-optin.php:354
 msgid "New Popup"
 msgstr ""
 
-#: ../public/class-better-optin.php:368
+#: ../public/class-better-optin.php:355
 msgid "Edit Popup"
 msgstr ""
 
-#: ../public/class-better-optin.php:369
+#: ../public/class-better-optin.php:356
 msgid "View Popup"
 msgstr ""
 
-#: ../public/class-better-optin.php:370
+#: ../public/class-better-optin.php:357
 msgid "All Popups"
 msgstr ""
 
-#: ../public/class-better-optin.php:371
+#: ../public/class-better-optin.php:358
 msgid "Search Popups"
 msgstr ""
 
-#: ../public/class-better-optin.php:372
+#: ../public/class-better-optin.php:359
 msgid "Parent Popups:"
 msgstr ""
 
-#: ../public/class-better-optin.php:373
+#: ../public/class-better-optin.php:360
 msgid "No popup found."
 msgstr ""
 
-#: ../public/class-better-optin.php:374
+#: ../public/class-better-optin.php:361
 msgid "No popups found in Trash."
+msgstr ""
+
+#: ../public/class-better-optin.php:402 ../public/class-better-optin.php:405
+msgid "Popup updated."
+msgstr ""
+
+#: ../public/class-better-optin.php:403
+msgid "Custom field updated."
+msgstr ""
+
+#: ../public/class-better-optin.php:404
+msgid "Custom field deleted."
+msgstr ""
+
+#. translators: %s: date and time of the revision
+#: ../public/class-better-optin.php:407
+#, php-format
+msgid "Popup restored to revision from %s"
+msgstr ""
+
+#: ../public/class-better-optin.php:408
+msgid "Popup published."
+msgstr ""
+
+#: ../public/class-better-optin.php:409
+msgid "Popup saved."
+msgstr ""
+
+#: ../public/class-better-optin.php:410
+msgid "Popup submitted."
+msgstr ""
+
+#: ../public/class-better-optin.php:412
+#, php-format
+msgid "Popup scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#. translators: Publish box date format, see http://php.net/date
+#: ../public/class-better-optin.php:414
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: ../public/class-better-optin.php:416
+msgid "Popup draft updated."
+msgstr ""
+
+#: ../public/class-better-optin.php:428
+msgid "Preview popup"
+msgstr ""
+
+#: ../public/class-better-optin.php:834
+#, php-format
+msgid "Today's Conversion: %s"
 msgstr ""
 
 #: ../public/includes/class-analytics.php:135
