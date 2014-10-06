@@ -28,6 +28,11 @@ $options = maybe_unserialize( get_option( 'wpbo_options' ) );
 
 /* Delete default options */
 delete_option( 'wpbo_options' );
+delete_option( 'wpbo_fonts' );
+
+/* Delete transients */
+delete_transient( 'wpbo_fonts' );
+delete_transient( 'wpbo_documentation' );
 
 /* Delete database version */
 delete_option( 'wpbo_db_version' );
