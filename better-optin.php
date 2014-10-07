@@ -12,7 +12,7 @@
  * Plugin Name:       BetterOptin
  * Plugin URI:        http://betteropt.in/
  * Description:       BetterOptin helps you convert your visitors in subscribers and fill up your mailing lists.
- * Version:           1.2.2
+ * Version:           1.2.3
  * Author:            ThemeAvenue
  * Author URI:        http://themeavenue.net
  * Text Domain:       better-optin

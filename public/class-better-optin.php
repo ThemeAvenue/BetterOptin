@@ -22,7 +22,7 @@ class Better_Optin {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.2.2';
+	const VERSION = '1.2.3';
 
 	/**
 	 * The variable name is used as the text domain when internationalizing strings
