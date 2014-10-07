@@ -5,6 +5,7 @@
 
 	<div class="about-text">Thank you very much for purchasing our <strong>BetterOptin WordPress plugin</strong>. We hope that this product will give you entire satisfaction.</div>
 	<p>If you are thinking about a new feature you would like to see or if you think you spotted a bug, please <a title="BetterOptin Roadmap" href="https://trello.com/b/mWrd0wUg" target="_blank">head to our roadmap</a> first and check what’s currently going on with the development.</p>
+	<p>In case you need help with the plugin or something isn't working properly, you can open a support request on our <a href="<?php esc_url( 'http://betteropt.in/forums/forum/basic-support/' ); ?>" target="_blank">basic support forum</a>.</p>
 
 	<hr>
 
