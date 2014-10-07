@@ -117,22 +117,11 @@ $animations = array(
 					<label for="wpbo_return_url"><?php _e( 'Return URL', 'wpbo' ); ?></label>
 				</th>
 				<td>
-					<input name="wpbo_settings[return_url]" type="url" class="medium-text" id="wpbo_return_url"value="<?php echo wpbo_get_option( 'return_url', '', $post_id ); ?>">
-					<p><?php printf( __( 'The return URL is optional. If not specified, the URL set in the general settings will be used (currently %s)', 'wpbo' ), '<code>' . wpbo_get_option( 'return_url' ) . '</code>' ); ?></p>
+					<input name="wpbo_settings[return_url]" type="url" class="regular-text" id="wpbo_return_url"value="<?php echo wpbo_get_option( 'return_url', '', $post_id ); ?>">
+					<?php $returl = '' == ( $url = wpbo_get_option( 'return_url' ) ) ? 'none' : esc_url( $url ); ?>
+					<p><?php printf( __( 'The return URL is optional. If not specified, the URL set in the general settings will be used (currently %s)', 'wpbo' ), "<code>$returl</code>" ); ?></p>
 				</td>
 			</tr>
-			<!-- <tr valign="top">
-				<th scope="row">
-					<label for="wpbo_close_button"><?php _e( 'Close Button', 'wpbo' ); ?></label>
-				</th>
-				<td>
-					<label for="wpbo_close_button">
-						<input name="wpbo_settings[close_button]" type="checkbox" id="wpbo_close_button" value="1" <?php if( '1' == wpbo_get_option( 'close_button', '1', $post_id ) ): ?>checked="checked"<?php endif; ?>>
-						<?php _e( 'Yes', 'wpbo' ); ?>
-					</label>
-					<p class="description"><?php _e( 'Give the visitor a button to close the popup.', 'wpbo' ); ?></p>
-				</td>
-			</tr> -->
 		</tbody>
 	</table>
 </fieldset>
