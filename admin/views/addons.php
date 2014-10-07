@@ -11,12 +11,12 @@
 			<div class="col-1">
 				<img src="<?php echo WPBO_URL; ?>admin/assets/images/addon-mc.png" alt="" class="ta-shadow">
 				<h4>MailChimp</h4>
-				<p>Collect email opt-ins directly in <strong>MailChimp lists</strong>.<br> <a href="http://betteropt.in/downloads/mailchimp/" target="_blank">Get this extension for $20 &rarr;</a></p>
+				<p>Collect email opt-ins directly in <strong>MailChimp lists</strong>.<br> <a href="http://betteropt.in/downloads/mailchimp/" target="_blank">Get this extension for $19 &rarr;</a></p>
 			</div>
 			<div class="col-2 last-feature">
 				<img src="<?php echo WPBO_URL; ?>admin/assets/images/addon-aw.png" alt="" class="ta-shadow">
 				<h4>Aweber</h4>
-				<p>An easy way to collect email opt-ins with <strong>Aweber</strong>.<br> <a href="http://betteropt.in/downloads/aweber/" target="_blank">Get this extension for $20 &rarr;</a></p>
+				<p>An easy way to collect email opt-ins with <strong>Aweber</strong>.<br> <a href="http://betteropt.in/downloads/aweber/" target="_blank">Get this extension for $19 &rarr;</a></p>
 			</div>
 		</div>
 	</div>
