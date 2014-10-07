@@ -164,7 +164,10 @@ class Better_Optin_Admin {
 			}
 
 			/* Load colorpicker style */
-			if( isset( $_GET['action'] ) && 'edit' == $_GET['action'] || isset( $current_screen->action ) && isset( $current_screen->post_type ) && 'add' == $current_screen->action && 'wpbo-popup' == $current_screen->post_type ) {
+			if( isset( $_GET['action'] ) && 'edit' == $_GET['action'] ||
+				isset( $current_screen->action ) && isset( $current_screen->post_type ) && 'add' == $current_screen->action && 'wpbo-popup' == $current_screen->post_type ||
+				isset( $current_screen->base ) && 'wpbo-popup_page_wpbo-customizer' == $current_screen->base
+			) {
 				wp_enqueue_style( 'wp-color-picker' );
 			}
 
