@@ -13,6 +13,7 @@ class TitanFrameworkAdminPanel {
 		'icon' => 'dashicons-admin-generic', // Menu icon for top level menus only http://melchoyce.github.io/dashicons/
 		'position' => null, // Menu position. Can be used for both top and sub level menus
 		'use_form' => true, // If false, options will not be wrapped in a form
+		'desc' => '', // Description displayed below the title
 	);
 
 	public $settings;
@@ -242,6 +243,9 @@ class TitanFrameworkAdminPanel {
 				return $this->activeTab;
 			}
 		}
+
+		$this->activeTab = $this->tabs[0];
+		return $this->activeTab;
 	}
 
 	public function createAdminPage() {
@@ -249,7 +253,15 @@ class TitanFrameworkAdminPanel {
 		do_action( 'tf_admin_page_before_' . $this->getOptionNamespace() );
 
 		?>
-		<div class='wrap titan-framework-panel-wrap'>
+		<div class="wrap">
+		<h2><?php echo $this->settings['title'] ?></h2>
+		<?php
+		if ( ! empty( $this->settings['desc'] ) ) {
+			?><p class='description'><?php echo $this->settings['desc'] ?></p><?php
+		}
+		?>
+
+		<div class='titan-framework-panel-wrap'>
 		<?php
 
 		do_action( 'tf_admin_page_start' );
@@ -279,22 +291,12 @@ class TitanFrameworkAdminPanel {
 		<div class='options-container'>
 		<?php
 
-		if ( count( $this->tabs ) ):
-			echo "<h2>" . $this->getActiveTab()->settings['title'] . "</h2>";
-		endif;
-
-		if ( ! count( $this->tabs ) ):
-			?>
-			<h2><?php echo $this->settings['title'] ?></h2>
-			<?php
-		endif;
-
 		// Display notification if we did something
 		if ( ! empty( $_GET['message'] ) ) {
 			if ( $_GET['message'] == 'saved' ) {
-				echo TitanFrameworkAdminNotification::formNotification( __( 'Settings saved.', TF_I18NDOMAIN ), $_GET['message'] );
+				echo TitanFrameworkAdminNotification::formNotification( __( 'Settings saved.', TF_I18NDOMAIN ), esc_html( $_GET['message'] ) );
 			} else if ( $_GET['message'] == 'reset' ) {
-				echo TitanFrameworkAdminNotification::formNotification( __( 'Settings reset to default.', TF_I18NDOMAIN ), $_GET['message'] );
+				echo TitanFrameworkAdminNotification::formNotification( __( 'Settings reset to default.', TF_I18NDOMAIN ), esc_html( $_GET['message'] ) );
 			}
 		}
 
@@ -319,6 +321,11 @@ class TitanFrameworkAdminPanel {
 
 		$activeTab = $this->getActiveTab();
 		if ( ! empty( $activeTab ) ) {
+
+			if ( ! empty( $activeTab->settings['desc'] ) ) {
+				?><p class='description'><?php echo $activeTab->settings['desc'] ?></p><?php
+			}
+
 			$activeTab->displayOptions();
 		}
 
@@ -359,6 +366,7 @@ class TitanFrameworkAdminPanel {
 
 		?>
 		<div class='options-container'>
+		</div>
 		</div>
 		</div>
 		</div>

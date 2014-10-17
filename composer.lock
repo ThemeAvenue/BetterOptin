@@ -4,35 +4,25 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e09ada3842d47c7db23375ef28b16a42",
+    "hash": "c3ac86f3b0aba14fe803f73431aa4c91",
     "packages": [
         {
             "name": "titan-framework",
-            "version": "dev-master",
+            "version": "1.6.1",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/gambitph/Titan-Framework/archive/master.zip",
+                "url": "https://github.com/gambitph/Titan-Framework/archive/v1.6.1.zip",
                 "reference": null,
                 "shasum": null
             },
             "type": "library"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "titan-framework": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "platform": [],
+    "platform-dev": []
 }
