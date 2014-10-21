@@ -27,8 +27,8 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /* Define all the plugin constants */
-define( 'WPBO_URL', plugin_dir_url( __FILE__ ) );
-define( 'WPBO_PATH', plugin_dir_path( __FILE__ ) );
+define( 'WPBO_URL',      trailingslashit( plugin_dir_url( __FILE__ ) ) );
+define( 'WPBO_PATH',     trailingslashit( plugin_dir_path( __FILE__ ) ) );
 define( 'WPBO_BASENAME', plugin_basename(__FILE__) );
 
 require_once( plugin_dir_path( __FILE__ ) . 'includes/extras.php' );
