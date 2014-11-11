@@ -261,11 +261,26 @@ var DEBUG = false;
 							$(document).find('.taed-elem-active').attr('alt', $(this).val());
 						});
 					} else {
+						formControl.autosize();
 						formControl.val($this.text()).trigger('autosize.resize');
 						formControl.on('change keyup', function (e) {
 							e.preventDefault();
-							$(document).find('.taed-elem-active').text($(this).val());
+
+							/*
+							Trigger matchHeight & Autosize
+							 */
 							$.fn.matchHeight._update();
+							formControl.trigger('autosize.resize');
+
+							/*
+							Make sure to only edit the editable part
+							And prevent the icon from being wiped out
+							 */
+							if ($this.find('span.taed-textEdit').length !== 0) {
+								$(document).find('.taed-elem-active span.taed-textEdit').text($(this).val());
+							} else {
+								$(document).find('.taed-elem-active').text($(this).val());
+							}
 						});
 					}
 					break;
