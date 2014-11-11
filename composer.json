@@ -1,16 +1,5 @@
 {
-	"repositories": [{
-		"type": "package",
-		"package": {
-			"name": "titan-framework",
-			"version": "1.6.1",
-			"dist": {
-				"url": "https://github.com/gambitph/Titan-Framework/archive/v1.6.1.zip",
-				"type": "zip"
-			}
-		}
-	}],
 	"require": {
-		"titan-framework": "1.*"
+		"gambitph/titan-framework": "1.6.*"
 	}
 }
