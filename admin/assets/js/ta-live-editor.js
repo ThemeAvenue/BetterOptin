@@ -23,6 +23,15 @@ var DEBUG = false;
 		return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 	}
 
+	// Make the function global
+	// http://stackoverflow.com/a/2223370
+	jQuery.taedNoSelection = function taedNoSelection() {
+		$('.taed-elem-active').removeClass('taed-elem-active');
+		$('.taed-sidebar-active').removeClass('taed-sidebar-active');
+		$('.taed-field-active').removeClass('taed-field-active');
+		$('.wrap').removeClass('wrap-has-sidebar');
+	};
+
 	$(function () {
 
 		var elModal = $('.wpbo-modal'),
@@ -35,13 +44,6 @@ var DEBUG = false;
 			$('.wpbo-col').matchHeight('.wpbo-grid-no-gutter');
 		}
 
-		function noSelection() {
-			$('.taed-elem-active').removeClass('taed-elem-active');
-			$('.taed-sidebar-active').removeClass('taed-sidebar-active');
-			$('.taed-field-active').removeClass('taed-field-active');
-			$('.wrap').removeClass('wrap-has-sidebar');
-		}
-
 		elSidebar.on('click', function (e) {
 			e.stopPropagation();
 			e.preventDefault();
@@ -52,7 +54,7 @@ var DEBUG = false;
 		});
 
 		$('#wpwrap').on('click', function () {
-			noSelection();
+			$.taedNoSelection();
 		});
 
 		////////////////////////////////
@@ -150,7 +152,7 @@ var DEBUG = false;
 		$(document).on('click', '[data-editable]', function (e) {
 			e.stopPropagation();
 			e.preventDefault();
-			noSelection();
+			$.taedNoSelection();
 
 			// Show sidebar & Buttons
 			elSidebar.addClass('taed-sidebar-active');
