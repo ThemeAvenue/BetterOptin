@@ -58,7 +58,7 @@ class WPBO_Titan {
 		}
 		// Use the embedded Titan Framework
 		if ( $useEmbeddedFramework && ! class_exists( 'TitanFramework' ) ) {
-			require_once( WPBO_PATH . 'vendor/titan-framework/titan-framework.php' );
+			require_once( WPBO_PATH . 'vendor/gambitph/titan-framework/titan-framework.php' );
 		}
 
 		/**
