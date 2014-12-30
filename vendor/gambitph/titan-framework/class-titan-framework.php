@@ -23,6 +23,10 @@ class TitanFramework {
 	public $cssInstance;
 	public $trackerInstance;
 
+	// We have an initialization phase where the options are just being gathered
+	// for processing, during this phase we need to stop certain steps when creat
+	public static $initializing = false;
+
 	// We store the options (with IDs) here, used for ensuring our serialized option
 	// value doesn't get cluttered with unused options
 	public $optionsUsed = array();
@@ -63,11 +67,11 @@ class TitanFramework {
 		$this->trackerInstance = new TitanFrameworkTracker( $this );
 
 		add_action( 'after_setup_theme', array( $this, 'getAllOptions' ), 7 );
-		add_action( 'after_setup_theme', array( $this, 'updateOptionDBListing' ), 8 );
+		add_action( 'init', array( $this, 'updateOptionDBListing' ), 12 );
 
 		if ( is_admin() ) {
-			add_action( 'after_setup_theme', array( $this, 'updateThemeModListing' ), 8 );
-			add_action( 'after_setup_theme', array( $this, 'updateMetaDbListing' ), 8 );
+			add_action( 'init', array( $this, 'updateThemeModListing' ), 12 );
+			add_action( 'init', array( $this, 'updateMetaDbListing' ), 12 );
 			add_action( 'tf_create_option_' . $this->optionNamespace, array( $this, "verifyUniqueIDs" ) );
 		}
 
@@ -88,6 +92,11 @@ class TitanFramework {
 	 */
 	public function verifyUniqueIDs( $option ) {
 		if ( empty( $option->settings['id'] ) ) {
+			return;
+		}
+
+		// During initialization don't display ID errors
+		if ( self::$initializing ) {
 			return;
 		}
 
@@ -185,6 +194,7 @@ class TitanFramework {
 
 	public function saveOptions() {
 		update_option( $this->optionNamespace . '_options', serialize( $this->allOptions[$this->optionNamespace] ) );
+		do_action( 'tf_save_options_' . $this->optionNamespace );
 		return $this->allOptions[$this->optionNamespace];
 	}
 
