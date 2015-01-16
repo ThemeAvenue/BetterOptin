@@ -1,5 +1,8 @@
 {
 	"require": {
 		"gambitph/titan-framework": "1.7.*"
+	},
+	"archive": {
+		"exclude": [".gitignore", "composer.json", "composer.lock", "/tests", "README.md", "bower.json"]
 	}
 }
