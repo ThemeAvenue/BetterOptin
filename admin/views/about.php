@@ -110,15 +110,17 @@
 				<img src="<?php echo WPBO_URL; ?>admin/assets/images/logo-transparent-black.png" widht="280" height="27" alt="ThemeAvenue">
 				<h3>Want to hear more about ThemeAvenue?</h3>
 				<p><a href="http://themeavenue.net/" target="_blank">ThemeAvenue</a> is a premium WordPress themes and plugins development company. Feel free to check our <a href="http://codecanyon.net/user/themeavenue"></a>portfolio on CodeCanyon and visit our <a href="http://support.themeavenue.net/">support site</a> if you need assistance with our products.</p>
+				<!-- Facebook Page Plugin | https://developers.facebook.com/docs/plugins/page-plugin -->
 				<div id="fb-root"></div>
 				<script>(function(d, s, id) {
 					var js, fjs = d.getElementsByTagName(s)[0];
 					if (d.getElementById(id)) return;
 					js = d.createElement(s); js.id = id;
-					js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=647293568670589&version=v2.0";
+					js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=732874826787651";
 					fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));</script>
-				<div class="fb-like-box" data-href="https://www.facebook.com/ThemeAvenue" data-width="1050" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+				<div class="fb-page" data-href="https://www.facebook.com/ThemeAvenue" data-width="502" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/ThemeAvenue"><a href="https://www.facebook.com/ThemeAvenue">ThemeAvenue</a></blockquote></div></div>
+				<!-- /Facebook -->
 			</div>
 
 			<div class="col">
