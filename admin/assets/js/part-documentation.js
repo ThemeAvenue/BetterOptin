@@ -28,7 +28,7 @@
 			$('.wrap a').smoothScroll();
 
 			// Open External Links In New Window
-			$('a[href^="http://"]', docWrapper).attr('target', '_blank');
+			$('.wrap a[href^="http://"]', docWrapper).attr('target', '_blank');
 
 		});
 
