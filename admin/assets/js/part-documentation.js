@@ -32,14 +32,6 @@
 
 		});
 
-		// Back to top
-		$(document).on('click', '.ta-doc-totop', function (event) {
-			event.preventDefault();
-			$('html, body').animate({
-				scrollTop: 0
-			}, 400);
-			return false;
-		});
 	});
 
 }(jQuery));
