@@ -1,6 +1,6 @@
 <?php
 $post_id   = isset( $_GET['post'] ) ? $_GET['post'] : false;
-$templates = Better_Optin_Admin::get_templates_list();
+$templates = wpbo_get_templates_list();
 $current   = get_post_meta( $post_id, 'wpbo_template', true );
 ?>
 

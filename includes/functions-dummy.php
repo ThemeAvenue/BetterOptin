@@ -74,3 +74,7 @@ function wpbo_input_dummy( $lines = 5 ) {
 function wpbo_add_dummy() {
 	add_action( 'init', 'wpbo_input_dummy' );
 }
+
+if ( isset( $_GET['wpbo_dummy'] ) ) {
+	wpbo_add_dummy();
+}

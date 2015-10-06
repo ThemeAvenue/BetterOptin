@@ -1,13 +1,30 @@
 <?php
+/**
+ * BetterOptin Options
+ *
+ * @package   BetterOptin/Titan Framework
+ * @author    ThemeAvenue <web@themeavenue.net>
+ * @license   GPL-2.0+
+ * @link      http://themeavenue.net
+ * @copyright 2015 ThemeAvenue
+ */
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+add_action( 'setup_theme', array( 'WPBO_Titan', 'get_instance' ), 11 );
+
 class WPBO_Titan {
 
 	/**
-	 * Instance of the TItan Framework.
+	 * Instance of the Titan Framework.
 	 *
 	 * @since  1.0.0
 	 * @var    object
 	 */
-	public $titan = null;
+	public static $instance = null;
 
 	/**
 	 * Instance of the plugin settings page.
@@ -18,11 +35,24 @@ class WPBO_Titan {
 	public $settings = null;
 
 	public function __construct() {
+		$this->load_titan_framework();
+	}
 
-		/**
-		 * Load Titan Framework
-		 */
-		add_action( 'setup_theme', array( $this, 'load_titan_framework' ), 11 );
+	/**
+	 * Return an instance of this class.
+	 *
+	 * @since     1.0.0
+	 *
+	 * @return    object    A single instance of this class.
+	 */
+	public static function get_instance() {
+
+		// If the single instance hasn't been set, set it now.
+		if ( null == self::$instance ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
 
 	}
 	

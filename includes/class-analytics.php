@@ -45,13 +45,13 @@ class WPBO_Analytics {
 		/* Define the table name */
 		$this->table_name = $wpdb->prefix . self::$db_suffix;
 
-	} 
-	
+	}
+
 	/**
 	 * Create analytics table.
 	 *
 	 * @since  1.0.0
-	 * @return [type] [description]
+	 * @return void
 	 */
 	public static function create_table() {
 
@@ -61,7 +61,7 @@ class WPBO_Analytics {
 		$table_name = $wpdb->prefix . self::$db_suffix;
 
 		/* Prepare DB structure if not already existing */
-		if( $wpdb->get_var( "show tables like '$table_name'" ) != $table_name ) {
+		if ( $wpdb->get_var( "show tables like '$table_name'" ) != $table_name ) {
 
 			$sql = "CREATE TABLE $table_name (
 				data_id mediumint(9) NOT NULL AUTO_INCREMENT,
@@ -76,7 +76,7 @@ class WPBO_Analytics {
 
 			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 			dbDelta( $sql );
-		
+
 		}
 
 	}
@@ -87,8 +87,10 @@ class WPBO_Analytics {
 	 * Add a new row of data in the analytics table.
 	 *
 	 * @since  1.0.0
-	 * @param  array   $data  Details of the data to add
-	 * @param  boolean $error Allow the function to return a WP_Error object
+	 *
+	 * @param  array   $data     Details of the data to add
+	 * @param  boolean $wp_error Allow the function to return a WP_Error object
+	 *
 	 * @return mixed          Data ID on success or WP_Error on failure
 	 */
 	public function insert_data( $data = array(), $wp_error = true ) {
@@ -113,28 +115,30 @@ class WPBO_Analytics {
 		$clean = $this->sanitize_data( $data, $wp_error );
 
 		/* If sanitization failed return the error */
-		if( is_wp_error( $clean ) ) {
-			if ( $wp_error )
+		if ( is_wp_error( $clean ) ) {
+			if ( $wp_error ) {
 				return $clean;
-			else
+			} else {
 				return false;
+			}
 		}
 
 		/**
 		 * Are we updating or creating?
 		 */
-		if( isset( $clean['data_id'] ) && false !== $clean['data_id'] && is_int( $clean['data_id'] ) ) {
+		if ( isset( $clean['data_id'] ) && false !== $clean['data_id'] && is_int( $clean['data_id'] ) ) {
 			$insert = $this->update_data( $clean, $wp_error ); // @todo test the update through insert_data()
 			return $insert;
 		} else {
 
 			$insert = $wpdb->insert( $table_name, $clean, array( '%s', '%s', '%d', '%s', '%s', '%s' ) );
 
-			if( false === $insert ) {
-				if ( $wp_error )
+			if ( false === $insert ) {
+				if ( $wp_error ) {
 					return new WP_Error( 'insert_failed', __( 'Whoops, we could not insert the data in the database.' ) );
-				else
+				} else {
 					return false;
+				}
 			} else {
 				return $insert;
 			}
@@ -168,9 +172,11 @@ class WPBO_Analytics {
 	 * Update data row.
 	 *
 	 * @since  1.0.0
+	 *
 	 * @param  array   $data     Default array of data elements
 	 * @param  boolean $wp_error Is the function allowed to return a WP_Error object
-	 * @return [type]            [description]
+	 *
+	 * @return string
 	 */
 	public function update_data( $data = array(), $wp_error = true ) {
 
@@ -183,21 +189,23 @@ class WPBO_Analytics {
 		/**
 		 * Check the popup ID (required).
 		 */
-		if( false === $data_id || !is_int( $data_id ) ) {
-			if ( $wp_error )
+		if ( false === $data_id || ! is_int( $data_id ) ) {
+			if ( $wp_error ) {
 				return new WP_Error( 'no_data_id', __( 'Whoops, no data ID was provided.' ) );
-			else
+			} else {
 				return false;
+			}
 		}
 
 		$table_name = $this->table_name;
 		$ID         = intval( $data['data_id'] );
 
-		if( false === $ID || !is_int( $ID ) ) {
-			if( true === $wp_error )
+		if ( false === $ID || ! is_int( $ID ) ) {
+			if ( true === $wp_error ) {
 				return new WP_Error( 'no_id', __( 'You did not pass the ID of the data to update.' ) );
-			else
+			} else {
 				return false;
+			}
 		}
 
 		/* Previous data row */
@@ -211,11 +219,12 @@ class WPBO_Analytics {
 		/* Do the update */
 		$update = $wpdb->update( $table_name, $clean, array( 'data_id' => $ID ) );
 
-		if( false === $update ) {
-			if( true === $wp_error )
+		if ( false === $update ) {
+			if ( true === $wp_error ) {
 				return new WP_Error( 'update_error', __( 'An error occured while trying to update the data.' ) );
-			else
+			} else {
 				return false;
+			}
 		} else {
 			return $update;
 		}
@@ -330,9 +339,11 @@ class WPBO_Analytics {
 	 * Retrieve a set of datas based on the user
 	 * criterias. This function can return one or
 	 * more row(s) of data depending on the arguments;
-	 * 
-	 * @param  [type] $args [description]
-	 * @return [type]       [description]
+	 *
+	 * @param  array $args   Arguments
+	 * @param string $output Desired output format
+	 *
+	 * @return mixed
 	 */
 	public function get_datas( $args, $output = 'OBJECT' ) {
 
@@ -442,14 +453,6 @@ class WPBO_Analytics {
 
 }
 
-/**
- * Instance of the Analytics class.
- *
- * @since  1.0.0
- * @var    object
- */
-$wpbo_analytics = new WPBO_Analytics;
-
 /*----------------------------------------------------------------------------*
  * Helper Functions
  *----------------------------------------------------------------------------*/
@@ -462,15 +465,17 @@ $wpbo_analytics = new WPBO_Analytics;
  *
  * @since  1.0.0
  * @see    WPBO_Analytics::get_datas()
+ *
  * @param  array  $args   Parameters used in the SQL query
  * @param  string $output Format to use when returning the results
- * @return mixed          Results with eht $output format
+ *
+ * @return mixed          Results with the $output format
  */
 function wpbo_get_datas( $args = array(), $output = 'ARRAY_A' ) {
 
 	global $wpbo_analytics;
 
-	$datas = $wpbo_analytics->get_datas( $args, $output );
+	$datas = BO()->analytics->get_datas( $args, $output );
 
 	return $datas;
 
@@ -483,15 +488,17 @@ function wpbo_get_datas( $args = array(), $output = 'ARRAY_A' ) {
  *
  * @since  1.0.0
  * @see    WPBO_Analytics::insert_data()
+ *
  * @param  array   $data     Data to add
  * @param  boolean $wp_error Allow method to return a WP_Error object
+ *
  * @return mixed             ID of the data on success or $wp_error on failure
  */
 function wpbo_insert_data( $data = array(), $wp_error = true ) {
 
 	global $wpbo_analytics;
 
-	$insert = $wpbo_analytics->insert_data( $data, $wp_error = true );
+	$insert = BO()->analytics->insert_data( $data, $wp_error = true );
 
 	return $insert;
 
@@ -503,15 +510,17 @@ function wpbo_insert_data( $data = array(), $wp_error = true ) {
  * Get today's conversion rate using the stats class.
  *
  * @since  1.2.2
+ *
  * @param  integer $decimals      Number of decimal to return for the conversion rate
- * @param  integer $dec_point     Separator for the decimal point
- * @param  integer $thousnads_sep Separator for the thousands
+ * @param  string  $dec_point     Separator for the decimal point
+ * @param  string  $thousands_sep Separator for the thousands
+ *
  * @return integer                Conversion rate for the day
  */
 function wpbo_today_conversion( $decimals = 2, $dec_point = '.', $thousands_sep = ',' ) {
 
 	/* Prepare the query. */
-	$query = array( 'data_type' => 'any', 'limit' => -1, 'period' => strtotime( 'today') );
+	$query = array( 'data_type' => 'any', 'limit' => - 1, 'period' => strtotime( 'today' ) );
 
 	/* Get the datas. */
 	$datas = wpbo_get_datas( $query, 'OBJECT' );
@@ -526,12 +535,12 @@ function wpbo_today_conversion( $decimals = 2, $dec_point = '.', $thousands_sep 
 
 		/* Increment conversions */
 		if ( 'conversion' == $data->data_type ) {
-			++$conversions;
+			++ $conversions;
 		}
 
 		/* Increment impressions */
 		if ( 'impression' == $data->data_type ) {
-			++$impressions;
+			++ $impressions;
 		}
 
 	}

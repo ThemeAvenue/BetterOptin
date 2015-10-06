@@ -36,6 +36,6 @@ $popup    = Better_Optin::get_popup_markup( $popup_id );
 </div>
 
 <?php
-if( false === Better_Optin_Admin::is_tour_completed() )
+if( false === wpbo_is_tour_completed() )
 	include_once( WPBO_PATH . 'admin/views/customizer-tour.php' );
 ?>
