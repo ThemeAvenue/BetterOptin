@@ -61,7 +61,7 @@ function wpbo_input_dummy( $lines = 5 ) {
 				if( $dtype === 'conversion' )
 					++$limit;
 
-				wpbo_insert_data( array( 'time' => $time, 'data_type' => $dtype, 'popup_id' => $popup->ID, ), false );
+				wpbo_db_insert_data( array( 'time' => $time, 'data_type' => $dtype, 'popup_id' => $popup->ID, ), false );
 
 			}
 

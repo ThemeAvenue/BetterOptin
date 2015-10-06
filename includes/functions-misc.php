@@ -238,3 +238,27 @@ function wpbo_array_merge_combine( $array, $format ) {
 	return $new;
 
 }
+
+/**
+ * Check Gregorian date.
+ *
+ * @param  string $time Date to check
+ *
+ * @return boolean       True if date is valid
+ * @see /wp-includes/post.php
+ */
+function wpbo_check_date( $time ) {
+
+	/**
+	 * Validate the date
+	 *
+	 * @see /wp-includes/post.php
+	 */
+	$mm         = substr( $time, 5, 2 );
+	$jj         = substr( $time, 8, 2 );
+	$aa         = substr( $time, 0, 4 );
+	$valid_date = wp_checkdate( $mm, $jj, $aa, $time );
+
+	return $valid_date;
+
+}

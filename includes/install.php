@@ -89,7 +89,7 @@ function wpbo_single_activate() {
 	add_role( 'betteroptin', 'BetterOptin', $subscriber->capabilities );
 
 	/* Create database table */
-	WPBO_Analytics::create_table();
+	wpbo_create_table();
 
 	/* Write database version */
 	update_option( 'wpbo_db_version', WPBO_Analytics::$db_version );

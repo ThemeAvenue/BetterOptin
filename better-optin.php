@@ -63,6 +63,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 				// Instantiate
 				self::$instance = new BetterOptin;
 				self::$instance->setup_constants();
+				self::$instance->setup_database_constants();
 				self::$instance->includes();
 
 				if ( is_admin() ) {
@@ -120,6 +121,21 @@ if ( ! class_exists( 'BetterOptin' ) ):
 		}
 
 		/**
+		 * Setup the custom database table constants
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		private function setup_database_constants() {
+
+			global $wpdb;
+
+			define( 'wpbo_analytics_table_name', 'wpbo_analytics' );
+			define( 'wpbo_analytics_table', $wpdb->prefix . wpbo_analytics_table_name );
+
+		}
+
+		/**
 		 * Include all files used sitewide
 		 *
 		 * @since 2.0
@@ -139,7 +155,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			}
 
 			require( WPBO_PATH . 'includes/functions-post-type.php' );
-			require( WPBO_PATH . 'includes/class-analytics.php' );
+			require( WPBO_PATH . 'includes/functions-analytics.php' );
 			require( WPBO_PATH . 'includes/functions-popup.php' );
 			require( WPBO_PATH . 'includes/functions-misc.php' );
 			require( WPBO_PATH . 'includes/functions-ajax.php' );
