@@ -1,6 +1,8 @@
 BetterOptin: Stunning Opt-In Popups for WordPress
 ============
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ThemeAvenue/BetterOptin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ThemeAvenue/BetterOptin/?branch=master)
+
 Ok. Popups usually convert better. But how annoying are they? Do you know how much you piss your visitors off? Actually yes, you do. How much does it annoy YOU when a site throws a popup at your face as soon as you land on it?
 
 You know what? We're just like you. We don't like being harassed when we browse the internet. That's why we developed a new WordPress popup plugin: BetterOptin, a better way to use popups. And it converts even better!
