@@ -5,12 +5,11 @@
 
 		// Define variables
 		var docWrapper = $('.ta-doc-content'),
-			docToTop = $('.ta-summary');
-		var data = {
-			'action': 'wpbo_get_doc'
-		};
+			toc = $('#ta-toc');
 
-		$.post(ajaxurl, data).done(function (response) {
+		$.post(ajaxurl, {
+			action: 'wpbo_get_doc'
+		}).done(function (response) {
 
 			// Append the doc content
 			docWrapper.html(response);
@@ -19,7 +18,7 @@
 			docWrapper.find('#toc_container').remove();
 
 			// Create the table of content (TOC)
-			$('#ta-toc').html('').toc({
+			toc.html('').toc({
 				content: '.ta-doc-content',
 				headings: 'h2,h3,h4'
 			});
