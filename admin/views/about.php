@@ -2,6 +2,7 @@
 
 	<style type="text/css">
 	@media (min-width: 30em) {
+		/* Minimalist Grid System | https://github.com/chrisnager/ungrid */
 		.container {
 			margin: 3em -3em;
 		}
@@ -21,11 +22,29 @@
 			display: table-cell;
 			vertical-align: top;
 		}
+		/* Sizing Icons */
 		.dashicons {
 			font-size: 72px;
 			width: auto;
 			height: auto;
 			margin: 0 auto;
+		}
+		/* Responsive Embeds | http://embedresponsively.com/ */
+		.embed-container {
+			position: relative;
+			padding-bottom: 56.25%;
+			height: 0;
+			overflow: hidden;
+			max-width: 100%;
+		}
+		.embed-container iframe,
+		.embed-container object,
+		.embed-container embed {
+			position: absolute; 
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
 		}
 	}
 	</style>
@@ -43,8 +62,8 @@
 				<p>The plugins allows you to show a popup right when the visitor is about to leave, giving you a second chance to catch his attention.</p>
 			</div>
 			<div class="col">
-				<div class="ta-video-container">
-					<iframe width="499" height="281" src="//www.youtube.com/embed/iQvJHSVhNUc" frameborder="0" allowfullscreen></iframe>
+				<div class="embed-container">
+					<iframe src="http://www.youtube.com/embed/iQvJHSVhNUc" frameborder="0" allowfullscreen></iframe>
 				</div>
 				<small class="ta-video-helper">Watching in Full Screen is advised</small>
 			</div>
