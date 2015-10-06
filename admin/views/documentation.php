@@ -11,7 +11,6 @@
 
 	<div id="ta-doc">
 		<ol id="ta-doc-toc"></ol>
-		<hr>
 		<div id="ta-doc-content">Fetching documentation... Please wait. <img src="<?php echo admin_url(); ?>/images/spinner-2x.gif" class="ta-doc-loading-img" alt="Loading..."></div>
 	</div>
 

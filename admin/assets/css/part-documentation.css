@@ -1,74 +1,68 @@
 /* Style for summary */
-#ta-toc { 
+#ta-doc-toc { 
 	list-style-type: upper-roman; 
 	list-style-position: inside;
 	margin-left: 0;
 }
-#ta-toc ol,
-#ta-toc li,
-#ta-toc a {
+#ta-doc-toc ol,
+#ta-doc-toc li,
+#ta-doc-toc a {
 	line-height: 1;
 	margin: 0;
 }
-#ta-toc ol { 
+#ta-doc-toc ol { 
 	margin-left: 2em; 
 }
-#ta-toc li {
+#ta-doc-toc li {
 	font-weight: 400;
 	line-height: 1.6em;
 	font-size: 19px;
 }
-#ta-toc a {
+#ta-doc-toc a {
 	text-decoration: none;
 }
 
 /* Style for content */
-.ta-doc-content .ta-doc-totop {
-	text-decoration: none;
-	font-size: 12px;
-	vertical-align: top;
-	float: right;
-}
-.ta-doc-content .ta-doc-loading {
+#ta-doc-content .ta-doc-loading {
 	font-size: 26px;
 	text-align: center;
 	padding: 2em 0;
 }
-.ta-doc-content h2,
-.ta-doc-content h3,
-.ta-doc-content h4,
-.ta-doc-content h5,
-.ta-doc-content h6 {
+#ta-doc-content h2,
+#ta-doc-content h3,
+#ta-doc-content h4,
+#ta-doc-content h5,
+#ta-doc-content h6 {
 	border-bottom: 1px solid #ddd;
 	margin-bottom: 20px;
 	padding-bottom: 20px;
 }
-.ta-doc-content .ta-doc-section {
+#ta-doc-content .ta-doc-section {
 	-webkit-transition: background-color .25s ease;
 	-moz-transition: background-color .25s ease;
 	-ms-transition: background-color .25s ease;
 	-o-transition: background-color .25s ease;
 	transition: background-color .25s ease;
 }
-.ta-doc-content .ta-doc-section-hl {
+#ta-doc-content .ta-doc-section-hl {
 	background-color: #FFFFED;
 }
-.ta-doc-content img {
+#ta-doc-content img {
 	border: 1px solid #ddd;
 	max-width: 100%;
 	height: auto;
 	background: white;
 	padding: 20px;
 }
-.ta-doc-content img.ta-doc-loading-img {
+#ta-doc-content img.ta-doc-loading-img {
 	border: none;
 	background: none;
 	padding: 0;
 }
 
 /* Improve syntax highlighter */
-.ta-doc-content code,
-.ta-doc-content pre {
+#ta-doc-content code,
+#ta-doc-content pre {
 	padding: 0 3px 2px;
 	font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
 	font-size: 12px;
@@ -77,7 +71,7 @@
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
-.ta-doc-content code {
+#ta-doc-content code {
 	padding: 2px 4px;
 	color: #d14;
 	white-space: nowrap;
@@ -86,20 +80,20 @@
 }
 
 /* Reset Lists */
-.ta-doc-content ul { 
+#ta-doc-content ul { 
 	list-style-type: disc; 
 	list-style-position: inside; 
 }
-.ta-doc-content ol { 
+#ta-doc-content ol { 
 	list-style-type: decimal; 
 	list-style-position: inside; 
 }
-.ta-doc-content ul ul, .ta-doc-content ol ul { 
+#ta-doc-content ul ul, #ta-doc-content ol ul { 
 	list-style-type: circle; 
 	list-style-position: inside; 
 	margin-left: 15px; 
 }
-.ta-doc-content ol ol, .ta-doc-content ul ol { 
+#ta-doc-content ol ol, #ta-doc-content ul ol { 
 	list-style-type: lower-latin; 
 	list-style-position: inside; 
 	margin-left: 15px; 
