@@ -1,24 +1,24 @@
 /* Style for summary */
-#ta-toc { 
+#ta-doc-toc { 
 	list-style-type: upper-roman; 
 	list-style-position: inside;
 	margin-left: 0;
 }
-#ta-toc ol,
-#ta-toc li,
-#ta-toc a {
+#ta-doc-toc ol,
+#ta-doc-toc li,
+#ta-doc-toc a {
 	line-height: 1;
 	margin: 0;
 }
-#ta-toc ol { 
+#ta-doc-toc ol { 
 	margin-left: 2em; 
 }
-#ta-toc li {
+#ta-doc-toc li {
 	font-weight: 400;
 	line-height: 1.6em;
 	font-size: 19px;
 }
-#ta-toc a {
+#ta-doc-toc a {
 	text-decoration: none;
 }
 
