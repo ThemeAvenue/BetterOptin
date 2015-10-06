@@ -11,9 +11,21 @@
 			table-layout: fixed;
 			border-spacing: 3em 0;
 		}
+		.row-center {
+			text-align: center;
+		}
+		.row-center p {
+			text-align: justify;
+		}
 		.col {
 			display: table-cell;
 			vertical-align: top;
+		}
+		.dashicons {
+			font-size: 72px;
+			width: auto;
+			height: auto;
+			margin: 0 auto;
 		}
 	}
 	</style>
@@ -80,21 +92,21 @@
 	<hr>
 
 	<div class="container">
-		<div class="row">
+		<div class="row row-center">
 			<div class="col">
-				<span class="dashicons dashicons-awards" style="font-size: 48px;"></span>
+				<span class="dashicons dashicons-awards"></span>
 				<h3>Blazing Fast</h3>
 				<p>As it has be proven that performance affects conversion, we focused on delivering a lightweight product. The front-end dependencies are <strong>only 17kb</strong>, and the server processing uses a pseudo-caching system to reduce calculations.</p>
 				<p>So don't be worried, our plugin won't affect your website load time at all.</p>
 			</div>
 			<div class="col">
-				<span class="dashicons dashicons-editor-code" style="font-size: 48px;"></span>
+				<span class="dashicons dashicons-editor-code"></span>
 				<h3>No Coding Skills Required</h3>
 				<p>BetterOptin is carefully built with simplicity in mind. Almost every single element of the popups can be customised with our visual editor.</p>
 				<p>You don't have to edit a single line of code. But if you're a developer and want to extend the plugin's features we've got you covered.</p>
 			</div>
 			<div class="col">
-				<span class="dashicons dashicons-groups" style="font-size: 48px;"></span>
+				<span class="dashicons dashicons-groups"></span>
 				<h3>Capturing leads is easy</h3>
 				<p>At the moment, BetterOptin is capable of capturing your leads directly in WordPress, where you can give them a specific role.</p>
 				<p>With our premium add-ons, you can also use <a href="//betteropt.in/downloads/mailchimp/" target="_blank">MailChimp</a>, <a href="//betteropt.in/downloads/aweber/" target="_blank">AWeber</a> or <a href="//betteropt.in/downloads/mailpoet/" target="_blank">MailPoet</a>.</p>
@@ -158,7 +170,5 @@
 		<?php endif; ?>
 
 	</div>
-
-	<hr>
 
 </div>
