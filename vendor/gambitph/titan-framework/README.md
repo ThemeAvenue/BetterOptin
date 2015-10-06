@@ -1,13 +1,23 @@
 Titan Framework
 =======
 
-[![Build Status](https://travis-ci.org/gambitph/Titan-Framework.png?branch=master)](https://travis-ci.org/gambitph/Titan-Framework)
+[![WordPress](https://img.shields.io/wordpress/v/titan-framework.svg)]()
+[![WordPress plugin](https://img.shields.io/wordpress/plugin/v/titan-framework.svg)]()
+[![Build Status](https://travis-ci.org/gambitph/Titan-Framework.svg?branch=master)](https://travis-ci.org/gambitph/Titan-Framework)
+[![Slack](https://gambit-slackin.herokuapp.com/badge.svg)](https://gambit-slackin.herokuapp.com)
+<!--[![Code Coverage](https://scrutinizer-ci.com/g/gambitph/Titan-Framework/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/gambitph/Titan-Framework/?branch=master)-->
+<!--[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gambitph/Titan-Framework/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gambitph/Titan-Framework/?branch=master)-->
+<!-- [![Built with Gulp](https://img.shields.io/badge/built%20with-Gulp-red.svg)](http://gulpjs.com/) -->
 
 *The easiest to use WordPress options framework.*
 
-Titan Framework allows theme and plugin developers to create a admin pages, options, meta boxes, and theme customizer options with just a few simple lines of code.
+Titan Framework allows theme and plugin developers to create admin pages, options, meta boxes, and theme customizer options with just a few simple lines of code.
 
 [Get it in the WordPress plugin repo](https://wordpress.org/plugins/titan-framework/)
+
+[Generate your own Underscores + Titan Framework based WordPress theme](http://www.titanframework.net)
+
+[Join the Community in Slack](https://gambit-slackin.herokuapp.com/)
 
 #### Features
 * Makes development unbelievably easy
@@ -18,46 +28,26 @@ Titan Framework allows theme and plugin developers to create a admin pages, opti
 * Supports child themes
 * Automatic CSS generation with SCSS support
 
-## Recent Changelog
+## Installing
 
-#### Version 1.7.3
-* Fixed bug introduced in 1.7.2 where admin options sometimes were not being saved
+1. You can install the latest stable release from the [wordpress.org plugin page](https://wordpress.org/plugins/titan-framework/) straight from your WordPress plugin page;
 
-#### Version 1.7.2
-* EDD option can now check for updates all by itself (thank you julien731)
-* `get_post_types` function now callable from `tf_create_options`
-* Now passes theme-check (ignored `add_menu_page` error)
+2. Or you can download the [master.zip file](https://github.com/gambitph/Titan-Framework/archive/master.zip) then install it as a WordPress plugin;
 
-#### Version 1.7.1
-* Bug fixes for the Easy Digital Download License option
-* Enhanced date option parameters
-* New parameters for Theme Customizer for creating panels
+3. Alternatively, you can also install it via Composer into your wp-content/plugin folder:
 
-#### Version 1.7
-* New Easy Digital Download License option (thank you julien731)
-* New date option (thank you ardalann)
-* Added new action tf_save_options_{namespace} which is called after saving options
-* Fixed display issue with the font option in the theme customizer
-* Fixed bug where empty multicheck returned an array
-* Fix: customizer show_font_size & show_color
+```
+curl -sS https://getcomposer.org/installer | php
+php composer.phar create-project gambitph/titan-framework titan-framework
+```
 
-#### Version 1.6.1
-* Added missing files in the SVN
+## Developing
 
-#### Version 1.6
-* New embed method (check the getting started section)
-* New tf_create_options hook for creating options
-* New number unit parameter
-* Removed font awesome, now uses dashicons
-* Added desc params to panels, tabs and meta boxes
-* Added size attribute for the upload option
-* Deleted Uncommon Ace Extensions
-* Improve load script to meta boxes
-* Lots of bug fixes
+If you want to help with the development of Titan Framework, we have a [Developing guide in the wiki](https://github.com/gambitph/Titan-Framework/wiki/Developing)
 
-## Try it Out First
+## Creating a WordPress Theme?
 
-Want to see what Titan Framework can do? [Check out our live demo, no need to install anything!](http://demo.titanframework.net/wp-admin/)
+[Generate your own Underscores + Titan Framework based WordPress theme](http://www.titanframework.net)
 
 ## Getting Started With Titan Framework
 
@@ -80,7 +70,7 @@ Titan is super new, so far the framework has been getting good feedback from the
 
 ## Are You Using Titan Framework in Your Project?
 
-Let us know so we can showcase it in the site! Send me an email at bf.intal@gambit.ph, send the name, a screenshot, a link and a short description of your project.
+Let us know so we can showcase it in the site! Send me a tweet at [@bfintal](http://twitter.com/bfintal)
 
 
 ## Contributing, Pull Requests Are Very Welcome
@@ -94,7 +84,6 @@ PRs on these are welcome:
 * WordPress standardization
 * Code optimizations
 * Anything under the sun as long as it's helpful :)
-
 
 ## Translations
 

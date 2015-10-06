@@ -1,20 +1,20 @@
 [
     {
         "name": "gambitph/titan-framework",
-        "version": "v1.7.3",
-        "version_normalized": "1.7.3.0",
+        "version": "1.9.1",
+        "version_normalized": "1.9.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/gambitph/Titan-Framework.git",
-            "reference": "c083fa441a2fe77c485385782b7eb606220e3cf5"
+            "reference": "a406614e97e161f4723020dee0eded7666da781c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/gambitph/Titan-Framework/zipball/c083fa441a2fe77c485385782b7eb606220e3cf5",
-            "reference": "c083fa441a2fe77c485385782b7eb606220e3cf5",
+            "url": "https://api.github.com/repos/gambitph/Titan-Framework/zipball/a406614e97e161f4723020dee0eded7666da781c",
+            "reference": "a406614e97e161f4723020dee0eded7666da781c",
             "shasum": ""
         },
-        "time": "2014-12-22 07:58:51",
+        "time": "2015-09-26 15:45:31",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -38,6 +38,9 @@
         "homepage": "https://github.com/gambitph/Titan-Framework",
         "keywords": [
             "Titan Framework",
+            "framework",
+            "options",
+            "titan",
             "wordpress"
         ]
     }

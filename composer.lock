@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3b9d8b904535bee7abae6e4ac80ac8ef",
+    "hash": "a09c5e6beb6703e0292c0e0b8579c67d",
     "packages": [
         {
             "name": "gambitph/titan-framework",
-            "version": "v1.7.3",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gambitph/Titan-Framework.git",
-                "reference": "c083fa441a2fe77c485385782b7eb606220e3cf5"
+                "reference": "a406614e97e161f4723020dee0eded7666da781c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gambitph/Titan-Framework/zipball/c083fa441a2fe77c485385782b7eb606220e3cf5",
-                "reference": "c083fa441a2fe77c485385782b7eb606220e3cf5",
+                "url": "https://api.github.com/repos/gambitph/Titan-Framework/zipball/a406614e97e161f4723020dee0eded7666da781c",
+                "reference": "a406614e97e161f4723020dee0eded7666da781c",
                 "shasum": ""
             },
             "type": "library",
@@ -42,9 +42,12 @@
             "homepage": "https://github.com/gambitph/Titan-Framework",
             "keywords": [
                 "Titan Framework",
+                "framework",
+                "options",
+                "titan",
                 "wordpress"
             ],
-            "time": "2014-12-22 07:58:51"
+            "time": "2015-09-26 15:45:31"
         }
     ],
     "packages-dev": [],
@@ -52,6 +55,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }

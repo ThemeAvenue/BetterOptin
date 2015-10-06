@@ -8,109 +8,139 @@
  * If Titan is not installed, then the script will display a notice with a link to
  * Titan. If Titan is installed but not activated, it will display the appropriate notice as well.
  *
- * To use this script, just copy it into your theme/plugin directory and do a
+ * To use this script, just copy it into your theme/plugin directory then add this in the main file of your project:
+ *
  * require_once( 'titan-framework-checker.php' );
+ *
+ * Changelog:
+ * v1.9
+ *      * Simplified class
+ * v1.7.4
+ *		* Now integrates with TGM Plugin Activation - uses TGM instead of displaying
+ *			our own admin notice
+ * v1.7.7
+ *		* Added filters to notices
+ *
+ * @package Titan Framework
  */
 
+if ( ! defined( 'ABSPATH' ) ) { exit; // Exit if accessed directly.
+}
 
 if ( ! class_exists( 'TitanFrameworkChecker' ) ) {
 
-
 	/**
-	 * Titan Framework Checker
+	 * Titan Framework Checker.
 	 *
 	 * @since 1.6
 	 */
 	class TitanFrameworkChecker {
 
 
+		const SEARCH_REGEX = '/titan-framework.php/i';
+		const TITAN_CLASS = 'TitanFramework';
+		const PLUGIN_SLUG = 'titan-framework';
+
+
 		/**
-		 * Constructor, add hooks for checking for Titan Framework
+		 * Constructor, add hooks for checking for Titan Framework.
 		 *
 		 * @since 1.6
 		 */
 		function __construct() {
-			add_action( 'after_setup_theme', array( $this, 'performCheck' ), 2 );
+			add_action( 'admin_notices', array( $this, 'display_install_or_active_notice' ), 2 );
+			add_action( 'tgmpa_register', array( $this, 'tgm_plugin_activation_include' ) );
 		}
 
 
 		/**
-		 * Checks the existence of Titan Framework and prompts the display of a notice
+		 * Checks the existence of Titan Framework and prompts the display of a notice.
 		 *
 		 * @since 1.6
 		 */
-		public function performCheck() {
-			// NOTE: if you use a directory name other than titan-framework, change this path!
-			// If the plugin does not exist, and the class doesn't exist either, then there's no plugin installed. Throw admin notice to install.
-			if ( !$this->is_plugin_exist ( 'titan-framework/titan-framework.php' ) && !class_exists( 'TitanFramework' ) ) {
-				if ( is_admin() ) {
-					add_filter( 'admin_notices', array( $this, 'displayAdminNotificationNotExist' ) );
-				}				
-			}
-			// If the plugin does exist but the class doesn't, the plugin is inactive. Throw admin notice to activate plugin.
-			elseif ( $this->is_plugin_exist ( 'titan-framework/titan-framework.php' ) && !class_exists( 'TitanFramework' ) ) {
-				if ( is_admin() ) {
-					add_filter( 'admin_notices', array( $this, 'displayAdminNotificationInactive' ) );
-				}			
-			}
-			// If the plugin exists and the class exists as well, or if the titan framework is embedded, as the class will exist from the start.
-			else {
+		public function display_install_or_active_notice() {
+
+			// Check for TGM use, if used, let TGM do the notice.
+			// We do this here since perform_check() is too early.
+			if ( function_exists( 'tgmpa' ) ) {
 				return;
 			}
+
+			// If the plugin does not exist, throw admin notice to install.
+			if ( ! $this->plugin_exists() ) {
+				echo "<div class='error'><p><strong>"
+					. esc_html( apply_filters( 'titan_checker_installation_notice', __( 'Titan Framework needs to be installed.', 'default' ) ) )
+					. sprintf( " <a href='%s'>%s</a>",
+						esc_url( admin_url( 'plugin-install.php?tab=search&type=term&s=titan+framework' ) ),
+						esc_html( apply_filters( 'titan_checker_search_plugin_notice', __( 'Click here to search for the plugin.', 'default' ) ) )
+					)
+					. '</strong></p></div>';
+
+				// If the class doesn't exist, the plugin is inactive. Throw admin notice to activate plugin.
+			} else if ( ! class_exists( apply_filters( 'tf_framework_checker_titan_class', self::TITAN_CLASS ) ) ) {
+				echo "<div class='error'><p><strong>"
+					. esc_html( apply_filters( 'titan_checker_activation_notice', __( 'Titan Framework needs to be activated.', 'default' ) ) )
+					. sprintf( " <a href='%s'>%s</a>",
+						esc_url( admin_url( 'plugins.php' ) ),
+						esc_html( apply_filters( 'titan_checker_activate_plugin_notice', __( 'Click here to go to the plugins page and activate it.', 'default' ) ) )
+					)
+					. '</strong></p></div>';
+			}
 		}
 
 
 		/**
-		 * Displays a notification in the admin with a link to search
+		 * Checks the existence of Titan Framework in the list of plugins.
+		 * It uses the slug path of the plugin for checking.
 		 *
 		 * @since 1.6
-		 */
-		public function displayAdminNotificationNotExist() {
-            echo "<div class='error'><p><strong>"
-                . __( "Titan Framework needs to be installed.", "default" )
-                . sprintf( " <a href='%s'>%s</a>",
-                    admin_url( "plugin-install.php?tab=search&type=term&s=titan+framework" ),
-                    __( "Click here to search for the plugin.", "default" ) )
-                . "</strong></p></div>";
-        }
-
-		
-		/**
-		 * Displays a notification in the admin if the Titan Framework is found but not activated.
 		 *
-		 * @since 1.6
+		 * @return boolean True if Titan Framework is installed (even if not activated).
 		 */
-		public function displayAdminNotificationInactive() {
-            echo "<div class='error'><p><strong>"
-                . __( "Titan Framework needs to be activated.", "default" )
-                . sprintf( " <a href='%s'>%s</a>",
-                    admin_url( "plugins.php" ),
-                    __( "Click here to go to the plugins page and activate it.", "default" ) )
-                . "</strong></p></div>";
-        }
-		
-		
-		/**
-		 * Checks if the files for Titan Framework does exist in the path.
-		 *
-		 * @since 1.6
-		 */
-		public function is_plugin_exist($needle) {
+		public function plugin_exists() {
 			// Required function as it is only loaded in admin pages.
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
 			// Get all plugins, activated or not.
-			$all_plugins = get_plugins();
+			$plugins = get_plugins();
+
 			// Check plugin existence by checking if the name is registered as an array key. get_plugins collects all plugin path into arrays.
-			if ( isset($all_plugins[$needle]) ) {
-				return true;
+			foreach ( $plugins as $slug => $plugin ) {
+				$searchRegex = apply_filters( 'tf_framework_checker_regex', self::SEARCH_REGEX );
+				if ( preg_match( $searchRegex, $slug, $matches ) ) {
+					return true;
+				}
 			}
-			else {
-				return false;
+
+			return false;
+		}
+
+
+		/**
+		 * Includes Titan Framework in TGM Plugin Activation if it's available.
+		 *
+		 * @since	1.7.4
+		 *
+		 * @return	void
+		 *
+		 * @see		http://tgmpluginactivation.com/
+		 *
+		 * @codeCoverageIgnore
+		 */
+		public function tgm_plugin_activation_include() {
+			if ( function_exists( 'tgmpa' ) ) {
+			    tgmpa( array(
+			        array(
+			            'name' => 'Titan Framework',
+			            'slug' => self::PLUGIN_SLUG,
+			            'required' => true,
+			        ),
+			    ) );
 			}
-        }		
-		
+		}
 	}
 
 	new TitanFrameworkChecker();
+
 
 }
