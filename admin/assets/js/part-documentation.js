@@ -4,33 +4,35 @@
 	$(function () {
 
 		// Define variables
-		var docWrapper = $('.ta-doc-content'),
-			toc = $('#ta-toc'),
+		var docWrapper = $('#ta-doc'),
+			docToC = $('#ta-doc-toc'),
+			docContent = $('#ta-doc-content'),
 			adminBar = $('#wpadminbar');
 
 		$.post(ajaxurl, {
+
 			action: 'wpbo_get_doc'
+
 		}).done(function (response) {
 
-			// Append the doc content
-			docWrapper.html(response);
+			// Append the HTML
+			docContent.html(response);
 
 			// Remove the embed TOC (Table of Contents Plus)
-			docWrapper.find('#toc_container').remove();
+			$('#toc_container', docContent).remove();
 
-			// Create the table of content (TOC)
-			toc.html('').toc({
-				content: '.ta-doc-content',
+			// Create new TOC
+			docToC.toc({
 				headings: 'h2,h3,h4'
 			});
 
-			// Add smooth scroll
-			$('.wrap a').smoothScroll({
+			// Add smooth scroll to TOC
+			$('a', docWrapper).smoothScroll({
 				offset: -(adminBar.height() + 20) // Margin-top of headings $('.ta-doc-content h*');
 			});
 
 			// Open External Links In New Window
-			$('a', docWrapper).filter(function () {
+			$('a', docContent).filter(function () {
 				return this.hostname && this.hostname !== location.hostname;
 			}).attr('target', '_blank');
 

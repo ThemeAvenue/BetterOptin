@@ -9,10 +9,10 @@
 
 	<hr>
 
-	<ol id="ta-toc">Loading...</ol>
-
-	<div class="ta-doc-content">
-		<div class="ta-doc-loading">Fetching documentation... Please wait. <img src="<?php echo admin_url(); ?>/images/spinner-2x.gif" class="ta-doc-loading-img" alt="Loading..."></div>
+	<div id="ta-doc">
+		<ol id="ta-doc-toc"></ol>
+		<hr>
+		<div id="ta-doc-content">Fetching documentation... Please wait. <img src="<?php echo admin_url(); ?>/images/spinner-2x.gif" class="ta-doc-loading-img" alt="Loading..."></div>
 	</div>
 
 	<script type="text/javascript" src="<?php echo WPBO_URL; ?>admin/assets/js/vendor/jquery.toc.js"></script>
