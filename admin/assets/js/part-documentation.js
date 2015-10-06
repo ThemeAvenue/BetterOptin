@@ -30,7 +30,9 @@
 			});
 
 			// Open External Links In New Window
-			$('.wrap a[href^="http://"]', docWrapper).attr('target', '_blank');
+			$('a', docWrapper).filter(function () {
+				return this.hostname && this.hostname !== location.hostname;
+			}).attr('target', '_blank');
 
 		});
 
