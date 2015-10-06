@@ -30,7 +30,8 @@ gulp.task('scripts', function () {
 			'./bower_components/easyModal.js/jquery.easyModal.js',
 			'./bower_components/jquery.cookie/jquery.cookie.js',
 			'./bower_components/matchHeight/jquery.matchHeight.js',
-			'./public/assets/js/**/*.js'
+			'./public/assets/js/**/*.js',
+			'!./public/assets/js/**/*min.js'
 		])
 		.pipe(plumber({
 			errorHandler: function (error) {
