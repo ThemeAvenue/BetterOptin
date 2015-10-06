@@ -5,7 +5,8 @@
 
 		// Define variables
 		var docWrapper = $('.ta-doc-content'),
-			toc = $('#ta-toc');
+			toc = $('#ta-toc'),
+			adminBar = $('#wpadminbar');
 
 		$.post(ajaxurl, {
 			action: 'wpbo_get_doc'
@@ -24,7 +25,9 @@
 			});
 
 			// Add smooth scroll
-			$('.wrap a').smoothScroll();
+			$('.wrap a').smoothScroll({
+				offset: -(adminBar.height() + 20) // Margin-top of headings $('.ta-doc-content h*');
+			});
 
 			// Open External Links In New Window
 			$('.wrap a[href^="http://"]', docWrapper).attr('target', '_blank');
