@@ -55,3 +55,7 @@ prepros-ftp.json
 
 # Ignore .git folders #
 vendor/drewm/mailchimp-api/.git
+
+
+### Custom BetterOptin ###
+/node_modules
