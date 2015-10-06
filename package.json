@@ -1,10 +1,16 @@
 {
-  "name": "betteroptin",
+  "name": "BetterOptin",
   "version": "1.2.4",
   "description": "BetterOptin is a lead generation and conversion optimization for WordPress",
-  "main": "gulpfile.js",
-  "author": "ThemeAvenue <web@themeavenue.net>",
+  "authors": [
+    "ThemeAvenue <hello@themeavenue.net>",
+    "Julien Vernet <julien@vernet.me>",
+    "Julien Liabeuf <julien@liabeuf.com>"
+  ],
   "license": "GNU General Public License v2.0",
+  "homepage": "http://themeavenue.net",
+  "private": true,
+  "main": "gulpfile.js",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "2.1.0",
