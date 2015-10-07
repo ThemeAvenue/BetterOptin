@@ -373,3 +373,34 @@ function wpbo_get_documentation() {
 	die;
 
 }
+
+add_action( 'wp_ajax_wpbo_new_impression', 'wpbo_new_impression' );
+add_action( 'wp_ajax_nopriv_wpbo_new_impression', 'wpbo_new_impression' );
+/**
+ * Record popup impression.
+ *
+ * @since  1.0.0
+ *
+ * @param int $popup_id ID of the popup to increment
+ *
+ * @return integer Total number of impressions
+ */
+function wpbo_new_impression( $popup_id = 0 ) {
+
+	if ( 0 === $popup_id ) {
+		if ( isset( $_POST['popup_id'] ) ) {
+			$popup_id = filter_input( INPUT_POST, 'popup_id', FILTER_SANITIZE_NUMBER_INT );
+		}
+	}
+
+	if ( ! WPBO_Popup::popup_exists( $popup_id ) ) {
+		echo 0;
+		die();
+	}
+
+	$popup = new WPBO_Popup( $popup_id );
+
+	echo $popup->new_impression();
+	die();
+
+}
