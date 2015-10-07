@@ -21,38 +21,15 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @since  1.0.0
  *
- * @param  string  $option  ID of the required option
- * @param  mixed   $default Default value to return if option doesn't exist
- * @param  integer $post_id Post ID (for retrieving post metas)
+ * @param  string $option  ID of the required option
+ * @param  mixed  $default Default value to return if option doesn't exist
  *
  * @return mixed             Value
  */
-function wpbo_get_option( $option, $default = false, $post_id = null ) {
+function wpbo_get_option( $option, $default = false ) {
 
-	/**
-	 * Post Meta
-	 */
-	if ( ! is_null( $post_id ) ) {
-
-		$settings = get_post_meta( $post_id, '_wpbo_settings', true );
-
-		if ( is_array( $settings ) && isset( $settings[ $option ] ) ) {
-
-			$value = $settings[ $option ];
-
-		} else {
-			$value = $default;
-		}
-
-	} /**
-	 * General options
-	 */
-	else {
-
-		$options = maybe_unserialize( get_option( 'wpbo_options' ) );
-		$value   = isset( $options[ $option ] ) ? $options[ $option ] : $default;
-
-	}
+	$options = maybe_unserialize( get_option( 'wpbo_options' ) );
+	$value   = isset( $options[ $option ] ) ? $options[ $option ] : $default;
 
 	return apply_filters( 'wpbo_get_option' . $option, $value );
 
