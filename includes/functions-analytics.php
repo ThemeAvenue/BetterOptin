@@ -407,9 +407,9 @@ function wpbo_db_get_datas( $args, $output = 'OBJECT' ) {
 	}
 
 	/* Merge the query */
+	$limit = (int) $args['limit'];
 	$query = implode( ' AND ', $query );
-
-	$rows = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM %s WHERE %s LIMIT %s", $table_name, $query, $args['limit'] ), $output );
+	$rows  = $wpdb->get_results( "SELECT * FROM $table_name WHERE $query LIMIT $limit", $output );
 
 	return $rows;
 
