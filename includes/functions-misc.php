@@ -312,3 +312,50 @@ function wpbo_get_post_id( $post_id = false ) {
 	return $post_id;
 
 }
+
+/**
+ * Get the standardized provider class name
+ *
+ * @since 2.0
+ * @return string
+ */
+function wpbo_get_provider_class() {
+
+	$provider = wpbo_get_option( 'mailing_provider', '' );
+
+	if ( empty( $provider ) ) {
+		return '';
+	}
+
+	$provider   = str_replace( ' ', '', ucwords( str_replace( array( '-', '_' ), ' ', sanitize_text_field( $provider ) ) ) );
+	$class_name = 'WPBO_Provider_' . $provider;
+
+	return $class_name;
+
+}
+
+/**
+ * Check if the mailing provider is loaded and ready
+ *
+ * @since 2.0
+ * @return bool
+ */
+function wpbo_is_provider_ready() {
+
+	$class_name = wpbo_get_provider_class();
+
+	if ( empty( $class_name ) ) {
+		return false;
+	}
+
+	if ( ! class_exists( $class_name ) ) {
+		return false;
+	}
+
+	if ( ! method_exists( $class_name, 'submit' ) ) {
+		return false;
+	}
+
+	return true;
+
+}
