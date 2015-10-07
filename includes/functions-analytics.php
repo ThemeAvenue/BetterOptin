@@ -75,7 +75,7 @@ function wpbo_db_insert_data( $data = array(), $wp_error = true ) {
 	$data = array_merge( $defaults, $data );
 
 	/* Sanitize all data values */
-	$clean = $this->sanitize_data( $data, $wp_error );
+	$clean = wpbo_db_sanitize_data( $data, $wp_error );
 
 	/* If sanitization failed return the error */
 	if ( is_wp_error( $clean ) ) {
@@ -90,7 +90,7 @@ function wpbo_db_insert_data( $data = array(), $wp_error = true ) {
 	 * Are we updating or creating?
 	 */
 	if ( isset( $clean['data_id'] ) && false !== $clean['data_id'] && is_int( $clean['data_id'] ) ) {
-		$insert = $this->update_data( $clean, $wp_error ); // @todo test the update through insert_data()
+		$insert = wpbo_db_update_data( $clean, $wp_error ); // @todo test the update through insert_data()
 		return $insert;
 	} else {
 
@@ -177,7 +177,7 @@ function wpbo_db_update_data( $data = array(), $wp_error = true ) {
 	}
 
 	/* Previous data row */
-	$prev = $this->get_data( $ID );
+	$prev = wpbo_db_get_data( $ID );
 
 	$data = array_merge( $prev, $data );
 
@@ -388,8 +388,8 @@ function wpbo_db_get_datas( $args, $output = 'OBJECT' ) {
 			$start = isset( $args['period']['from'] ) ? date( "Y-m-d", $args['period']['from'] ) : date( "Y-m-d", time() );
 			$end   = isset( $args['period']['to'] ) ? date( "Y-m-d", $args['period']['to'] ) : date( "Y-m-d", time() );
 
-			$start = ( true === $this->check_date( $start ) ) ? $start . ' 00:00:00' : date( "Y-m-d", time() ) . ' 00:00:00';
-			$end   = ( true === $this->check_date( $end ) ) ? $end . ' 23:59:59' : date( "Y-m-d", time() ) . ' 23:59:59';
+			$start = ( true === wpbo_check_date( $start ) ) ? $start . ' 00:00:00' : date( "Y-m-d", time() ) . ' 00:00:00';
+			$end   = ( true === wpbo_check_date( $end ) ) ? $end . ' 23:59:59' : date( "Y-m-d", time() ) . ' 23:59:59';
 
 			array_push( $query, "time BETWEEN '$start' AND '$end'" );
 
