@@ -86,7 +86,7 @@ $period = isset( $_GET['period'] ) ? $_GET['period'] : 'today';
 				
 				<div class="meta-box-sortables ui-sortable">
 					
-					<?php require_once( WPBO_PATH . 'admin/views/analytics-stats.php' ); ?>
+					<?php require_once( WPBO_PATH . 'includes/admin/views/analytics-stats.php' ); ?>
 					
 				</div> <!-- .meta-box-sortables .ui-sortable -->
 				
