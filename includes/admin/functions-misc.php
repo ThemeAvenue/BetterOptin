@@ -131,7 +131,7 @@ function wpbo_copyright( $text ) {
 		return $text;
 	}
 
-	return sprintf( __( '<a href="%s" target="_blank">BetterOptin</a> version %s developed by <a href="%s" target="_blank">ThemeAvenue</a>.', 'wpbo' ), esc_url( 'http://betteropt.in' ), Better_Optin::VERSION, esc_url( 'http://themeavenue.net?utm_source=plugin&utm_medium=footer_link&utm_campaign=BetterOptin' ) );
+	return sprintf( __( '<a href="%s" target="_blank">BetterOptin</a> version %s developed by <a href="%s" target="_blank">ThemeAvenue</a>.', 'wpbo' ), esc_url( 'http://betteropt.in' ), WPBO_VERSION, esc_url( 'http://themeavenue.net?utm_source=plugin&utm_medium=footer_link&utm_campaign=BetterOptin' ) );
 
 }
 
