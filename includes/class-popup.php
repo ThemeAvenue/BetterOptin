@@ -93,6 +93,25 @@ class WPBO_Popup {
 	}
 
 	/**
+	 * Get field names allowed in popups
+	 *
+	 * @since 2.0
+	 * @return array
+	 */
+	public function get_fields() {
+
+		$fields = apply_filters( 'wpbo_wp_allowed_fields', array(
+			'first_name' => 'sanitize_text_field',
+			'last_name'  => 'sanitize_text_field',
+			'email'      => 'sanitize_email',
+			'wpbo_email' => 'sanitize_email',
+		) );
+
+		return $fields;
+
+	}
+
+	/**
 	 * Get the popup template
 	 *
 	 * @since 2.0
@@ -291,6 +310,100 @@ class WPBO_Popup {
 		update_post_meta( $this->popup_id, 'wpbo_impressions', $new, $prev );
 
 		return $new;
+
+	}
+
+	/**
+	 * Log a new popup conversion
+	 *
+	 * @since 2.0
+	 * @return int|WP_Error
+	 */
+	public function new_conversion() {
+
+		$log = wpbo_db_insert_data( array(
+			'popup_id'   => $this->popup_id,
+			'data_type'  => 'conversion',
+			'ip_address' => wpbo_get_ip_address(),
+			'referer'    => esc_url( $_SERVER['HTTP_REFERER'] ),
+			'user_agent' => $_SERVER['HTTP_USER_AGENT']
+		), false );
+
+		return $log;
+
+	}
+
+	/**
+	 * Clean the post.
+	 *
+	 * Filter the post data and only keep
+	 * values that are actually supported
+	 * by the API.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @param array $data Data to sanitize
+	 *
+	 * @return array Clean list of merge fields
+	 */
+	protected function get_clean_fields( $data = array() ) {
+
+		if ( empty( $data ) && ! empty( $_POST ) ) {
+			$data = $_POST;
+		}
+
+		$fields = $this->get_fields();
+
+		$clean = array();
+
+		foreach ( $fields as $field => $sanitize ) {
+
+			if ( ! function_exists( $sanitize ) ) {
+				$sanitize = 'sanitize_text_field';
+			}
+
+			if ( isset( $data[ $field ] ) ) {
+				$clean[ $field ] = call_user_func( $sanitize, $data[ $field ] );
+			}
+
+		}
+
+		return $clean;
+
+	}
+
+	/**
+	 * Trigger form submission.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function submit() {
+
+		if ( ! wpbo_is_provider_ready() ) {
+			return;
+		}
+
+		$data   = $this->get_clean_fields();
+		$result = call_user_func( array( wpbo_get_provider_class(), 'submit' ), $data );
+
+		if ( true === $result ) {
+
+			// Dismiss the popup
+			wpbo_dismiss_popup( $this->popup_id );
+
+			// Log the conversion
+			$this->new_conversion();
+
+			// Redirect
+			wp_redirect( $this->get_return_url() );
+			exit;
+
+		} else {
+			/**
+			 * Redirect error
+			 */
+		}
 
 	}
 

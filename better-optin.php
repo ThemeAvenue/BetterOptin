@@ -151,7 +151,6 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			require( WPBO_PATH . 'includes/functions-popup.php' );
 			require( WPBO_PATH . 'includes/functions-misc.php' );
 			require( WPBO_PATH . 'includes/functions-ajax.php' );
-			require( WPBO_PATH . 'includes/class-submission.php' );
 
 		}
 
@@ -181,34 +180,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 		 * @return void
 		 */
 		private function load_providers() {
-
-			$path = WPBO_PATH . 'includes/providers/';
-
-			if ( $handle = opendir( $path ) ) {
-
-				while ( false !== ( $entry = readdir( $handle ) ) ) {
-
-					if ( in_array( $entry, array( '.', '..' ) ) ) {
-						continue;
-					}
-
-					if ( false === strpos( $entry, 'class-provider-' ) ) {
-						continue;
-					}
-
-					$file = $path . $entry;
-
-					if ( 'php' !== pathinfo( $file, PATHINFO_EXTENSION ) ) {
-						continue;
-					}
-
-					require( $file );
-
-				}
-
-				closedir( $handle );
-			}
-
+			require( WPBO_PATH . 'includes/providers/wordpress/load.php' );
 		}
 
 		/**
