@@ -438,6 +438,11 @@ add_action( 'wp_footer', 'wpbo_maybe_load_popup' );
  */
 function wpbo_maybe_load_popup() {
 
+	// If the provider is not ready we don't display the popup at all
+	if ( ! wpbo_is_provider_ready() ) {
+		return;
+	}
+
 	$popup_id = wpbo_page_has_popup();
 	$post_id  = wpbo_get_post_id();
 
@@ -470,5 +475,36 @@ function wpbo_maybe_load_popup() {
 	$popup = new WPBO_Popup( $popup_id );
 
 	$popup->popup();
+
+}
+
+add_action( 'plugins_loaded', 'wpbo_maybe_submit' );
+/**
+ * Maybe submit a popup
+ *
+ * If a popup has been submitted we process the submission
+ * and then redirect the user based on the submission result.
+ *
+ * @since 2.0
+ * @return bool|void
+ */
+function wpbo_maybe_submit() {
+
+	if ( ! isset( $_POST['wpbo_nonce'] ) || ! wp_verify_nonce( $_POST['wpbo_nonce'], 'subscribe' ) ) {
+		return;
+	}
+
+	if ( ! isset( $_POST['wpbo_email'] ) || ! isset( $_POST['wpbo_id'] ) ) {
+		return;
+	}
+
+	$popup_id = filter_input( INPUT_POST, 'wpbo_id', FILTER_SANITIZE_NUMBER_INT );
+
+	if ( ! WPBO_Popup::popup_exists( $popup_id ) ) {
+		return;
+	}
+
+	$popup = new WPBO_Popup( $popup_id );
+	$popup->submit();
 
 }
