@@ -262,3 +262,41 @@ function wpbo_check_date( $time ) {
 	return $valid_date;
 
 }
+
+/**
+ * Get visitor IP address.
+ *
+ * @since  1.0.0
+ * @return string IP address
+ * @see    http://stackoverflow.com/a/15699314
+ */
+function wpbo_get_ip_address() {
+
+	$env = array(
+		'HTTP_CLIENT_IP',
+		'HTTP_X_FORWARDED_FOR',
+		'HTTP_X_FORWARDED',
+		'HTTP_X_CLUSTER_CLIENT_IP',
+		'HTTP_FORWARDED_FOR',
+		'HTTP_FORWARDED',
+		'REMOTE_ADDR'
+	);
+
+	foreach ( $env as $key ) {
+
+		if ( array_key_exists( $key, $_SERVER ) === true ) {
+
+			foreach ( explode( ',', $_SERVER[ $key ] ) as $IPaddress ) {
+
+				$IPaddress = trim( $IPaddress ); // Just to be safe
+
+				if ( filter_var( $IPaddress, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE ) !== false ) {
+					return $IPaddress;
+				}
+			}
+		}
+	}
+
+	return 'unknown';
+
+}
