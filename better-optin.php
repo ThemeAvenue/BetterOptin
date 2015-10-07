@@ -65,7 +65,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 					self::$instance->includes_admin();
 				}
 
-				add_action( 'plugins_loaded', self::$instance, 'load_plugin_textdomain' );
+				add_action( 'plugins_loaded', array( self::$instance, 'load_plugin_textdomain' ) );
 
 			}
 
