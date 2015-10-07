@@ -26,7 +26,7 @@ function wpbo_enqueue_styles() {
 		return;
 	}
 
-	wp_enqueue_style( $this->plugin_slug . '-main', WPBO_URL . 'public/assets/css/betteroptin.css', array(), WPBO_VERSION );
+	wp_enqueue_style( 'wpbo-main', WPBO_URL . 'public/assets/css/betteroptin.css', array(), WPBO_VERSION );
 }
 
 
@@ -42,12 +42,12 @@ function wpbo_enqueue_scripts() {
 		return;
 	}
 
-	$settings = get_post_meta( $this->is_popup_available(), '_wpbo_settings', true );
+	$settings = get_post_meta( wpbo_is_popup_available(), '_wpbo_settings', true );
 
 	/**
 	 * Check if we can display the credit.
 	 */
-	$settings['credit'] = ( true === boolval( wpbo_get_option( 'show_credit', true ) ) ) ? true : false;
+	$settings['credit'] = ( true === (bool) wpbo_get_option( 'show_credit', true ) ) ? true : false;
 
 	/**
 	 * Use booleans
@@ -60,15 +60,15 @@ function wpbo_enqueue_scripts() {
 	/**
 	 * Add popup ID
 	 */
-	$settings['popup_id'] = $this->is_popup_available();
+	$settings['popup_id'] = wpbo_is_popup_available();
 
 	/**
 	 * Define Ajax URL
 	 */
 	$settings['ajaxurl'] = admin_url( 'admin-ajax.php' );
 
-	wp_enqueue_script( $this->plugin_slug . '-script', WPBO_URL . 'public/assets/js/betterOptin.min.js', array( 'jquery' ), WPBO_VERSION );
-	wp_localize_script( $this->plugin_slug . '-script', 'wpbo', json_encode( $settings ) );
+	wp_enqueue_script( 'wpbo-script', WPBO_URL . 'public/assets/js/betterOptin.min.js', array( 'jquery' ), WPBO_VERSION );
+	wp_localize_script( 'wpbo-script', 'wpbo', json_encode( $settings ) );
 
 }
 

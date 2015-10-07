@@ -45,12 +45,6 @@ if ( ! class_exists( 'BetterOptin' ) ):
 		private static $instance;
 
 		/**
-		 * @var object WPBO_Analytics Holds the popup analytics class
-		 * @since 2.0
-		 */
-		public static $analytics;
-
-		/**
 		 * Instantiate and return the unique BetterOptin object
 		 *
 		 * @since     2.0
@@ -69,9 +63,6 @@ if ( ! class_exists( 'BetterOptin' ) ):
 				if ( is_admin() ) {
 					self::$instance->includes_admin();
 				}
-
-				// Set internals
-				self::$analytics = new WPBO_Analytics();
 
 				add_action( 'plugins_loaded', self::$instance, 'load_plugin_textdomain' );
 
