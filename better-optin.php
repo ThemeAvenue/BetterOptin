@@ -59,6 +59,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 				self::$instance->setup_constants();
 				self::$instance->setup_database_constants();
 				self::$instance->includes();
+				self::$instance->load_providers();
 
 				if ( is_admin() ) {
 					self::$instance->includes_admin();
@@ -169,6 +170,43 @@ if ( ! class_exists( 'BetterOptin' ) ):
 				require( WPBO_PATH . 'includes/admin/functions-menu.php' );
 				require( WPBO_PATH . 'includes/admin/functions-metabox.php' );
 				require( WPBO_PATH . 'includes/admin/functions-list-table.php' );
+			}
+
+		}
+
+		/**
+		 * Load all the providers from the providers directory
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		private function load_providers() {
+
+			$path = WPBO_PATH . 'includes/providers/';
+
+			if ( $handle = opendir( $path ) ) {
+
+				while ( false !== ( $entry = readdir( $handle ) ) ) {
+
+					if ( in_array( $entry, array( '.', '..' ) ) ) {
+						continue;
+					}
+
+					if ( false === strpos( $entry, 'class-provider-' ) ) {
+						continue;
+					}
+
+					$file = $path . $entry;
+
+					if ( 'php' !== pathinfo( $file, PATHINFO_EXTENSION ) ) {
+						continue;
+					}
+
+					require( $file );
+
+				}
+
+				closedir( $handle );
 			}
 
 		}
