@@ -140,7 +140,7 @@ $query['period'] = $timeframe;
 // print_r( $query );
 
 /* Get the datas */
-$datas = wpbo_get_datas( $query, 'OBJECT' );
+$datas = wpbo_db_get_datas( $query, 'OBJECT' );
 ?>
 <div class="postbox">
 
