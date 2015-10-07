@@ -24,8 +24,8 @@ function wpbo_get_templates_list() {
 
 	/* Set the default templates directory */
 	$directory = array(
-		'path' => WPBO_PATH . 'includes/templates',
-		'url'  => WPBO_URL . 'includes/templates'
+		'path' => WPBO_PATH . 'templates',
+		'url'  => WPBO_URL . 'templates'
 	);
 
 	/* Allow for extra directories */
