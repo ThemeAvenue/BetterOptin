@@ -23,135 +23,250 @@ if ( ! defined( 'WPINC' ) ) {
  * - The whole site
  *
  * @since  1.0.0
- * @return mixed Popup ID if a popup is available, false otherwise
+ *
+ * @param int $post_id Optional post ID to check for popup availability
+ *
+ * @return bool|int Popup ID if a popup is available, false otherwise
  */
-function wpbo_is_popup_available() {
+function wpbo_page_has_popup( $post_id = 0 ) {
 
-	global $post;
+	/**
+	 * Checks in order:
+	 *
+	 * 1. Front-page
+	 * 2. Homepage
+	 * 3. Archives
+	 *  3.1 Search
+	 *  3.2 Post type
+	 * 4. 404
+	 * 5. Singular
+	 */
+
+	$post_id = wpbo_get_post_id( $post_id );
 
 	/**
 	 * First of all let's check if the user is an admin
 	 * and if popups are hidden for admins.
 	 */
-	if ( is_user_logged_in() && current_user_can( 'administrator' ) ) {
+	if ( is_user_logged_in() && current_user_can( 'administrator' ) && true === (bool) wpbo_get_option( 'hide_admins', false ) ) {
+		return false;
+	}
 
-		$admin = (bool) wpbo_get_option( 'hide_admins', false );
+	// Try to get the popup from the cache
+	$popup_id = wpbo_get_cached_popup( $post_id );
 
-		if ( true === $admin ) {
-			return false;
+	if ( false === $popup_id ) {
+		$popup_id = wpbo_get_popup( $post_id );
+	}
+
+	// Cache popup ID to avoid calculating again on page refresh */
+	if ( false !== $popup_id ) {
+		wpbo_cache_popup( $popup_id, $post_id );
+	}
+
+	return $popup_id;
+
+}
+
+/**
+ * Get the active popup for a given post, if any
+ *
+ * @since 2.0
+ *
+ * @param int $post_id Post ID
+ *
+ * @return bool|int
+ */
+function wpbo_get_popup( $post_id = 0 ) {
+
+	$post_id  = wpbo_get_post_id( $post_id );
+	$popup_id = false;
+
+	if ( ! $post_id ) {
+		return false;
+	}
+
+	// Get the global popups / posts relationships
+	$relationships = get_option( 'wpbo_popup_relationships', array() );
+
+	// Get current post type
+	$post_type = get_post_type( $post_id );
+
+	/**
+	 * If this post ID is found in the relationships then it means it has a popup attached.
+	 */
+	if ( is_array( $relationships ) && array_key_exists( $post_id, $relationships ) && 'publish' == get_post_status( $relationships[ $post_id ] ) ) {
+		return (int) $relationships[ $post_id ];
+	} /**
+	 * Let's check for more global popups
+	 */
+	else {
+
+		// Check if there is a popup for the current post type first of all
+		$popup_id = wpbo_get_post_type_popup( $post_type );
+
+		if ( false === $popup_id ) {
+			$popup_id = wpbo_get_sitewide_popup();
 		}
 
 	}
 
-	/* Try to avoid all the calculation with the use of sessions */
-	if ( isset( $_SESSION['wpbo'][ $post->ID ] ) ) {
+	return $popup_id;
 
-		$popup  = $_SESSION['wpbo'][ $post->ID ];
-		$status = get_post_status( $popup );
+}
+
+/**
+ * Get the popup for a given post type ONLY
+ *
+ * This means that we're looking for popups that are specifically set for the post type
+ * and NOT set globally.
+ *
+ * @since 2.0
+ *
+ * @param string $post_type
+ *
+ * @return bool
+ */
+function wpbo_get_post_type_popup( $post_type = '' ) {
+
+	if ( empty( $post_type ) ) {
+		return false;
+	}
+
+	if ( ! post_type_exists( $post_type ) ) {
+		return false;
+	}
+
+	$query_args = array(
+		'post_type'              => 'wpbo-popup',
+		'post_status'            => 'publish',
+		'order'                  => 'DESC',
+		'orderby'                => 'date',
+		'posts_per_page'         => 1,
+		'no_found_rows'          => true,
+		'cache_results'          => false,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'meta_query'             => array(
+			'relation' => 'AND',
+			array(
+				'key'     => '_wpbo_display_' . $post_type,
+				'value'   => 'all',
+				'type'    => 'CHAR',
+				'compare' => '='
+			),
+			array(
+				'key'     => '_wpbo_display_all', // We want to exclude popups set globally
+				'value'   => 'no',
+				'type'    => 'CHAR',
+				'compare' => '='
+			)
+		),
+	);
+
+	$query = new WP_Query( $query_args );
+
+	if ( isset( $query->post ) ) {
+		return $query->post->ID;
+	}
+
+	return false;
+
+}
+
+/**
+ * Get site-wide popup
+ *
+ * @since 2.0
+ * @return bool|int
+ */
+function wpbo_get_sitewide_popup() {
+
+	$query_args = array(
+		'post_type'              => 'wpbo-popup',
+		'post_status'            => 'publish',
+		'order'                  => 'DESC',
+		'orderby'                => 'date',
+		'posts_per_page'         => 1,
+		'no_found_rows'          => true,
+		'cache_results'          => false,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'meta_query'             => array(
+			array(
+				'key'     => '_wpbo_display_all',
+				'value'   => 'yes',
+				'type'    => 'CHAR',
+				'compare' => '='
+			)
+		),
+	);
+
+	$query = new WP_Query( $query_args );
+
+	if ( isset( $query->post ) ) {
+		return $query->post->ID;
+	}
+
+	return false;
+
+}
+
+/**
+ * Get the cached popup for a specific page
+ *
+ * @since 2.0
+ *
+ * @param int $post_id Post ID
+ *
+ * @return bool|int
+ */
+function wpbo_get_cached_popup( $post_id = 0 ) {
+
+	$post_id  = wpbo_get_post_id( $post_id );
+	$popup_id = false;
+
+	if ( ! $post_id ) {
+		return false;
+	}
+
+	if ( isset( $_SESSION['wpbo'][ $post_id ] ) ) {
+
+		$popup_id = (int) $_SESSION['wpbo'][ $post_id ];
+
+		if ( ! WPBO_Popup::popup_exists( $popup_id ) ) {
+			return false;
+		}
+
+		$status = get_post_status( $popup_id );
 
 		/* Make sure the popup hasn't been disabled while browsing */
 		if ( 'publish' != $status ) {
-			unset( $_SESSION['wpbo'][ $post->ID ] );
+
+			unset( $_SESSION['wpbo'][ $post_id ] );
 
 			return false;
-		}
-	} else {
-
-		$relationships = get_option( 'wpbo_popup_relationships', array() );
-		$popup         = false;
-		$check         = false;
-		$post_type     = $post->post_type;
-		$query_args    = array(
-			'post_type'              => 'wpbo-popup',
-			'post_status'            => 'publish',
-			'order'                  => 'DESC',
-			'orderby'                => 'date',
-			'posts_per_page'         => 1,
-			'no_found_rows'          => false,
-			'cache_results'          => false,
-			'update_post_term_cache' => false,
-			'update_post_meta_cache' => false,
-		);
-
-		/**
-		 * There is a popup set for this specific page
-		 */
-		if ( is_array( $relationships ) && array_key_exists( $post->ID, $relationships ) && 'publish' == get_post_status( $relationships[ $post->ID ] ) ) {
-			$popup = $relationships[ $post->ID ];
-		} /**
-		 * Let's check for more global popups
-		 */
-		else {
-
-			/**
-			 * Check if there is a popup to display for this type
-			 */
-			$query_args['meta_query'] = array(
-				'relation' => 'AND',
-				array(
-					'key'     => '_wpbo_display_' . $post_type,
-					'value'   => 'all',
-					'type'    => 'CHAR',
-					'compare' => '='
-				),
-				array(
-					'key'     => '_wpbo_display_all',
-					'value'   => 'no',
-					'type'    => 'CHAR',
-					'compare' => '='
-				)
-			);
-
-			$check = new WP_Query( $query_args );
-
-			if ( isset( $check->post ) ) {
-				$popup = $check->post->ID;
-			} /**
-			 * Check if there is a popup to display everywhere
-			 */
-			else {
-
-				$query_args['meta_query'] = array(
-					array(
-						'key'     => '_wpbo_display_all',
-						'value'   => 'yes',
-						'type'    => 'CHAR',
-						'compare' => '='
-					)
-				);
-
-				$check = new WP_Query( $query_args );
-
-				if ( isset( $check->post ) ) {
-					$popup = $check->post->ID;
-				}
-
-			}
 
 		}
 
 	}
 
-	/* Store popup ID in session to avoid calculating again on page refresh */
-	if ( ! isset( $_SESSION['wpbo'] ) ) {
-		$_SESSION['wpbo'] = array();
-	}
+	return $popup_id;
 
-	$_SESSION['wpbo'][ $post->ID ] = $popup;
+}
 
-	/**
-	 * Shall the popup be displayed for this visitor?
-	 */
-	if ( false !== $popup ) {
-
-		if ( isset( $_COOKIE["wpbo_$popup"] ) && ! has_shortcode( $post->post_content, 'wpbo_popup' ) ) {
-			return false;
-		}
-
-	}
-
-	return $popup;
-
+/**
+ * Cache the ID of an available popup for a specific post
+ *
+ * @since 2.0
+ *
+ * @param int $popup_id ID of the popup ot cache
+ * @param int $post_id  ID of the post where it's available
+ *
+ * @return void
+ */
+function wpbo_cache_popup( $popup_id, $post_id ) {
+	$_SESSION['wpbo'][ $post_id ] = $popup_id;
 }
 
 add_action( 'before_delete_post', 'wpbo_delete_post_relationships' );
@@ -283,8 +398,77 @@ function wpbo_dismiss_popup( $popup_id = 0, $cookie_lifetime = 30 ) {
 		return false;
 	}
 
+	$cookie_lifetime = apply_filters( 'wpbo_cookie_lifetime', $cookie_lifetime, $popup_id );
+
 	/* Set the cookie */
 
 	return setcookie( 'wpbo_' . $popup_id, strtotime( date( 'Y-m-d H:i:s' ) ), time() + 60 * 60 * $cookie_lifetime, '/' );
+
+}
+
+/**
+ * Check if a popup has been dismissed by the visitor
+ *
+ * @since 2.0
+ *
+ * @param int $popup_id Popup ID
+ *
+ * @return bool
+ */
+function wpbo_is_popup_dismissed( $popup_id ) {
+
+	if ( ! WPBO_Popup::popup_exists( $popup_id ) ) {
+		return false;
+	}
+
+	if ( isset( $_COOKIE["wpbo_$popup_id"] ) ) {
+		return true;
+	}
+
+	return false;
+
+}
+
+add_action( 'wp_footer', 'wpbo_maybe_load_popup' );
+/**
+ * Check if the current page has a popup and if the current visitor hasn't dismissed it already
+ *
+ * @since 2.0
+ * @return void
+ */
+function wpbo_maybe_load_popup() {
+
+	$popup_id = wpbo_page_has_popup();
+	$post_id  = wpbo_get_post_id();
+
+	if ( false === $popup_id ) {
+		return;
+	}
+
+	if ( wpbo_is_popup_dismissed( $popup_id ) ) {
+
+		if ( false === $post_id ) {
+			return;
+		}
+
+		$post = get_post( $post_id );
+
+		if ( is_null( $post ) ) {
+			return;
+		}
+
+		/**
+		 * Because the popups can be triggered by a button (generated by a shortcode), we want to load the popup markup
+		 * EVEN IF it has been dismissed when the trigger button is present in the post content.
+		 */
+		if ( ! has_shortcode( $post->post_content, 'wpbo_popup' ) ) {
+			return;
+		}
+
+	}
+
+	$popup = new WPBO_Popup( $popup_id );
+
+	$popup->popup();
 
 }

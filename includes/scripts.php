@@ -22,7 +22,7 @@ add_action( 'wp_enqueue_scripts', 'wpbo_enqueue_styles' );
  */
 function wpbo_enqueue_styles() {
 
-	if ( ! wpbo_is_popup_available() ) {
+	if ( ! wpbo_page_has_popup() ) {
 		return;
 	}
 
@@ -38,11 +38,11 @@ add_action( 'wp_enqueue_scripts', 'wpbo_enqueue_scripts' );
  */
 function wpbo_enqueue_scripts() {
 
-	if ( ! wpbo_is_popup_available() ) {
+	if ( ! wpbo_page_has_popup() ) {
 		return;
 	}
 
-	$settings = get_post_meta( wpbo_is_popup_available(), '_wpbo_settings', true );
+	$settings = get_post_meta( wpbo_page_has_popup(), '_wpbo_settings', true );
 
 	/**
 	 * Check if we can display the credit.
@@ -60,7 +60,7 @@ function wpbo_enqueue_scripts() {
 	/**
 	 * Add popup ID
 	 */
-	$settings['popup_id'] = wpbo_is_popup_available();
+	$settings['popup_id'] = wpbo_page_has_popup();
 
 	/**
 	 * Define Ajax URL

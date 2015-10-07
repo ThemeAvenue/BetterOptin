@@ -136,66 +136,50 @@ class WPBO_Popup {
 	 * was customized first, otherwise just load the default HTML file.
 	 *
 	 * @since  1.0.0
-	 * @param  integer $popup_id ID of the required popup
 	 * @return string            HTML markup of the popup to display
 	 */
 	public function get_markup() {
 
 		/* Check if the template was customized */
-		if( '' != ( $customized = get_post_meta( $this->popup_id, '_wpbo_template_display', true ) ) ) {
+		if ( '' != ( $customized = get_post_meta( $this->popup_id, '_wpbo_template_display', true ) ) ) {
 
-			if( is_admin() ) {
+			if ( is_admin() ) {
 				$output = html_entity_decode( get_post_meta( $this->popup_id, '_wpbo_template_editor', true ), ENT_COMPAT | ENT_HTML401, 'UTF-8' );
 			} else {
 				$output = html_entity_decode( $customized, ENT_COMPAT | ENT_HTML401, 'UTF-8' );
 			}
-		}
-
-		/* Otherwise use the default template */
-		else {
+		} else {
 			$output = $this->get_template();
 		}
 
-		if( !is_admin() ) {
+		if ( ! is_admin() ) {
 
 			global $post;
 
-			/* Get return URL */
-			if( '' != ( $custom_url = wpbo_get_option( 'return_url', '', $this->popup_id ) ) ) {
-				$return_url = $custom_url;
-			} elseif( ( '' != ( $default_url = wpbo_get_option( 'return_url', '' ) ) ) ) {
-				$return_url = $default_url;
-			} else {
-				$return_url = false;
-			}
-
 			/**
-			 * wpbo_return_url hook
+			 * Get the return URL and filter it
 			 *
 			 * @since  1.0.0
 			 */
-			$return_url = apply_filters( 'wpbo_return_url', $return_url, $this->popup_id, $post->ID );
+			$return_url = apply_filters( 'wpbo_return_url', $this->get_return_url(), $this->popup_id, $post->ID );
 
 			/* Add the form */
-			$output = sprintf( '<form role="form" class="optform" id="%s" action="%s" method="post">', 'wpbo-popup-' . $this->popup_id, get_permalink( $post->ID ) ) . $output;
+			$output = sprintf( "<form role='form' class='optform' id='%s' action='%s' method='post'>\r\n", 'wpbo-popup-' . $this->popup_id, get_permalink( $post->ID ) ) . $output . "\r\n";
 
 			/* Add all hidden fields */
-			$output .= wp_nonce_field( 'subscribe', 'wpbo_nonce', false, false );
-			$output .= sprintf( '<input type="hidden" name="wpbo_id" id="wpbo_id" value="%s">', self::get_popup_id() );
-			$output .= sprintf( '<input type="hidden" name="post_id" id="post_id" value="%s">', $post->ID );
-
-			if ( false !== $return_url ) {
-				$output .= sprintf( '<input type="hidden" name="return_url" id="return_url" value="%s">', $return_url );
-			}
+			$output .= "\t" . wp_nonce_field( 'subscribe', 'wpbo_nonce', false, false ) . "\r\n";
+			$output .= sprintf( "\t<input type='hidden' name='wpbo_id' id='wpbo_id' value='%s'>\r\n", $this->popup_id );
+			$output .= sprintf( "\t<input type='hidden' name='post_id' id='post_id' value='%s'>\r\n", $post->ID );
+			$output .= sprintf( "\t<input type='hidden' name='return_url' id='return_url' value='%s'>\r\n", $return_url );
 
 			/**
-			 * wpbo_popup_hidden_fields hook
+			 * Fires right before the form is closed
 			 *
 			 * @since  1.0.0
-			 * @var    $popup_id ID of the popup to be triggered
-			 * @var    $post->ID ID of the post being veiwed
+			 * @var    int $popup_id ID of the popup to be triggered
+			 * @var    int $post_id  ID of the post being viewed
 			 */
-			do_action( 'wpbo_popup_hidden_fields', $popup_id, $post->ID );
+			do_action( 'wpbo_popup_markup_after', $this->popup_id, $post->ID );
 
 			/* Close the form */
 			$output .= '</form>';
@@ -207,11 +191,30 @@ class WPBO_Popup {
 	}
 
 	/**
-	 * Render popup markup.
+	 * Get popup return URL
+	 *
+	 * @since 2.0
+	 * @return string
+	 */
+	private function get_return_url() {
+
+		$returl = $this->option( 'return_url', '' );
+
+		if ( empty( $returl ) ) {
+			$returl = wpbo_get_option( 'return_url', home_url() );
+		}
+
+		return esc_url( $returl );
+
+	}
+
+	/**
+	 * Get the rendered popup HTML markup
 	 *
 	 * @since  1.0.0
+	 * @return string
 	 */
-	public function popup() {
+	private function get_popup() {
 
 		$output   = false;
 
@@ -227,9 +230,7 @@ class WPBO_Popup {
 		$output = apply_filters( 'wpbo_popup_output', $this->get_markup(), $this->popup_id );
 
 		if ( false === $output ) {
-			echo "<!-- No template selected for popup #$this->popup_id -->";
-
-			return false;
+			$output = "<!-- No template selected for popup #$this->popup_id -->";
 		}
 
 		/**
@@ -240,7 +241,7 @@ class WPBO_Popup {
 		do_action( 'wpbo_before_popup_form', $this->popup_id );
 
 		/* Echo the popup */
-		echo '<div class="wpbo wpbo-popup-' . $this->popup_id . '">' . $output . '</div>';
+		$output = '<div class="wpbo wpbo-popup-' . $this->popup_id . '">' . $output . '</div>';
 
 		/**
 		 * wpbo_after_popup_form hook
@@ -249,6 +250,12 @@ class WPBO_Popup {
 		 */
 		do_action( 'wpbo_after_popup_form', $this->popup_id );
 
+		return $output;
+
+	}
+
+	public function popup() {
+		echo $this->get_popup();
 	}
 
 	/**
@@ -269,13 +276,12 @@ class WPBO_Popup {
 	 */
 	public function new_impression() {
 
-		$post_id = intval( $_POST['popup_id'] );
 		$prev    = $this->get_impressions();
 		$new     = ++ $prev;
 
 		/* Log the impression */
 		wpbo_db_insert_data( array(
-			'popup_id'   => $post_id,
+			'popup_id'   => $this->popup_id,
 			'data_type'  => 'impression',
 			'ip_address' => wpbo_get_ip_address(),
 			'referer'    => esc_url( $_SERVER['HTTP_REFERER'] ),
