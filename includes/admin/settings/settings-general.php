@@ -42,7 +42,7 @@ function wpbo_settings_general( $settings ) {
 				'id'      => 'return_url',
 				'type'    => 'text',
 				'desc'    => __( 'Where should the user be redirected after subscribing?', 'wpbo' ),
-				'default' => ''
+				'default' => home_url()
 			),
 			array(
 				'name'    => __( 'Anonymize IPs', 'wpbo' ),
