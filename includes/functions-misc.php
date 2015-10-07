@@ -300,3 +300,38 @@ function wpbo_get_ip_address() {
 	return 'unknown';
 
 }
+
+/**
+ * Get a post ID
+ *
+ * If the post ID is given we just return it, otherwise we try to get it from the global $post
+ *
+ * @since 2.0
+ *
+ * @param bool|int $post_id Post ID
+ *
+ * @return bool|int
+ */
+function wpbo_get_post_id( $post_id = false ) {
+
+	if ( $post_id ) {
+
+		$post = get_post( $post_id );
+
+		if ( is_null( $post ) ) {
+			return false;
+		}
+
+	} else {
+
+		global $post;
+
+		if ( isset( $post ) && is_object( $post ) && is_a( $post, 'WP_Post' ) ) {
+			$post_id = $post->ID;
+		}
+
+	}
+
+	return $post_id;
+
+}
