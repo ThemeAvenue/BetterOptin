@@ -139,7 +139,6 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
 
 				require( WPBO_PATH . 'includes/scripts.php' );
-				require( WPBO_PATH . 'includes/class-popup.php' );
 				require( WPBO_PATH . 'includes/shortcode.php' );
 				require( WPBO_PATH . 'includes/functions-templating.php' );
 				require( WPBO_PATH . 'includes/functions-dummy.php' );
@@ -147,6 +146,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 
 			}
 
+			require( WPBO_PATH . 'includes/class-popup.php' );
 			require( WPBO_PATH . 'includes/functions-post-type.php' );
 			require( WPBO_PATH . 'includes/functions-analytics.php' );
 			require( WPBO_PATH . 'includes/functions-popup.php' );
