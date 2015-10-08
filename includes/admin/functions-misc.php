@@ -45,7 +45,7 @@ function wpbo_add_action_links( $links ) {
 
 	return array_merge(
 		array(
-			'settings' => '<a href="' . add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'edit.php?post_type=wpbo-popup-settings' ), admin_url( 'edit.php' ) ) . '">' . __( 'Settings', $this->plugin_slug ) . '</a>'
+			'settings' => '<a href="' . add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'edit.php?post_type=wpbo-popup-settings' ), admin_url( 'edit.php' ) ) . '">' . __( 'Settings', 'betteroptin' ) . '</a>'
 		),
 		$links
 	);
