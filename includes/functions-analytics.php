@@ -489,6 +489,28 @@ function wpbo_fill_hits_period( $data, $min, $max, $increment, $date_format ) {
 		$timeframe[ $date ] = array_key_exists( $date, $data ) ? $data[ $date ] : 0;
 	}
 
-	return $timeframe;
+	return wpbo_float_format( $timeframe );
+
+}
+
+/**
+ * Format our timeframe array for jQuery Flot
+ *
+ * Flot uses a very specific format where the data must be an array of arrays.
+ * Also, all timestamps must be in milliseconds. This functions does all the formatting.
+ *
+ * @param array $array Data in a predefined timeframe
+ *
+ * @return array array Data formatted for Flot
+ */
+function wpbo_float_format( $array ) {
+
+	$new = array();
+	
+	foreach ( $array as $timestamp => $hits ) {
+		array_push( $new, array( $timestamp * 1000, $hits ) ); // Timestamp must be in miliseconds
+	}
+
+	return $new;
 
 }
