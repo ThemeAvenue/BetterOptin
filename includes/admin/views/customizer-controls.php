@@ -148,7 +148,7 @@ $refresh = add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-cu
 		<label for="taed-font-family"><?php _e( 'Font Family', 'wpbo' ); ?></label>
 		<select id="taed-font-family" class="form-control">
 			<?php
-			$fonts = Better_Optin_Admin::get_font_stack();
+			$fonts = wpbo_get_font_stack();
 
 			if( is_array( $fonts ) ) {
 				foreach( $fonts as $font ) {

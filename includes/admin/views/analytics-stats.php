@@ -140,7 +140,7 @@ $query['period'] = $timeframe;
 // print_r( $query );
 
 /* Get the datas */
-$datas = wpbo_get_datas( $query, 'OBJECT' );
+$datas = wpbo_db_get_datas( $query, 'OBJECT' );
 ?>
 <div class="postbox">
 
@@ -171,8 +171,8 @@ $datas = wpbo_get_datas( $query, 'OBJECT' );
 						array_push( $seen, $data->popup_id );
 
 						$popup        = get_post( $data->popup_id );
-						$impressions  = wpbo_get_datas( array( 'popup_id' => $data->popup_id, 'data_type' => 'impression', 'limit' => -1, 'period' => $timeframe ), 'ARRAY_A' );
-						$conversions  = wpbo_get_datas( array( 'popup_id' => $data->popup_id, 'data_type' => 'conversion', 'limit' => -1, 'period' => $timeframe ), 'ARRAY_A' );
+						$impressions  = wpbo_db_get_datas( array( 'popup_id' => $data->popup_id, 'data_type' => 'impression', 'limit' => -1, 'period' => $timeframe ), 'ARRAY_A' );
+						$conversions  = wpbo_db_get_datas( array( 'popup_id' => $data->popup_id, 'data_type' => 'conversion', 'limit' => -1, 'period' => $timeframe ), 'ARRAY_A' );
 						$rate         = ( 0 === count( $conversions ) || 0 === count( $impressions ) ) ? 0 : ( 100 * count( $conversions ) ) / count( $impressions );
 						$status       = 'publish' == $popup->post_status ? __( 'Active', 'wpbo' ) : __( 'Inactive', 'wpbo' );
 						$status_class = 'publish' == $popup->post_status ? 'wpbo-stats-active' : 'wpbo-stats-inactive';

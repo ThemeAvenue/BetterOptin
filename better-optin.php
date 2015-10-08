@@ -12,10 +12,10 @@
  * Plugin Name:       BetterOptin
  * Plugin URI:        http://betteropt.in/
  * Description:       BetterOptin helps you convert your visitors in subscribers and fill up your mailing lists.
- * Version:           1.2.4
+ * Version:           2.0.0
  * Author:            ThemeAvenue
  * Author URI:        http://themeavenue.net
- * Text Domain:       better-optin
+ * Text Domain:       betteroptin
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages
@@ -26,65 +26,192 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/* Define all the plugin constants */
-define( 'WPBO_URL',      trailingslashit( plugin_dir_url( __FILE__ ) ) );
-define( 'WPBO_PATH',     trailingslashit( plugin_dir_path( __FILE__ ) ) );
-define( 'WPBO_BASENAME', plugin_basename(__FILE__) );
+if ( ! class_exists( 'BetterOptin' ) ):
 
-require_once( plugin_dir_path( __FILE__ ) . 'includes/extras.php' );
+	/**
+	 * Main BetterOptin class
+	 *
+	 * This class is the one and only instance of the plugin. It is used
+	 * to load the core and all its components.
+	 *
+	 * @since 2.0
+	 */
+	final class BetterOptin {
 
-/*----------------------------------------------------------------------------*
- * Public-Facing Functionality
- *----------------------------------------------------------------------------*/
+		/**
+		 * @var BetterOptin Holds the unique instance of BetterOptin
+		 * @since 2.0
+		 */
+		private static $instance;
 
-require_once( plugin_dir_path( __FILE__ ) . 'public/class-better-optin.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'public/includes/class-analytics.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'public/includes/shortcode.php' );
+		/**
+		 * Instantiate and return the unique BetterOptin object
+		 *
+		 * @since     2.0
+		 * @return object BetterOptin Unique instance of BetterOptin
+		 */
+		public static function instance() {
 
-/* Load submission class */
-require_once( plugin_dir_path( __FILE__ ) . 'public/includes/class-submission.php' );
-$wpbo_submit = new WPBO_Submit;
+			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof BetterOptin ) ) {
 
-/*----------------------------------------------------------------------------*
- * Load Addons
- *----------------------------------------------------------------------------*/
-add_action( 'plugins_loaded', array( 'Better_Optin', 'load_addons' ) );
+				// Instantiate
+				self::$instance = new BetterOptin;
+				self::$instance->setup_constants();
+				self::$instance->setup_database_constants();
+				self::$instance->includes();
+				self::$instance->load_providers();
 
-/*
- * Register hooks that are fired when the plugin is activated or deactivated.
- * When the plugin is deleted, the uninstall.php file is loaded.
- */
-register_activation_hook( __FILE__, array( 'Better_Optin', 'activate' ) );
+				if ( is_admin() ) {
+					self::$instance->includes_admin();
+				}
 
-add_action( 'plugins_loaded', array( 'Better_Optin', 'get_instance' ) );
+				add_action( 'plugins_loaded', array( self::$instance, 'load_plugin_textdomain' ) );
 
-/*----------------------------------------------------------------------------*
- * Dashboard and Administrative Functionality
- *----------------------------------------------------------------------------*/
+			}
 
-if( is_admin() ) {
+			return self::$instance;
 
-	require_once( plugin_dir_path( __FILE__ ) . 'admin/includes/class-titan-framework.php' );
-	$wpbo_titan = new WPBO_Titan();
+		}
 
-	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-better-optin-admin.php' );
-	add_action( 'plugins_loaded', array( 'Better_Optin_Admin', 'get_instance' ) );
+		/**
+		 * Throw error on object clone
+		 *
+		 * The whole idea of the singleton design pattern is that there is a single
+		 * object therefore, we don't want the object to be cloned.
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		public function __clone() {
+			// Cloning instances of the class is forbidden
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wpas' ), '2.0' );
+		}
 
-}
+		/**
+		 * Disable unserializing of the class
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		public function __wakeup() {
+			// Unserializing instances of the class is forbidden
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wpas' ), '2.0' );
+		}
 
-/*----------------------------------------------------------------------------*
- * Generate Dummy Content
- *----------------------------------------------------------------------------*/
-require_once( plugin_dir_path( __FILE__ ) . 'includes/dummy-content.php' );
+		/**
+		 * Setup all plugin constants
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		private function setup_constants() {
+			define( 'WPBO_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+			define( 'WPBO_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
+			define( 'WPBO_BASENAME', plugin_basename( __FILE__ ) );
+			define( 'WPBO_PLUGIN_FILE', __FILE__ );
+			define( 'WPBO_VERSION', '2.0.0' );
+		}
 
-if( isset( $_GET['wpbo_dummy'] ) ) {
-	wpbo_add_dummy();
-}
+		/**
+		 * Setup the custom database table constants
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		private function setup_database_constants() {
+
+			global $wpdb;
+
+			define( 'wpbo_analytics_table_name', 'wpbo_analytics' );
+			define( 'wpbo_analytics_table', $wpdb->prefix . wpbo_analytics_table_name );
+
+		}
+
+		/**
+		 * Include all files used sitewide
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		private function includes() {
+
+			if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+
+				require( WPBO_PATH . 'includes/scripts.php' );
+				require( WPBO_PATH . 'includes/class-popup.php' );
+				require( WPBO_PATH . 'includes/shortcode.php' );
+				require( WPBO_PATH . 'includes/functions-templating.php' );
+				require( WPBO_PATH . 'includes/functions-dummy.php' );
+				require( WPBO_PATH . 'includes/install.php' );
+
+			}
+
+			require( WPBO_PATH . 'includes/functions-post-type.php' );
+			require( WPBO_PATH . 'includes/functions-analytics.php' );
+			require( WPBO_PATH . 'includes/functions-popup.php' );
+			require( WPBO_PATH . 'includes/functions-misc.php' );
+			require( WPBO_PATH . 'includes/functions-ajax.php' );
+
+		}
+
+		/**
+		 * Include all files used in admin only
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		private function includes_admin() {
+
+			if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+				require( WPBO_PATH . 'includes/admin/class-titan-framework.php' );
+				require( WPBO_PATH . 'includes/admin/settings/settings-general.php' );
+				require( WPBO_PATH . 'includes/admin/functions-misc.php' );
+				require( WPBO_PATH . 'includes/admin/functions-menu.php' );
+				require( WPBO_PATH . 'includes/admin/functions-metabox.php' );
+				require( WPBO_PATH . 'includes/admin/functions-list-table.php' );
+			}
+
+		}
+
+		/**
+		 * Load all the providers from the providers directory
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		private function load_providers() {
+			require( WPBO_PATH . 'includes/providers/wordpress/load.php' );
+		}
+
+		/**
+		 * Load the plugin text domain for translation.
+		 *
+		 * @since    1.0.0
+		 */
+		public function load_plugin_textdomain() {
+
+			apply_filters( 'plugin_locale', get_locale(), 'wpbo' );
+
+			load_plugin_textdomain( 'wpbo', false, basename( plugin_dir_path( dirname( __FILE__ ) ) ) . '/languages/' );
+
+		}
+
+	}
+
+endif;
 
 /**
- * Register default settings.
+ * The main function responsible for returning the unique BetterOptin instance
  *
- * Settings need to be registered sitewide
- * otherwise the values get deleted.
+ * Use this function like you would a global variable, except without needing
+ * to declare the global.
+ *
+ * @since 2.0
+ * @return object BetterOptin
  */
-add_filter( 'wpbo_plugin_settings', array( 'Better_Optin_Admin', 'settings' ), 9 );
+function BO() {
+	return BetterOptin::instance();
+}
+
+// Get BetterOptin Running
+BO();
