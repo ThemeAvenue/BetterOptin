@@ -8,7 +8,7 @@ before_commands:
     - 'composer install --dev --prefer-source'
 
 tools:
-    external_code_coverage: true
+    external_code_coverage: false
     php_code_sniffer: true
     js_hint: true
     php_pdepend: true
