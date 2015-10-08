@@ -238,7 +238,7 @@ class WPBO_Popup {
 		$output   = false;
 
 		if ( false === $this->popup_id ) {
-			return;
+			return '';
 		}
 
 		/**

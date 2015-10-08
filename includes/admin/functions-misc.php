@@ -101,8 +101,6 @@ function wpbo_change_publish_button_label( $translation, $text ) {
 
 	global $typenow;
 
-	// $customized = isset( $_GET['post'] ) ? get_post_meta( $post_id, '_wpbo_template_display', true ) : '';
-
 	if ( 'wpbo-popup' == $typenow ) {
 		if ( ( ! isset( $_GET['post'] ) || isset( $_GET['post'] ) && '' == get_post_meta( intval( $_GET['post'] ), '_wpbo_template_display', true ) ) && 'Publish' == $text ) {
 			$translation = __( 'Save', 'wpbo' );

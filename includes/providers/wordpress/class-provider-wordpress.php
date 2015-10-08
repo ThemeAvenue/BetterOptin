@@ -25,7 +25,7 @@ class WPBO_Provider_WordPress {
 	 *
 	 * @return null
 	 */
-	public function submit( $data ) {
+	public static function submit( $data ) {
 
 		$result = false;
 

@@ -286,7 +286,7 @@ add_action( 'wp_ajax_wpbo_tour_completed', 'wpbo_tour_completed' );
  * closes the popup window.
  *
  * @since  1.0.0
- * @return integer/boolean Row ID on successful update, false on failure
+ * @return integer|boolean Row ID on successful update, false on failure
  */
 function wpbo_tour_completed() {
 
