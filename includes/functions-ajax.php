@@ -368,8 +368,8 @@ add_action( 'wp_ajax_nopriv_wpbo_new_impression', 'wpbo_new_impression' );
  */
 function wpbo_new_impression( $popup_id = 0 ) {
 
-	if ( 0 === $popup_id && isset( $_POST['popup_id'] ) ) {
-		$popup_id = filter_input( INPUT_POST, 'popup_id', FILTER_SANITIZE_NUMBER_INT );
+	if ( empty( $popup_id ) && isset( $_POST['popup_id'] ) ) {
+		$popup_id = (int) filter_input( INPUT_POST, 'popup_id', FILTER_SANITIZE_NUMBER_INT );
 	}
 
 	if ( 0 === $popup_id || empty( $popup_id ) ) {
