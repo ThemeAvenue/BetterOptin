@@ -148,38 +148,6 @@ function wpbo_get_font_stack() {
 }
 
 /**
- * Return zero
- *
- * The function just returns 0 and is used for array_map.
- * This function is required for PHP < 5.3 as anonymous functions
- * are not yet supported.
- *
- * @since  1.0.1
- * @see    Better_Optin_Admin::get_graph_data()
- * @param  mixed   $item Array item to reset
- * @return integer       Zero
- */
-function _wpbo_return_zero( $item ) {
-	return 0;
-}
-
-function wpbo_float_format( $array ) {
-
-	$new = array();
-
-	/* Reorder the array */
-	ksort( $array );
-
-	/** Transform the array in a readable format for Float */
-	foreach ( $array as $key => $value ) {
-		array_push( $new, array( $key * 1000, $value ) ); // Timestamp must be in miliseconds
-	}
-
-	return $new;
-
-}
-
-/**
  * Prepare the hist array.
  *
  * The function takes an array of datas and then,

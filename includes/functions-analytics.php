@@ -465,3 +465,30 @@ function wpbo_today_conversion( $decimals = 2, $dec_point = '.', $thousands_sep 
 	return number_format( $rate, $decimals, $dec_point, $thousands_sep );
 
 }
+
+/**
+ * Fills an entire period with specific time points
+ *
+ * Takes an array of data (either impressions or conversions) and populates all the hits
+ * on a specific period of time. If the data array doesn't contain data for one or more
+ * time points, then the empty points are set to 0.
+ *
+ * @param array  $data        Impressions or conversions data
+ * @param int    $min         Timestamp at the beginning for the timeframe
+ * @param int    $max         Timestamp at the end of the timeframe
+ * @param string $increment   Increment delay (eg. 1 hour, 1 day...)
+ * @param string $date_format Date format for the given timeframe
+ *
+ * @return array
+ */
+function wpbo_fill_hits_period( $data, $min, $max, $increment, $date_format ) {
+
+	$timeframe = array();
+
+	for ( $date = $min; $date <= $max; $date = strtotime( date( $date_format, $date ) . " + $increment" ) ) {
+		$timeframe[ $date ] = array_key_exists( $date, $data ) ? $data[ $date ] : 0;
+	}
+
+	return $timeframe;
+
+}

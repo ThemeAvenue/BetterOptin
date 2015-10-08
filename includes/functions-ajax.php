@@ -110,8 +110,8 @@ function wpbo_get_graph_data() {
 	$query_c['data_type'] = 'conversion';
 
 	/* Get the datas */
-	$impressions = wpbo_get_datas( $query_i, 'OBJECT' );
-	$conversions = wpbo_get_datas( $query_c, 'OBJECT' );
+	$impressions = wpbo_db_get_datas( $query_i, 'OBJECT' );
+	$conversions = wpbo_db_get_datas( $query_c, 'OBJECT' );
 
 	/* Set the scale */
 	$scale = date( 'Y-m-d' );
@@ -122,40 +122,40 @@ function wpbo_get_graph_data() {
 			$scale       = 'Y-m-d H:00:00';
 			$timeformat  = '%d/%b';
 			$minticksize = array( 1, 'hour' );
-			$min         = strtotime( date( 'Y-m-d 00:00:00' ) ) * 1000;
-			$max         = strtotime( date( 'Y-m-d 23:59:59' ) ) * 1000;
+			$min         = strtotime( date( 'Y-m-d 00:00:00' ) );
+			$max         = strtotime( date( 'Y-m-d 23:59:59' ) );
 			break;
 
 		case 'this_week':
 			$scale       = 'Y-m-d 00:00:00';
 			$timeformat  = '%a';
 			$minticksize = array( 1, 'day' );
-			$min         = strtotime( 'last monday' ) * 1000;
-			$max         = strtotime( 'next sunday' ) * 1000;
+			$min         = strtotime( 'last monday' );
+			$max         = strtotime( 'next sunday' );
 			break;
 
 		case 'last_week':
 			$scale       = 'Y-m-d 00:00:00';
 			$timeformat  = '%a';
 			$minticksize = array( 1, 'day' );
-			$min         = strtotime( 'last monday -7 days' ) * 1000;
-			$max         = strtotime( 'next sunday -7 days' ) * 1000;
+			$min         = strtotime( 'last monday -7 days' );
+			$max         = strtotime( 'next sunday -7 days' );
 			break;
 
 		case 'this_month':
 			$scale       = 'Y-m-d 00:00:00';
 			$timeformat  = '%a';
 			$minticksize = array( 1, 'day' );
-			$min         = strtotime( 'first day of this month' ) * 1000;
-			$max         = strtotime( 'last day of this month' ) * 1000;
+			$min         = strtotime( 'first day of this month' );
+			$max         = strtotime( 'last day of this month' );
 			break;
 
 		case 'last_month':
 			$scale       = 'Y-m-d 00:00:00';
 			$timeformat  = '%a';
 			$minticksize = array( 1, 'day' );
-			$min         = strtotime( 'first day of last month' ) * 1000;
-			$max         = strtotime( 'last day of last month' ) * 1000;
+			$min         = strtotime( 'first day of last month' );
+			$max         = strtotime( 'last day of last month' );
 			break;
 
 		case 'this_quarter':
@@ -180,8 +180,8 @@ function wpbo_get_graph_data() {
 			}
 
 			$current = strtotime( $current );
-			$min     = strtotime( 'first day of this month', $current ) * 1000;
-			$max     = strtotime( 'last day of this month', strtotime( '+2 months', $current ) ) * 1000;
+			$min     = strtotime( 'first day of this month', $current );
+			$max     = strtotime( 'last day of this month', strtotime( '+2 months', $current ) );
 
 			break;
 
@@ -215,8 +215,8 @@ function wpbo_get_graph_data() {
 
 			/* Set the theorical current date */
 			$current = false === $rewind ? strtotime( $current ) : strtotime( '-1 year', $current );
-			$min     = strtotime( 'first day of this month', $current ) * 1000;
-			$max     = strtotime( 'last day of this month', strtotime( '+2 months', $current ) ) * 1000;
+			$min     = strtotime( 'first day of this month', $current );
+			$max     = strtotime( 'last day of this month', strtotime( '+2 months', $current ) );
 
 			break;
 
@@ -224,16 +224,16 @@ function wpbo_get_graph_data() {
 			$scale       = 'Y-m-d 00:00:00';
 			$timeformat  = '%b';
 			$minticksize = array( 1, 'month' );
-			$min         = strtotime( 'first day of January', time() ) * 1000;
-			$max         = strtotime( 'last day of December', time() ) * 1000;
+			$min         = strtotime( 'first day of January', time() );
+			$max         = strtotime( 'last day of December', time() );
 			break;
 
 		case 'last_year':
 			$scale       = 'Y-m-d 00:00:00';
 			$timeformat  = '%b';
 			$minticksize = array( 1, 'month' );
-			$min         = strtotime( 'first day of January last year', time() ) * 1000;
-			$max         = strtotime( 'last day of December last year', time() ) * 1000;
+			$min         = strtotime( 'first day of January last year', time() );
+			$max         = strtotime( 'last day of December last year', time() );
 			break;
 
 	endswitch;
@@ -241,12 +241,12 @@ function wpbo_get_graph_data() {
 	/* Propare global array */
 	$datas = array(
 		'impressionsData' => array(
-			'label' => __( 'Impressions', 'wpbo' ),
+			'label' => __( 'Impressions', 'betteroptin' ),
 			'id'    => 'impressions',
 			'data'  => array()
 		),
 		'conversionsData' => array(
-			'label' => __( 'Conversions', 'wpbo' ),
+			'label' => __( 'Conversions', 'betteroptin' ),
 			'id'    => 'conversions',
 			'data'  => array()
 		),
@@ -254,44 +254,25 @@ function wpbo_get_graph_data() {
 			'minTickSize' => $minticksize,
 			'timeformat'  => $timeformat
 		),
-		'min'             => $min,
-		'max'             => $max
+		'min'             => $min * 1000,
+		'max'             => $max * 1000
 	);
 
 	/* Get the count on the scaled timestamp */
 	$imp_array = wpbo_array_merge_combine( $impressions, $scale );
 	$con_array = wpbo_array_merge_combine( $conversions, $scale );
 
-	/**
-	 * Fill the blanks!
-	 *
-	 * Both impressions and conversions array need to have the same number of entries
-	 * (same number of timestamps) for the graph to work properly.
-	 *
-	 * We alternatively merge the impressions and conversions array. The only added keys
-	 * must have a value of 0.
-	 */
-	$tmp_arr_imp = array_flip( array_keys( $imp_array ) );
-	$tmp_arr_con = array_flip( array_keys( $con_array ) );
-
-	/* Set all counts to 0 */
-	$tmp_arr_imp = array_map( array( 'Better_Optin_Admin', '_wpbo_return_zero' ), $tmp_arr_imp );
-	$tmp_arr_con = array_map( array( 'Better_Optin_Admin', '_wpbo_return_zero' ), $tmp_arr_con );
-
-	/* Add missing values in both impressions and conversions arrays */
-	$imp_array = $imp_array + $tmp_arr_con;
-	$con_array = $con_array + $tmp_arr_imp;
-
-	/* Convert the arrays to a format that Float can read. */
-	$imp_array = wpbo_float_format( $imp_array );
-	$con_array = wpbo_float_format( $con_array );
+	// Get a complete data array for the given timeframe (meaning there is a value for evey single time point)
+	$increment = "$minticksize[0] $minticksize[1]"; // Increment formatted to be used in strtotime()
+	$imp_array = wpbo_fill_hits_period( $imp_array, $min, $max, $increment, $scale );
+	$con_array = wpbo_fill_hits_period( $con_array, $min, $max, $increment, $scale );
 
 	/* Add the hits to datas array */
 	$datas['impressionsData']['data'] = $imp_array;
 	$datas['conversionsData']['data'] = $con_array;
 
 	/* Return results to script */
-	print_r( json_encode( $datas ) );
+	echo json_encode( $datas );
 	die();
 
 }
@@ -387,14 +368,17 @@ add_action( 'wp_ajax_nopriv_wpbo_new_impression', 'wpbo_new_impression' );
  */
 function wpbo_new_impression( $popup_id = 0 ) {
 
-	if ( 0 === $popup_id ) {
-		if ( isset( $_POST['popup_id'] ) ) {
-			$popup_id = filter_input( INPUT_POST, 'popup_id', FILTER_SANITIZE_NUMBER_INT );
-		}
+	if ( 0 === $popup_id && isset( $_POST['popup_id'] ) ) {
+		$popup_id = filter_input( INPUT_POST, 'popup_id', FILTER_SANITIZE_NUMBER_INT );
+	}
+
+	if ( 0 === $popup_id || empty( $popup_id ) ) {
+		echo 'Incorrect popup ID';
+		die();
 	}
 
 	if ( ! WPBO_Popup::popup_exists( $popup_id ) ) {
-		echo 0;
+		echo 'Not a popup';
 		die();
 	}
 
