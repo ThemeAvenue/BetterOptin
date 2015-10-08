@@ -9,12 +9,13 @@
 
 	<hr>
 
-	<div class="ta-summary"><ol></ol></div>
-
-	<div class="ta-doc-content">
-		<div class="ta-doc-loading">Fetching documentation... Please wait. <img src="<?php echo admin_url(); ?>/images/spinner-2x.gif" class="ta-doc-loading-img" alt="Loading..."></div>
+	<div id="ta-doc">
+		<ol id="ta-doc-toc"></ol>
+		<div id="ta-doc-content">Fetching documentation... Please wait. <img src="<?php echo admin_url(); ?>/images/spinner-2x.gif" class="ta-doc-loading-img" alt="Loading..."></div>
 	</div>
 
+	<script type="text/javascript" src="<?php echo WPBO_URL; ?>admin/assets/js/vendor/jquery.toc.js"></script>
+	<script type="text/javascript" src="<?php echo WPBO_URL; ?>admin/assets/js/vendor/jquery.smooth-scroll.js"></script>
 	<script type="text/javascript" src="<?php echo WPBO_URL; ?>admin/assets/js/part-documentation.js"></script>
 
 </div>

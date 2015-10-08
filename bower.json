@@ -1,11 +1,13 @@
 {
   "name": "BetterOptin",
   "version": "1.2.4",
-  "authors": [
-    "ThemeAvenue <hello@themeavenue.net>"
-  ],
   "description": "BetterOptin is a lead generation and conversion optimization for WordPress",
-  "license": "MIT",
+  "authors": [
+    "ThemeAvenue <hello@themeavenue.net>",
+    "Julien Vernet <julien@vernet.me>",
+    "Julien Liabeuf <julien@liabeuf.com>"
+  ],
+  "license": "GNU General Public License v2.0",
   "homepage": "http://themeavenue.net",
   "private": true,
   "dependencies": {
