@@ -291,15 +291,12 @@ class WPBO_Popup {
 	 * Record popup impression.
 	 *
 	 * @since  1.0.0
-	 * @return integer Total number of impressions
+	 * @return int|WP_Error
 	 */
 	public function new_impression() {
 
-		$prev    = $this->get_impressions();
-		$new     = ++ $prev;
-
 		/* Log the impression */
-		wpbo_db_insert_data( array(
+		$log = wpbo_db_insert_data( array(
 			'popup_id'   => $this->popup_id,
 			'data_type'  => 'impression',
 			'ip_address' => wpbo_get_ip_address(),
@@ -307,9 +304,7 @@ class WPBO_Popup {
 			'user_agent' => $_SERVER['HTTP_USER_AGENT']
 		), true );
 
-		update_post_meta( $this->popup_id, 'wpbo_impressions', $new, $prev );
-
-		return $new;
+		return $log;
 
 	}
 
