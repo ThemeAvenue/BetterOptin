@@ -98,10 +98,6 @@ function wpbo_save_custom_fields( $post_id ) {
 		return;
 	}
 
-	if ( ! isset( $_POST['post_type'] ) || isset( $_POST['post_type'] ) && 'wpbo-popup' != $_POST['post_type'] ) {
-		return;
-	}
-
 	if ( ! current_user_can( 'edit_post', $post_id ) ) {
 		return;
 	}
