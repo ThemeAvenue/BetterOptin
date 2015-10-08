@@ -110,6 +110,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			define( 'WPBO_BASENAME', plugin_basename( __FILE__ ) );
 			define( 'WPBO_PLUGIN_FILE', __FILE__ );
 			define( 'WPBO_VERSION', '2.0.0' );
+			define( 'WPBO_DB_VERSION', '1' );
 		}
 
 		/**

@@ -92,7 +92,7 @@ function wpbo_single_activate() {
 	wpbo_create_table();
 
 	/* Write database version */
-	update_option( 'wpbo_db_version', WPBO_Analytics::$db_version );
+	update_option( 'wpbo_db_version', WPBO_DB_VERSION );
 
 	/**
 	 * Add an option in DB to know when the plugin has just been activated.
