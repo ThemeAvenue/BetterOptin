@@ -105,6 +105,8 @@ class WPBO_Popup {
 			'last_name'  => 'sanitize_text_field',
 			'email'      => 'sanitize_email',
 			'wpbo_email' => 'sanitize_email',
+			'wpbo_id'    => 'intval',
+			'post_id'    => 'intval',
 		) );
 
 		return $fields;
