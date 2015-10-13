@@ -1,20 +1,20 @@
 [
     {
         "name": "gambitph/titan-framework",
-        "version": "1.9.1",
-        "version_normalized": "1.9.1.0",
+        "version": "1.9.2",
+        "version_normalized": "1.9.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/gambitph/Titan-Framework.git",
-            "reference": "a406614e97e161f4723020dee0eded7666da781c"
+            "reference": "793bee37350acf4ff10ebf1068aa6d16cdc44da1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/gambitph/Titan-Framework/zipball/a406614e97e161f4723020dee0eded7666da781c",
-            "reference": "a406614e97e161f4723020dee0eded7666da781c",
+            "url": "https://api.github.com/repos/gambitph/Titan-Framework/zipball/793bee37350acf4ff10ebf1068aa6d16cdc44da1",
+            "reference": "793bee37350acf4ff10ebf1068aa6d16cdc44da1",
             "shasum": ""
         },
-        "time": "2015-09-26 15:45:31",
+        "time": "2015-10-06 16:21:47",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -43,5 +43,44 @@
             "titan",
             "wordpress"
         ]
+    },
+    {
+        "name": "drewm/mailchimp-api",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/drewm/mailchimp-api.git",
+            "reference": "e5e16d2a7a456c282b1e160e70964eb9149e9968"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/e5e16d2a7a456c282b1e160e70964eb9149e9968",
+            "reference": "e5e16d2a7a456c282b1e160e70964eb9149e9968",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3"
+        },
+        "time": "2015-07-28 13:59:56",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Drewm": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Drew McLellan",
+                "homepage": "http://allinthehead.com/"
+            }
+        ],
+        "description": "Super-simple, minimum abstraction MailChimp API v2 wrapper",
+        "homepage": "https://github.com/drewm/mailchimp-api"
     }
 ]

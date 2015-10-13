@@ -1,6 +1,7 @@
 {
 	"require": {
-		"gambitph/titan-framework": "1.9.*"
+		"gambitph/titan-framework": "1.9.*",
+		"drewm/mailchimp-api": "dev-master"
 	},
 	"archive": {
 		"exclude": [".gitignore", "composer.json", "composer.lock", "/tests", "README.md", "bower.json"]

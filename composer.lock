@@ -4,20 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a09c5e6beb6703e0292c0e0b8579c67d",
+    "hash": "d753e30da84db12e8b2eb575f51863c4",
     "packages": [
         {
-            "name": "gambitph/titan-framework",
-            "version": "1.9.1",
+            "name": "drewm/mailchimp-api",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/gambitph/Titan-Framework.git",
-                "reference": "a406614e97e161f4723020dee0eded7666da781c"
+                "url": "https://github.com/drewm/mailchimp-api.git",
+                "reference": "e5e16d2a7a456c282b1e160e70964eb9149e9968"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gambitph/Titan-Framework/zipball/a406614e97e161f4723020dee0eded7666da781c",
-                "reference": "a406614e97e161f4723020dee0eded7666da781c",
+                "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/e5e16d2a7a456c282b1e160e70964eb9149e9968",
+                "reference": "e5e16d2a7a456c282b1e160e70964eb9149e9968",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Drewm": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Drew McLellan",
+                    "homepage": "http://allinthehead.com/"
+                }
+            ],
+            "description": "Super-simple, minimum abstraction MailChimp API v2 wrapper",
+            "homepage": "https://github.com/drewm/mailchimp-api",
+            "time": "2015-07-28 13:59:56"
+        },
+        {
+            "name": "gambitph/titan-framework",
+            "version": "1.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gambitph/Titan-Framework.git",
+                "reference": "793bee37350acf4ff10ebf1068aa6d16cdc44da1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gambitph/Titan-Framework/zipball/793bee37350acf4ff10ebf1068aa6d16cdc44da1",
+                "reference": "793bee37350acf4ff10ebf1068aa6d16cdc44da1",
                 "shasum": ""
             },
             "type": "library",
@@ -47,13 +84,15 @@
                 "titan",
                 "wordpress"
             ],
-            "time": "2015-09-26 15:45:31"
+            "time": "2015-10-06 16:21:47"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "drewm/mailchimp-api": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
