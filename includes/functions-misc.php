@@ -327,3 +327,21 @@ function wpbo_is_provider_ready() {
 	return true;
 
 }
+
+/**
+ * Check if the current admin screen is a popup edit screen
+ *
+ * @since 2.0
+ * @return bool
+ */
+function wpbo_is_popup_edit_screen() {
+
+	global $pagenow;
+
+	if ( isset( $_GET['action'] ) && 'edit' == $_GET['action'] || 'post-new.php' == $pagenow && isset( $_GET['post_type'] ) && 'wpbo-popup' == $_GET['post_type'] ) {
+		return true;
+	}
+
+	return false;
+
+}
