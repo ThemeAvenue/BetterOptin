@@ -112,6 +112,18 @@ class TitanFramework {
 
 
 	/**
+	 * Gets all active instances of Titan Framework
+	 *
+	 * @since 1.9.2
+	 *
+	 * @return array An array of TitanFramework objects
+	 */
+	public static function getAllInstances() {
+		return self::$instances;
+	}
+
+
+	/**
 	 * Creates a new TitanFramework object
 	 *
 	 * @since 1.0
@@ -500,7 +512,9 @@ class TitanFramework {
 	 */
 	public function getOptions( $optionArray, $postID = null ) {
 		foreach ( $optionArray as $optionName => $originalValue ) {
-			$optionArray[ $optionName ] = $this->getOption( $optionName, $postID );
+			if ( array_key_exists( $optionName, $this->optionsUsed ) ) {
+				$optionArray[ $optionName ] = $this->getOption( $optionName, $postID );
+			}
 		}
 		return apply_filters( 'tf_get_options_' . $this->optionNamespace, $optionArray, $postID );
 	}
@@ -782,9 +796,10 @@ class TitanFramework {
 			}
 		}
 
-		// Hook 'tf_pre_save_options_{namespace}' - action pre-saving.
 		if ( $customizerUsed ) {
-			do_action( 'tf_pre_save_options_' . $this->optionNamespace, $this->mainContainers['customizer'] );
+			/** This action is documented in class-admin-page.php */
+			$namespace = $this->optionNamespace;
+			do_action( "tf_pre_save_options_{$namespace}", $this->mainContainers['customizer'] );
 		}
 
 		return $value;
