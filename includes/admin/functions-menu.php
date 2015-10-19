@@ -29,7 +29,6 @@ function wpbo_add_plugin_settings_page() {
 	add_action( 'wpbo-popup_page_wpbo-customizer', 'wpbo_display_popup_customizer' );
 
 	add_submenu_page( 'edit.php?post_type=wpbo-popup', __( 'Analytics', 'wpbo' ), __( 'Analytics', 'wpbo' ), 'administrator', 'wpbo-analytics', 'wpbo_display_popup_analytics' );
-	add_submenu_page( 'edit.php?post_type=wpbo-popup', __( 'Addons', 'wpbo' ), __( 'Addons', 'wpbo' ), 'administrator', 'wpbo-addons', 'wpbo_display_popup_addons' );
 	add_submenu_page( 'edit.php?post_type=wpbo-popup', __( 'About', 'wpbo' ), __( 'About', 'wpbo' ), 'administrator', 'wpbo-about', 'wpbo_display_popup_about' );
 	add_submenu_page( 'edit.php?post_type=wpbo-popup', __( 'Documentation', 'wpbo' ), __( 'Documentation', 'wpbo' ), 'administrator', 'wpbo-doc', 'wpbo_display_popup_doc' );
 
@@ -78,13 +77,4 @@ function wpbo_display_popup_doc() {
  */
 function wpbo_display_popup_analytics() {
 	require_once( WPBO_PATH . 'includes/admin/views/analytics.php' );
-}
-
-/**
- * Display Addons Page.
- *
- * @since  1.0.0
- */
-function wpbo_display_popup_addons() {
-	require_once( WPBO_PATH . 'includes/admin/views/addons.php' );
 }
