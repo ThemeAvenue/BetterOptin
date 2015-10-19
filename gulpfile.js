@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
-var autoprefixer = require('gulp-autoprefixer');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
 var concat = require('gulp-concat');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
@@ -17,7 +18,9 @@ gulp.task('styles', function () {
 			}
 		}))
 		.pipe(less())
-		.pipe(autoprefixer('last 2 versions'))
+		.pipe(postcss([autoprefixer({
+			browsers: ['last 2 versions']
+		})]))
 		.pipe(gulp.dest('public/assets/css/'))
 		.pipe(minifycss({
 			keepSpecialComments: false
