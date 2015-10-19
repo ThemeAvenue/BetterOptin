@@ -26,7 +26,7 @@ gulp.task('styles', function () {
 			keepSpecialComments: false
 		}))
 		.pipe(gulp.dest('public/assets/css/'))
-	gulp.src(['admin/assets/css/**/*.less'])
+	gulp.src(['admin/assets/css/admin.less'])
 		.pipe(plumber({
 			errorHandler: function (error) {
 				console.log(error.message);
