@@ -183,6 +183,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 		private function load_providers() {
 			require( WPBO_PATH . 'includes/providers/wordpress/load.php' );
 			require( WPBO_PATH . 'includes/providers/mailchimp/load.php' );
+			require( WPBO_PATH . 'includes/providers/mailpoet/load.php' );
 		}
 
 		/**
