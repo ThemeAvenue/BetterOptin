@@ -195,7 +195,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 
 			apply_filters( 'plugin_locale', get_locale(), 'wpbo' );
 
-			load_plugin_textdomain( 'wpbo', false, basename( plugin_dir_path( dirname( __FILE__ ) ) ) . '/languages/' );
+			load_plugin_textdomain( 'betteroptin', false, basename( plugin_dir_path( dirname( __FILE__ ) ) ) . '/languages/' );
 
 		}
 
