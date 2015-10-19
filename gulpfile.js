@@ -26,6 +26,22 @@ gulp.task('styles', function () {
 			keepSpecialComments: false
 		}))
 		.pipe(gulp.dest('public/assets/css/'))
+	gulp.src(['admin/assets/css/**/*.less'])
+		.pipe(plumber({
+			errorHandler: function (error) {
+				console.log(error.message);
+				this.emit('end');
+			}
+		}))
+		.pipe(less())
+		.pipe(postcss([autoprefixer({
+			browsers: ['last 2 versions']
+		})]))
+		.pipe(gulp.dest('admin/assets/css/'))
+		.pipe(minifycss({
+			keepSpecialComments: false
+		}))
+		.pipe(gulp.dest('admin/assets/css/'))
 });
 
 gulp.task('scripts', function () {
