@@ -1,0 +1,17 @@
+{
+    "name": "aweber/aweber",
+    "description": "The official AWeber API client library.",
+    "homepage": "https://www.aweber.com",
+    "license": "GPL-2.0",
+    "keywords": ["email", "api", "client"],
+    "support": {
+        "email": "api@aweber.com",
+        "source": "https://github.com/aweber/AWeber-API-PHP-Library",
+        "issues": "https://github.com/aweber/AWeber-API-PHP-Library"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "aweber_api/"
+        }
+    }
+}

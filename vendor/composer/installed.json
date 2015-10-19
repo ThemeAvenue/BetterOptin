@@ -82,5 +82,40 @@
         ],
         "description": "Super-simple, minimum abstraction MailChimp API v2 wrapper",
         "homepage": "https://github.com/drewm/mailchimp-api"
+    },
+    {
+        "name": "aweber/aweber",
+        "version": "v1.1.14",
+        "version_normalized": "1.1.14.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/aweber/AWeber-API-PHP-Library.git",
+            "reference": "509abd47ae05f760239f2f5d12eef7ba330b111a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/aweber/AWeber-API-PHP-Library/zipball/509abd47ae05f760239f2f5d12eef7ba330b111a",
+            "reference": "509abd47ae05f760239f2f5d12eef7ba330b111a",
+            "shasum": ""
+        },
+        "time": "2015-02-19 18:16:21",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "": "aweber_api/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "description": "The official AWeber API client library.",
+        "homepage": "https://www.aweber.com",
+        "keywords": [
+            "api",
+            "client",
+            "email"
+        ]
     }
 ]
