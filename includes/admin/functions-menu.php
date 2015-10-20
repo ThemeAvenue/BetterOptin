@@ -28,9 +28,9 @@ function wpbo_add_plugin_settings_page() {
 	$_registered_pages['wpbo-popup_page_wpbo-customizer'] = true;
 	add_action( 'wpbo-popup_page_wpbo-customizer', 'wpbo_display_popup_customizer' );
 
-	add_submenu_page( 'edit.php?post_type=wpbo-popup', __( 'Analytics', 'wpbo' ), __( 'Analytics', 'wpbo' ), 'administrator', 'wpbo-analytics', 'wpbo_display_popup_analytics' );
-	add_submenu_page( 'edit.php?post_type=wpbo-popup', __( 'About', 'wpbo' ), __( 'About', 'wpbo' ), 'administrator', 'wpbo-about', 'wpbo_display_popup_about' );
-	add_submenu_page( 'edit.php?post_type=wpbo-popup', __( 'Documentation', 'wpbo' ), __( 'Documentation', 'wpbo' ), 'administrator', 'wpbo-doc', 'wpbo_display_popup_doc' );
+	add_submenu_page( 'edit.php?post_type=wpbo-popup', __( 'Analytics', 'betteroptin' ), __( 'Analytics', 'betteroptin' ), 'administrator', 'wpbo-analytics', 'wpbo_display_popup_analytics' );
+	add_submenu_page( 'edit.php?post_type=wpbo-popup', __( 'About', 'betteroptin' ), __( 'About', 'betteroptin' ), 'administrator', 'wpbo-about', 'wpbo_display_popup_about' );
+	add_submenu_page( 'edit.php?post_type=wpbo-popup', __( 'Documentation', 'betteroptin' ), __( 'Documentation', 'betteroptin' ), 'administrator', 'wpbo-doc', 'wpbo_display_popup_doc' );
 
 }
 

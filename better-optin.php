@@ -10,11 +10,11 @@
  *
  * @wordpress-plugin
  * Plugin Name:       BetterOptin
- * Plugin URI:        http://betteropt.in/
+ * Plugin URI:        https://betteropt.in/
  * Description:       BetterOptin helps you convert your visitors in subscribers and fill up your mailing lists.
  * Version:           2.0.0
  * Author:            ThemeAvenue
- * Author URI:        http://themeavenue.net
+ * Author URI:        https://themeavenue.net
  * Text Domain:       betteroptin
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -84,7 +84,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wpas' ), '2.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'betteroptin' ), '2.0' );
 		}
 
 		/**
@@ -95,7 +95,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 		 */
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'wpas' ), '2.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'betteroptin' ), '2.0' );
 		}
 
 		/**
@@ -193,7 +193,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 		 */
 		public function load_plugin_textdomain() {
 
-			apply_filters( 'plugin_locale', get_locale(), 'wpbo' );
+			apply_filters( 'plugin_locale', get_locale(), 'betteroptin' );
 
 			load_plugin_textdomain( 'betteroptin', false, basename( plugin_dir_path( dirname( __FILE__ ) ) ) . '/languages/' );
 

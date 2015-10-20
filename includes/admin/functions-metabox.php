@@ -24,11 +24,11 @@ add_action( 'add_meta_boxes', 'wpbo_register_metabox_steps' );
  * @since  1.0.0
  */
 function wpbo_register_metabox_steps() {
-	add_meta_box( 'wpbo_step1_template', __( 'Step 1: Choose a Template', 'wpbo' ), 'wpbo_display_metabox_step1', 'wpbo-popup', 'normal', 'default' );
-	add_meta_box( 'wpbo_step2_settings', __( 'Step 2: Edit Settings', 'wpbo' ), 'wpbo_display_metabox_step2', 'wpbo-popup', 'normal', 'default' );
-	add_meta_box( 'wpbo_step3_display', __( 'Step 3: Choose where to Display', 'wpbo' ), 'wpbo_display_metabox_step3', 'wpbo-popup', 'normal', 'default' );
-	add_meta_box( 'wpbo_step4_design', __( 'Step 4: Customize the Design', 'wpbo' ), 'wpbo_display_metabox_step4', 'wpbo-popup', 'normal', 'default' );
-	add_meta_box( 'wpbo_step5_checklist', __( 'Checklist', 'wpbo' ), 'wpbo_display_metabox_step5', 'wpbo-popup', 'side', 'high' );
+	add_meta_box( 'wpbo_step1_template', __( 'Step 1: Choose a Template', 'betteroptin' ), 'wpbo_display_metabox_step1', 'wpbo-popup', 'normal', 'default' );
+	add_meta_box( 'wpbo_step2_settings', __( 'Step 2: Edit Settings', 'betteroptin' ), 'wpbo_display_metabox_step2', 'wpbo-popup', 'normal', 'default' );
+	add_meta_box( 'wpbo_step3_display', __( 'Step 3: Choose where to Display', 'betteroptin' ), 'wpbo_display_metabox_step3', 'wpbo-popup', 'normal', 'default' );
+	add_meta_box( 'wpbo_step4_design', __( 'Step 4: Customize the Design', 'betteroptin' ), 'wpbo_display_metabox_step4', 'wpbo-popup', 'normal', 'default' );
+	add_meta_box( 'wpbo_step5_checklist', __( 'Checklist', 'betteroptin' ), 'wpbo_display_metabox_step5', 'wpbo-popup', 'side', 'high' );
 }
 
 /**

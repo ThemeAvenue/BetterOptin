@@ -15,7 +15,7 @@ $args   = array(
 $popups = new WP_Query( $args );
 ?>
 
-<h2><?php _e( 'Which popup would you like to customize?', 'wpbo' ); ?></h2>
+<h2><?php _e( 'Which popup would you like to customize?', 'betteroptin' ); ?></h2>
 <form method="get" action="<?php echo $action; ?>">
 
 	<select id="wpbo_edit_popup" name="wpbo_popup">

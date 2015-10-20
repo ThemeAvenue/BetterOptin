@@ -17,16 +17,16 @@ $refresh = add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-cu
 <div class="taed-sidebar">
 
 	<div class="taed-sidebar-info">
-		<div><?php _e( 'You are now editing', 'wpbo' ); ?></div>
+		<div><?php _e( 'You are now editing', 'betteroptin' ); ?></div>
 		<div><?php echo get_the_title( $popup_id ); ?></div>
 	</div>
 
 	<div class="taed-buttons">
 		<form method="post" action="<?php echo add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-customizer', 'wpbo_popup' => $popup_id ), admin_url( 'edit.php' ) ); ?>">
 
-			<button class="button-primary taed-save"><?php _e( 'Save', 'wpbo' ); ?></button>
-			<a class="button-secondary taed-cancel" title="<?php _e( 'Are you sure? You will lose all unsaved changes. You can\'t undo this action.', 'wpbo' ); ?>" href="<?php echo $refresh; ?>"><?php _e( 'Cancel', 'wpbo' ); ?></button>
-			<a href="<?php echo $reset; ?>" class="button-secondary taed-reset" title="<?php _e( 'Are you sure? This will reset to the original Template', 'wpbo' ); ?>"><?php _e( 'Reset', 'wpbo' ); ?></a>
+			<button class="button-primary taed-save"><?php _e( 'Save', 'betteroptin' ); ?></button>
+			<a class="button-secondary taed-cancel" title="<?php _e( 'Are you sure? You will lose all unsaved changes. You can\'t undo this action.', 'betteroptin' ); ?>" href="<?php echo $refresh; ?>"><?php _e( 'Cancel', 'betteroptin' ); ?></button>
+			<a href="<?php echo $reset; ?>" class="button-secondary taed-reset" title="<?php _e( 'Are you sure? This will reset to the original Template', 'betteroptin' ); ?>"><?php _e( 'Reset', 'betteroptin' ); ?></a>
 
 			<fieldset style="display:none;">
 				<input id="taed-google-font" name="taed-google-font" type="hidden">
@@ -38,7 +38,7 @@ $refresh = add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-cu
 	</div>
 
 	<div class="taed-field taed-modalsize">
-		<label><?php _e( 'Popup Size (in <em>pixels</em>)', 'wpbo' ); ?></label>
+		<label><?php _e( 'Popup Size (in <em>pixels</em>)', 'betteroptin' ); ?></label>
 		<div class="clearfix">
 			<div class="taed-third">
 				<input class="form-control taed-modalwidth" type="text" name="" value="" placeholder="Width">
@@ -47,18 +47,18 @@ $refresh = add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-cu
 				<input class="form-control taed-modalheight" type="text" name="" value="" placeholder="Height">
 			</div>
 			<div class="taed-third">
-				<a id="taed-modalsize-reset" href="#" class="button-secondary" title="<?php _e( 'Click here to reset to default size.', 'wpbo' ); ?>"><?php _e( 'Default', 'wpbo' ); ?></a>
+				<a id="taed-modalsize-reset" href="#" class="button-secondary" title="<?php _e( 'Click here to reset to default size.', 'betteroptin' ); ?>"><?php _e( 'Default', 'betteroptin' ); ?></a>
 			</div>
 		</div>
 	</div>
 
 	<div class="taed-field taed-textEdit">
-		<label for="taed-textedit-textarea"><?php _e( 'Edit content', 'wpbo' ); ?></label>
-		<textarea id="taed-textedit-textarea" class="form-control"><?php _e( 'Error loading content', 'wpbo' ); ?></textarea>
+		<label for="taed-textedit-textarea"><?php _e( 'Edit content', 'betteroptin' ); ?></label>
+		<textarea id="taed-textedit-textarea" class="form-control"><?php _e( 'Error loading content', 'betteroptin' ); ?></textarea>
 	</div>
 
 	<div class="taed-field taed-tinymce">
-		<label for="taed-tinymce-textarea"><?php _e( 'Edit content', 'wpbo' ); ?></label>
+		<label for="taed-tinymce-textarea"><?php _e( 'Edit content', 'betteroptin' ); ?></label>
 		<?php
 		// @NOTE: The tinymce parameter allows you to pass configuration options directly to TinyMCE. See http://stackoverflow.com/a/13293543/1414881
 		if( version_compare( get_bloginfo( 'version' ), '3.9', '>=' ) ) {
@@ -95,57 +95,57 @@ $refresh = add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-cu
 	</div>
 
 	<div class="taed-field taed-backgroundColor">
-		<label for="taed-bg-color"><?php _e( 'Background Color', 'wpbo' ); ?></label>
+		<label for="taed-bg-color"><?php _e( 'Background Color', 'betteroptin' ); ?></label>
 		<input id="taed-bg-color" class="form-control" type="text" name="" value="">
 	</div>
 
 	<div class="taed-field taed-backgroundImage">
-		<label for="taed-bg-img"><?php _e( 'Background Image', 'wpbo' ); ?></label>
+		<label for="taed-bg-img"><?php _e( 'Background Image', 'betteroptin' ); ?></label>
 		<input id="taed-bg-img" name="" type="text" class="form-control tgm-new-media-image" value="" />
-		<input class="tgm-open-media button" value="<?php _e( 'Upload', 'wpbo' ); ?>" type="button" data-tgmtitle="<?php _e( 'Upload a background image', 'wpbo' ); ?>" data-tgmbtn="<?php _e( 'Apply background image', 'wpbo' ); ?>" data-tgmlibtype="['image']" />
-		<p class="taed-helper"><?php printf( __( 'If you\'re looking for seamless patterns, take a look at <a href="%s" target="_blank">Subtle Patterns</a>', 'wpbo' ), esc_url( 'http://subtlepatterns.com/thumbnail-view/' ) ); ?></p>
+		<input class="tgm-open-media button" value="<?php _e( 'Upload', 'betteroptin' ); ?>" type="button" data-tgmtitle="<?php _e( 'Upload a background image', 'betteroptin' ); ?>" data-tgmbtn="<?php _e( 'Apply background image', 'betteroptin' ); ?>" data-tgmlibtype="['image']" />
+		<p class="taed-helper"><?php printf( __( 'If you\'re looking for seamless patterns, take a look at <a href="%s" target="_blank">Subtle Patterns</a>', 'betteroptin' ), esc_url( 'http://subtlepatterns.com/thumbnail-view/' ) ); ?></p>
 	</div>
 
 	<div class="taed-field taed-img">
-		<label for="taed-img"><?php _e( 'Image URL', 'wpbo' ); ?></label>
+		<label for="taed-img"><?php _e( 'Image URL', 'betteroptin' ); ?></label>
 		<input id="taed-img" name="" type="text" class="form-control tgm-new-media-image" value="" />
-		<input class="tgm-open-media button" value="<?php _e( 'Upload', 'wpbo' ); ?>" type="button" data-tgmtitle="<?php _e( 'Upload a new image', 'wpbo' ); ?>" data-tgmbtn="<?php _e( 'Insert new image', 'wpbo' ); ?>" data-tgmlibtype="['image']" />
-		<p class="taed-helper"><?php printf( __( 'The maximum width allowed is %s.', 'wpbo' ), '<code>0px</code>' ); ?> <span class="wpbo-danger"><?php _e( 'Make sure to resize your image for maximum performance!', 'wpbo' ); ?></span></p>
+		<input class="tgm-open-media button" value="<?php _e( 'Upload', 'betteroptin' ); ?>" type="button" data-tgmtitle="<?php _e( 'Upload a new image', 'betteroptin' ); ?>" data-tgmbtn="<?php _e( 'Insert new image', 'betteroptin' ); ?>" data-tgmlibtype="['image']" />
+		<p class="taed-helper"><?php printf( __( 'The maximum width allowed is %s.', 'betteroptin' ), '<code>0px</code>' ); ?> <span class="wpbo-danger"><?php _e( 'Make sure to resize your image for maximum performance!', 'betteroptin' ); ?></span></p>
 	</div>
 
 	<div class="taed-field taed-backgroundRepeat">
-		<label for="taed-bg-repeat"><?php _e( 'Background Repeat', 'wpbo' ); ?></label>
+		<label for="taed-bg-repeat"><?php _e( 'Background Repeat', 'betteroptin' ); ?></label>
 		<select id="taed-bg-repeat" class="form-control" name="">
-			<option value="repeat" selected="selected"><?php _e( 'Repeat', 'wpbo' ); ?></option>
-			<option value="no-repeat"><?php _e( 'No-Repeat', 'wpbo' ); ?></option>
-			<option value="repeat-x"><?php _e( 'Repeat Horizontally', 'wpbo' ); ?></option>
-			<option value="repeat-y"><?php _e( 'Repeat Vertically', 'wpbo' ); ?></option>
+			<option value="repeat" selected="selected"><?php _e( 'Repeat', 'betteroptin' ); ?></option>
+			<option value="no-repeat"><?php _e( 'No-Repeat', 'betteroptin' ); ?></option>
+			<option value="repeat-x"><?php _e( 'Repeat Horizontally', 'betteroptin' ); ?></option>
+			<option value="repeat-y"><?php _e( 'Repeat Vertically', 'betteroptin' ); ?></option>
 		</select>
 	</div>
 
 	<div class="taed-field taed-backgroundPosition">
-		<label for="taed-bg-position"><?php _e( 'Background Position', 'wpbo' ); ?></label>
+		<label for="taed-bg-position"><?php _e( 'Background Position', 'betteroptin' ); ?></label>
 		<input id="taed-bg-position" class="form-control" type="text" name="" value="">
-		<p class="taed-helper"><?php _e( 'Please use the following format: <code>horizontal vertical</code>', 'wpbo' ); ?></p>
+		<p class="taed-helper"><?php _e( 'Please use the following format: <code>horizontal vertical</code>', 'betteroptin' ); ?></p>
 	</div>
 
 	<div class="taed-field taed-backgroundSize">
-		<label for="taed-bg-size"><?php _e( 'Background Size', 'wpbo' ); ?></label>
+		<label for="taed-bg-size"><?php _e( 'Background Size', 'betteroptin' ); ?></label>
 		<select id="taed-bg-size" class="form-control" name="">
-			<option value="auto" selected="selected"><?php _e( 'Auto', 'wpbo' ); ?></option>
-			<option value="cover"><?php _e( 'Cover', 'wpbo' ); ?></option>
-			<option value="contain"><?php _e( 'Contain', 'wpbo' ); ?></option>
+			<option value="auto" selected="selected"><?php _e( 'Auto', 'betteroptin' ); ?></option>
+			<option value="cover"><?php _e( 'Cover', 'betteroptin' ); ?></option>
+			<option value="contain"><?php _e( 'Contain', 'betteroptin' ); ?></option>
 		</select>
-		<p class="taed-helper"><?php _e( 'Specify the size of the background image', 'wpbo' ); ?></p>
+		<p class="taed-helper"><?php _e( 'Specify the size of the background image', 'betteroptin' ); ?></p>
 	</div>
 
 	<div class="taed-field taed-color">
-		<label for="taed-color"><?php _e( 'Text Color', 'wpbo' ); ?></label>
+		<label for="taed-color"><?php _e( 'Text Color', 'betteroptin' ); ?></label>
 		<input id="taed-color" class="form-control" type="text" name="" value="">
 	</div>
 
 	<div class="taed-field taed-fontFamily">
-		<label for="taed-font-family"><?php _e( 'Font Family', 'wpbo' ); ?></label>
+		<label for="taed-font-family"><?php _e( 'Font Family', 'betteroptin' ); ?></label>
 		<select id="taed-font-family" class="form-control">
 			<?php
 			$fonts = wpbo_get_font_stack();
@@ -163,13 +163,13 @@ $refresh = add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-cu
 	</div>
 
 	<div class="taed-field taed-fontSize">
-		<label for="taed-font-size"><?php _e( 'Font Size', 'wpbo' ); ?></label>
+		<label for="taed-font-size"><?php _e( 'Font Size', 'betteroptin' ); ?></label>
 		<input id="taed-font-size" class="form-control" type="range" id="fontSize" name="" min="10" max="42" step="2">
 		<output for="fontSize" id="fontSizeValue"></output>
 	</div>
 
 	<div class="taed-field taed-textAlign">
-		<label for="taed-text-align"><?php _e( 'Text Alignment', 'wpbo' ); ?></label>
+		<label for="taed-text-align"><?php _e( 'Text Alignment', 'betteroptin' ); ?></label>
 		<input type="hidden" class="form-control">
 		<div class="taed-textAlign-select">
 			<div data-align="start" class="mce-widget mce-btn" role="button" aria-label="Align left">

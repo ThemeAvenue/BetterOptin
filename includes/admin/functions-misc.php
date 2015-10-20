@@ -73,11 +73,11 @@ function wpbo_row_action( $actions, $post ) {
 	/* Only add the link if a template is set */
 	if( '' != get_post_meta( $post->ID, 'wpbo_template', true ) ) {
 
-		$actions['wpbo_customize'] = sprintf( '<a href="%s" class="google_link">%s</a>', add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-customizer', 'wpbo_popup' => $post->ID ), admin_url( 'edit.php' ) ), __( 'Customize', 'wpbo' ) );
+		$actions['wpbo_customize'] = sprintf( '<a href="%s" class="google_link">%s</a>', add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-customizer', 'wpbo_popup' => $post->ID ), admin_url( 'edit.php' ) ), __( 'Customize', 'betteroptin' ) );
 
 	}
 
-	$actions['wpbo_analytics'] = sprintf( '<a href="%s" class="google_link">%s</a>', add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-analytics', 'popup' => $post->ID, 'period' => 'today' ), admin_url( 'edit.php' ) ), __( 'Stats', 'wpbo' ) );
+	$actions['wpbo_analytics'] = sprintf( '<a href="%s" class="google_link">%s</a>', add_query_arg( array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-analytics', 'popup' => $post->ID, 'period' => 'today' ), admin_url( 'edit.php' ) ), __( 'Stats', 'betteroptin' ) );
 
 	return $actions;
 }
@@ -103,7 +103,7 @@ function wpbo_change_publish_button_label( $translation, $text ) {
 
 	if ( 'wpbo-popup' == $typenow ) {
 		if ( ( ! isset( $_GET['post'] ) || isset( $_GET['post'] ) && '' == get_post_meta( intval( $_GET['post'] ), '_wpbo_template_display', true ) ) && 'Publish' == $text ) {
-			$translation = __( 'Save', 'wpbo' );
+			$translation = __( 'Save', 'betteroptin' );
 		}
 	}
 
@@ -129,7 +129,7 @@ function wpbo_copyright( $text ) {
 		return $text;
 	}
 
-	return sprintf( __( '<a href="%s" target="_blank">BetterOptin</a> version %s developed by <a href="%s" target="_blank">ThemeAvenue</a>.', 'wpbo' ), esc_url( 'http://betteropt.in' ), WPBO_VERSION, esc_url( 'http://themeavenue.net?utm_source=plugin&utm_medium=footer_link&utm_campaign=BetterOptin' ) );
+	return sprintf( __( '<a href="%s" target="_blank">BetterOptin</a> version %s developed by <a href="%s" target="_blank">ThemeAvenue</a>.', 'betteroptin' ), esc_url( 'http://betteropt.in' ), WPBO_VERSION, esc_url( 'http://themeavenue.net?utm_source=plugin&utm_medium=footer_link&utm_campaign=BetterOptin' ) );
 
 }
 

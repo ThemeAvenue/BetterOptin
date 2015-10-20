@@ -4,7 +4,7 @@ $templates = wpbo_get_templates_list();
 $current   = get_post_meta( $post_id, 'wpbo_template', true );
 ?>
 
-<p><?php _e('Click on a thumbnail to preview in full size.', 'wpbo') ?></p>
+<p><?php _e('Click on a thumbnail to preview in full size.', 'betteroptin') ?></p>
 
 <div class="tav-clearfix" id="wpbo-select-template">
 	<fieldset class="wpbo-step" data-step="1">
@@ -17,8 +17,8 @@ $current   = get_post_meta( $post_id, 'wpbo_template', true );
 					<img src="<?php echo $image; ?>" alt="<?php echo $template; ?>" class="ta-ri-img">
 				</label>
 				<div class="ta-ri-crtl">
-					<button class="button-primary"><?php _e( 'Select', 'wpbo' ); ?></button>
-					<button type="submit" class="button-secondary" name="save_customize"><?php _e( 'Customize', 'wpbo' ); ?></button>
+					<button class="button-primary"><?php _e( 'Select', 'betteroptin' ); ?></button>
+					<button type="submit" class="button-secondary" name="save_customize"><?php _e( 'Customize', 'betteroptin' ); ?></button>
 				</div>
 				<span class="ta-ri-crtl-ico">&#10003;</span>
 			</div>

@@ -414,7 +414,7 @@ class WPBO_Popup {
 	 */
 	public function submission_confirmation_fallback() { ?>
 
-		<script type="text/javascript">if(window.location.search.indexOf("wpbo_submit=done")>-1){alert("<?php _e( 'You have successfully registered!', 'wpbo' ); ?>")}if(window.location.search.indexOf("wpbo_submit=fail")>-1){alert("<?php _e( 'Fail. Please try again.', 'wpbo' ); ?>")}</script>
+		<script type="text/javascript">if(window.location.search.indexOf("wpbo_submit=done")>-1){alert("<?php esc_html_e( 'You have successfully registered!', 'betteroptin' ); ?>")}if(window.location.search.indexOf("wpbo_submit=fail")>-1){alert("<?php _e( 'Fail. Please try again.', 'wpbo' ); ?>")}</script>
 
 	<?php }
 

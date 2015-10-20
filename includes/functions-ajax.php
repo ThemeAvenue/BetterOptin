@@ -50,7 +50,7 @@ function wpbo_check_page_availability() {
 				$plink  = add_query_arg( array( 'post' => $popup->ID, 'action' => 'edit' ), admin_url( 'post.php' ) );
 
 				$msg = '<p>';
-				$msg .= sprintf( __( 'The page %s (#%s) is already used by the popup <a href="%s" target="_blank">%s</a> (#%s).', 'wpbo' ), "<strong><em>$title</em></strong>", $post_id, $plink, $ptitle, $popup->ID );
+				$msg .= sprintf( __( 'The page %s (#%s) is already used by the popup <a href="%s" target="_blank">%s</a> (#%s).', 'betteroptin' ), "<strong><em>$title</em></strong>", $post_id, $plink, $ptitle, $popup->ID );
 				$msg .= '</p>';
 
 				/* Convert $messages into an array when there is at least one warning message to save */
@@ -69,7 +69,7 @@ function wpbo_check_page_availability() {
 	if ( is_array( $messages ) ) {
 
 		/* Explain what's going to happen next */
-		array_push( $messages, '<p><em>' . __( 'TIP: If you keep the conflicting page(s) selected, they will be removed from the other popup(s).', 'wpbo' ) . '</em></p>' );
+		array_push( $messages, '<p><em>' . __( 'TIP: If you keep the conflicting page(s) selected, they will be removed from the other popup(s).', 'betteroptin' ) . '</em></p>' );
 
 		/* Convert to string */
 		$messages = implode( '', $messages );
@@ -346,7 +346,7 @@ function wpbo_get_documentation() {
 	}
 
 	if ( false === $doc ) {
-		printf( __( 'Oops! We were unable to fetche the documentation from our support site. Please <a href="%s" target="_blank">click here to see the doc on our site</a>.', 'wpbo' ), esc_url( 'http://support.themeavenue.net/plugins/betteroptin/getting-started/' ) );
+		printf( __( 'Oops! We were unable to fetche the documentation from our support site. Please <a href="%s" target="_blank">click here to see the doc on our site</a>.', 'betteroptin' ), esc_url( 'http://support.themeavenue.net/plugins/betteroptin/getting-started/' ) );
 	} else {
 		echo $doc;
 	}

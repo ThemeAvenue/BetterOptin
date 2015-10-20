@@ -4,18 +4,18 @@ $except        = array( 'attachment', 'wpbo-popup' );
 $all           = isset( $_GET['post'] ) ? get_post_meta( intval( $_GET['post'] ), '_wpbo_display_all', true ) : '';
 $relationships = get_option( 'wpbo_popup_relationships', array() );
 ?>
-<p><?php _e( 'Please select the pages where you want this popup to show up. You can select multiple posts in each post type.', 'wpbo' ); ?></p>
+<p><?php _e( 'Please select the pages where you want this popup to show up. You can select multiple posts in each post type.', 'betteroptin' ); ?></p>
 <fieldset class="wpbo-step"  data-step="3">
 	<table class="form-table">
 	<tbody>
 		<tr valign="top" class="even first">
 			<th scope="row" class="first last">
-				<label for="wpbo_all"><?php _e( 'Everywhere', 'wpbo' ); ?></label>
+				<label for="wpbo_all"><?php _e( 'Everywhere', 'betteroptin' ); ?></label>
 			</th>
 			<td>
 				<label for="wpbo_all">
 					<input type="checkbox" name="wpbo_display_all" id="wpbo_all" value="all" <?php if( 'yes' == $all ): ?>checked="checked"<?php endif; ?>> 
-					<?php _e( 'Display this popup everywhere on the site.', 'wpbo' ); ?>
+					<?php _e( 'Display this popup everywhere on the site.', 'betteroptin' ); ?>
 				</label>
 			</td>
 		</tr>
@@ -29,7 +29,7 @@ $relationships = get_option( 'wpbo_popup_relationships', array() );
 		$warning     = false;
 		$list        = array();
 		$name        = ucwords( $pt );
-		$placeholder = sprintf( __( 'Select one or more %s', 'wpbo' ), $name );
+		$placeholder = sprintf( __( 'Select one or more %s', 'betteroptin' ), $name );
 		$pt_display  = isset( $_GET['post'] ) ? get_post_meta( intval( $_GET['post'] ), '_wpbo_display_' . $pt, true ) : false;
 
 		$args        = array(
@@ -91,7 +91,7 @@ $relationships = get_option( 'wpbo_popup_relationships', array() );
 					</div>
 					<label for="wpbo_display_<?php echo $pt; ?>" class="wpbo-post-type-all">
 						<input type="checkbox" name="wpbo_display_<?php echo $pt; ?>_all" id="wpbo_display_<?php echo $pt; ?>" value="all" <?php if( 'all' == $pt_display ): ?>checked="checked"<?php endif; ?>> 
-						<?php printf( __( 'Display on all %s', 'wpbo' ), $name ); ?>
+						<?php printf( __( 'Display on all %s', 'betteroptin' ), $name ); ?>
 					</label>
 
 					<?php
@@ -105,14 +105,14 @@ $relationships = get_option( 'wpbo_popup_relationships', array() );
 								$page  = get_post( $key );
 								
 								echo '<p>';
-								printf( __( 'Warning: other popups are already set to display on the following %s:', 'wpbo' ), $pt );
+								printf( __( 'Warning: other popups are already set to display on the following %s:', 'betteroptin' ), $pt );
 								echo '</p><ul>';
 
 								foreach( $conflicts as $conflict ) {
 
 									$popup = get_post( $conflict );
 									echo '<li>';
-									printf( __( 'The %s <a href="%s" target="_blank">%s</a> already has popup <a href="%s" target="_blank">%s</a> set.', 'wpbo' ), $pt, get_permalink( $page->ID ), $page->post_title, get_permalink( $popup->ID ), $popup->post_title );
+									printf( __( 'The %s <a href="%s" target="_blank">%s</a> already has popup <a href="%s" target="_blank">%s</a> set.', 'betteroptin' ), $pt, get_permalink( $page->ID ), $page->post_title, get_permalink( $popup->ID ), $popup->post_title );
 									echo '</li>';
 
 								}

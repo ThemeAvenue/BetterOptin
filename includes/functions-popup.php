@@ -333,7 +333,7 @@ function wpbo_unpublished_popup_notice() {
 	if( 'wpbo-popup' == $typenow && isset( $_GET['post'] ) && isset( $post ) && 'draft' == $post->post_status ): ?>
 
 		<div class="error">
-			<p><?php _e( 'This popup is still in draft mode and is <strong>not visible on the site</strong>. Don\'t forget to publish it when you\'re ready.', 'wpbo' ); ?></p>
+			<p><?php _e( 'This popup is still in draft mode and is <strong>not visible on the site</strong>. Don\'t forget to publish it when you\'re ready.', 'betteroptin' ); ?></p>
 		</div>
 
 	<?php endif;

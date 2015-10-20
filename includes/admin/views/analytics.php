@@ -37,12 +37,12 @@ $period = isset( $_GET['period'] ) ? $_GET['period'] : 'today';
 <div class="wrap">
 	
 	<div id="icon-options-general" class="icon32"></div>
-	<h2><?php _e( 'Analytics: Impression and Conversion Stats', 'wpbo' ); ?></h2>
+	<h2><?php _e( 'Analytics: Impression and Conversion Stats', 'betteroptin' ); ?></h2>
 
 	<div class="wpbo-stats-controls">
 		<form method="get" action="<?php echo admin_url( 'edit.php' ); ?>">
 			<select id="wpbo-stats-popup-select" name="popup">
-				<option value="all"><?php _e( 'All popups', 'wpbo' ); ?></option>
+				<option value="all"><?php _e( 'All popups', 'betteroptin' ); ?></option>
 				<?php
 				if( isset( $popups->posts ) && count( $popups->posts ) > 0 ) {
 
@@ -55,22 +55,22 @@ $period = isset( $_GET['period'] ) ? $_GET['period'] : 'today';
 				}
 				?>
 			</select>
-			<label for="wpbo-stats-popup-select"><?php _e( 'View popup', 'wpbo' ); ?></label>
+			<label for="wpbo-stats-popup-select"><?php _e( 'View popup', 'betteroptin' ); ?></label>
 
 			<select id="wpbo-stats-date-select" name="period">
-				<option value="today" <?php if( isset( $_GET['period'] ) && 'today' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'Today', 'wpbo' ); ?></option>
-				<option value="this_week" <?php if( isset( $_GET['period'] ) && 'this_week' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'This Week', 'wpbo' ); ?></option>
-				<option value="last_week" <?php if( isset( $_GET['period'] ) && 'last_week' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'Last Week', 'wpbo' ); ?></option>
-				<option value="this_month" <?php if( isset( $_GET['period'] ) && 'this_month' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'This Month', 'wpbo' ); ?></option>
-				<option value="last_month" <?php if( isset( $_GET['period'] ) && 'last_month' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'Last Month', 'wpbo' ); ?></option>
-				<option value="this_quarter" <?php if( isset( $_GET['period'] ) && 'this_quarter' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'This Quarter', 'wpbo' ); ?></option>
-				<option value="last_quarter" <?php if( isset( $_GET['period'] ) && 'last_quarter' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'Last Quarter', 'wpbo' ); ?></option>
-				<option value="this_year" <?php if( isset( $_GET['period'] ) && 'this_year' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'This Year', 'wpbo' ); ?></option>
-				<option value="last_year" <?php if( isset( $_GET['period'] ) && 'last_year' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'Last Year', 'wpbo' ); ?></option>
+				<option value="today" <?php if( isset( $_GET['period'] ) && 'today' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'Today', 'betteroptin' ); ?></option>
+				<option value="this_week" <?php if( isset( $_GET['period'] ) && 'this_week' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'This Week', 'betteroptin' ); ?></option>
+				<option value="last_week" <?php if( isset( $_GET['period'] ) && 'last_week' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'Last Week', 'betteroptin' ); ?></option>
+				<option value="this_month" <?php if( isset( $_GET['period'] ) && 'this_month' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'This Month', 'betteroptin' ); ?></option>
+				<option value="last_month" <?php if( isset( $_GET['period'] ) && 'last_month' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'Last Month', 'betteroptin' ); ?></option>
+				<option value="this_quarter" <?php if( isset( $_GET['period'] ) && 'this_quarter' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'This Quarter', 'betteroptin' ); ?></option>
+				<option value="last_quarter" <?php if( isset( $_GET['period'] ) && 'last_quarter' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'Last Quarter', 'betteroptin' ); ?></option>
+				<option value="this_year" <?php if( isset( $_GET['period'] ) && 'this_year' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'This Year', 'betteroptin' ); ?></option>
+				<option value="last_year" <?php if( isset( $_GET['period'] ) && 'last_year' == $_GET['period'] ): ?>selected='selected'<?php endif; ?>><?php _e( 'Last Year', 'betteroptin' ); ?></option>
 			</select>
-			<label for="wpbo-stats-date-select"><?php _e( 'Filter by Date', 'wpbo' ); ?></label>
+			<label for="wpbo-stats-date-select"><?php _e( 'Filter by Date', 'betteroptin' ); ?></label>
 
-			<!-- <a id="wpbo-stats-reset" href="#" class="button-secondary tav-fr" title="Are you sure to reset statistics for the current view? This statistics will be deleted immediately. You can't undo this action."><?php _e( 'Reset', 'wpbo' ); ?></a> -->
+			<!-- <a id="wpbo-stats-reset" href="#" class="button-secondary tav-fr" title="Are you sure to reset statistics for the current view? This statistics will be deleted immediately. You can't undo this action."><?php _e( 'Reset', 'betteroptin' ); ?></a> -->
 
 			<input type="hidden" name="post_type" value="wpbo-popup">
 			<input type="hidden" name="page" value="wpbo-analytics">
@@ -94,7 +94,7 @@ $period = isset( $_GET['period'] ) ? $_GET['period'] : 'today';
 					
 					<div class="postbox">
 
-						<h3><span><?php _e( 'Graph Statistics', 'wpbo' ); ?></span></h3>
+						<h3><span><?php _e( 'Graph Statistics', 'betteroptin' ); ?></span></h3>
 						<div class="inside">
 							<div id="wpbo-stats-graph" class="wpbo-loading" style="height: 400px; margin: 20px 0;"></div>
 						</div> <!-- .inside -->
@@ -112,18 +112,18 @@ $period = isset( $_GET['period'] ) ? $_GET['period'] : 'today';
 					
 					<div class="postbox">
 
-						<h3><span><?php printf( __( '%s\'s Stats Breakdown', 'wpbo' ), ucwords( str_replace( '_', ' ', $period ) ) ); ?></span></h3>
+						<h3><span><?php printf( __( '%s\'s Stats Breakdown', 'betteroptin' ), ucwords( str_replace( '_', ' ', $period ) ) ); ?></span></h3>
 						<?php
 						$total_rate = ( 0 === $total_conversions || 0 === $total_impressions ) ? 0 : ( 100 * $total_conversions ) / $total_impressions;
 						$total_rate = number_format( $total_rate, 2 );
 						?>
 						<div class="inside">
 							<ul>
-								<li><?php printf( __( 'Total impressions for %s: %s', 'wpbo' ), str_replace( '_', ' ' , $period ), '<code>' . number_format( $total_impressions, 0 ) . '</code>' ); ?></li>
-								<li><?php printf( __( 'Total conversions for %s: %s', 'wpbo' ), str_replace( '_', ' ' , $period ), '<code>' . number_format( $total_conversions, 0 ) . '</code>' ); ?></li>
-								<li><?php printf( __( 'Percentage of conversions for %s: %s', 'wpbo' ), str_replace( '_', ' ' , $period ), "<code>$total_rate%</code>" ); ?></li>
+								<li><?php printf( __( 'Total impressions for %s: %s', 'betteroptin' ), str_replace( '_', ' ' , $period ), '<code>' . number_format( $total_impressions, 0 ) . '</code>' ); ?></li>
+								<li><?php printf( __( 'Total conversions for %s: %s', 'betteroptin' ), str_replace( '_', ' ' , $period ), '<code>' . number_format( $total_conversions, 0 ) . '</code>' ); ?></li>
+								<li><?php printf( __( 'Percentage of conversions for %s: %s', 'betteroptin' ), str_replace( '_', ' ' , $period ), "<code>$total_rate%</code>" ); ?></li>
 							</ul>
-							<p id="wpbo-stats-today" data-dimension="254" data-text="<?php echo $total_rate; ?>%" data-info="<?php printf( __( '%s\'s conversion', 'wpbo' ), ucwords( str_replace( '_', ' ' , $period ) ) ); ?>" data-width="30" data-fontsize="38" data-percent="<?php echo $total_rate; ?>" data-fgcolor="#61a9dc" data-bgcolor="#f1f1f1"></p>
+							<p id="wpbo-stats-today" data-dimension="254" data-text="<?php echo $total_rate; ?>%" data-info="<?php printf( __( '%s\'s conversion', 'betteroptin' ), ucwords( str_replace( '_', ' ' , $period ) ) ); ?>" data-width="30" data-fontsize="38" data-percent="<?php echo $total_rate; ?>" data-fgcolor="#61a9dc" data-bgcolor="#f1f1f1"></p>
 						</div> <!-- .inside -->
 						
 					</div> <!-- .postbox -->

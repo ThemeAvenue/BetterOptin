@@ -148,12 +148,12 @@ $datas = wpbo_db_get_datas( $query, 'OBJECT' );
 		<table class="form-table" id="wpbo-stats-general" data-timeframe="<?php echo htmlspecialchars( serialize( $timeframe ) ); ?>" data-popup="<?php echo $show; ?>" data-period="<?php echo $period; ?>">
 			<thead>
 				<tr>
-					<th class="row-title"><?php _e( 'Popup Name', 'wpbo' ); ?></th>
-					<th><?php _e( 'Impressions', 'wpbo' ); ?></th>
-					<th><?php _e( 'Conversions', 'wpbo' ); ?></th>
-					<th><?php _e( '% Conversion', 'wpbo' ); ?></th>
-					<th><?php _e( 'Status', 'wpbo' ); ?></th>
-					<th data-bSortable="false"><?php _e( 'Settings', 'wpbo' ); ?></th>
+					<th class="row-title"><?php _e( 'Popup Name', 'betteroptin' ); ?></th>
+					<th><?php _e( 'Impressions', 'betteroptin' ); ?></th>
+					<th><?php _e( 'Conversions', 'betteroptin' ); ?></th>
+					<th><?php _e( '% Conversion', 'betteroptin' ); ?></th>
+					<th><?php _e( 'Status', 'betteroptin' ); ?></th>
+					<th data-bSortable="false"><?php _e( 'Settings', 'betteroptin' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -172,7 +172,7 @@ $datas = wpbo_db_get_datas( $query, 'OBJECT' );
 						$impressions  = wpbo_db_get_datas( array( 'popup_id' => $data->popup_id, 'data_type' => 'impression', 'limit' => -1, 'period' => $timeframe ), 'ARRAY_A' );
 						$conversions  = wpbo_db_get_datas( array( 'popup_id' => $data->popup_id, 'data_type' => 'conversion', 'limit' => -1, 'period' => $timeframe ), 'ARRAY_A' );
 						$rate         = ( 0 === count( $conversions ) || 0 === count( $impressions ) ) ? 0 : ( 100 * count( $conversions ) ) / count( $impressions );
-						$status       = 'publish' == $popup->post_status ? __( 'Active', 'wpbo' ) : __( 'Inactive', 'wpbo' );
+						$status       = 'publish' == $popup->post_status ? __( 'Active', 'betteroptin' ) : __( 'Inactive', 'betteroptin' );
 						$status_class = 'publish' == $popup->post_status ? 'wpbo-stats-active' : 'wpbo-stats-inactive';
 
 						/* Increment the global vars */
@@ -186,7 +186,7 @@ $datas = wpbo_db_get_datas( $query, 'OBJECT' );
 							<td><?php echo number_format( count( $conversions ), 0 ); ?></td>
 							<td><?php echo number_format( $rate, 2 ); ?>% <!-- <span class="wpbo-stats-variation">&#9660;</span> --></td>
 							<td><span class="<?php echo $status_class; ?>"><?php echo $status; ?></span></td>
-							<td><a href="<?php echo add_query_arg( array( 'post' => $data->popup_id, 'action' => 'edit' ), admin_url( 'post.php' ) ); ?>" class="button-secondary"><?php _e( 'Settings', 'wpbo' ); ?></a></td>
+							<td><a href="<?php echo add_query_arg( array( 'post' => $data->popup_id, 'action' => 'edit' ), admin_url( 'post.php' ) ); ?>" class="button-secondary"><?php _e( 'Settings', 'betteroptin' ); ?></a></td>
 						</tr>
 
 					<?php }

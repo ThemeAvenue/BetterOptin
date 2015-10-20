@@ -34,7 +34,7 @@ function wpbo_relationships_column( $columns ) {
 		$new[ $key ] = $label;
 
 		if ( 'title' == $key ) {
-			$new['relationship'] = __( 'Appears On', 'wpbo' );
+			$new['relationship'] = esc_html__( 'Appears On', 'betteroptin' );
 		}
 
 	}
@@ -66,7 +66,7 @@ function wpbo_relationships_column_content( $column, $post_id ) {
 	 * First we check if it is "display everywhere".
 	 */
 	if ( 'yes' == get_post_meta( $post_id, '_wpbo_display_all', true ) ) {
-		_e( 'Everywhere', 'wpbo' );
+		esc_html_e( 'Everywhere', 'betteroptin' );
 
 		return;
 	}
@@ -85,7 +85,7 @@ function wpbo_relationships_column_content( $column, $post_id ) {
 		}
 
 		if ( 'all' == get_post_meta( $post_id, '_wpbo_display_' . $pt, true ) ) {
-			array_push( $pts, sprintf( __( 'All %s', 'wpbo' ), ucwords( $pt ) ) );
+			array_push( $pts, sprintf( esc_html__( 'All %s', 'betteroptin' ), ucwords( $pt ) ) );
 		}
 
 	}

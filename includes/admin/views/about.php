@@ -169,12 +169,12 @@
 
 				<ul>
 					<?php if ( $maxitems == 0 ) : ?>
-					<li><?php _e( 'No items', 'wpbo' ); ?></li>
+					<li><?php _e( 'No items', 'betteroptin' ); ?></li>
 					<?php else :
 
 					foreach ( $rss_items as $item ) : ?>
 					<li>
-						<a href="<?php echo esc_url( $item->get_permalink() ); ?>" title="<?php printf( __( 'Posted %s', 'wpbo' ), $item->get_date('j F Y | g:i a') ); ?>" target="_blank">
+						<a href="<?php echo esc_url( $item->get_permalink() ); ?>" title="<?php printf( __( 'Posted %s', 'betteroptin' ), $item->get_date('j F Y | g:i a') ); ?>" target="_blank">
 							<?php echo esc_html( $item->get_title() ); ?>
 						</a>
 					</li>

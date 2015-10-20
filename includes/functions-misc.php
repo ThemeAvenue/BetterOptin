@@ -54,7 +54,7 @@ function wpas_admin_bar_conversion_rate( $wp_admin_bar ) {
 	/* Set the node parameters. */
 	$args = array(
 		'id'    => 'wpbo_today_conversion',
-		'title' => sprintf( __( 'Today\'s Conversion: %s', 'wpbo' ), "$rate%" ),
+		'title' => sprintf( __( 'Today\'s Conversion: %s', 'betteroptin' ), "$rate%" ),
 		'href'  => admin_url( 'edit.php?popup=all&period=today&post_type=wpbo-popup&page=wpbo-analytics' ),
 		'meta'  => array( 'class' => 'wpbo-today-conversion' )
 	);

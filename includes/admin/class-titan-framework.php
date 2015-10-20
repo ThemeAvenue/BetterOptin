@@ -97,7 +97,7 @@ class WPBO_Titan {
 		do_action( 'wpbo_before_load_titan' );
 
 		$this->titan    = TitanFramework::getInstance( 'wpbo' );
-		$this->settings = $this->titan->createAdminPage( array( 'name' => __( 'Settings', 'wpbo' ), 'parent' => 'edit.php?post_type=wpbo-popup', 'position' => 999 ) );
+		$this->settings = $this->titan->createAdminPage( array( 'name' => __( 'Settings', 'betteroptin' ), 'parent' => 'edit.php?post_type=wpbo-popup', 'position' => 999 ) );
 
 		/* Get all options */
 		$options = $this->get_options();
