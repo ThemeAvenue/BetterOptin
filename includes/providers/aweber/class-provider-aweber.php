@@ -1,31 +1,43 @@
 <?php
-if ( class_exists( 'WPBO_Submit' ) ) {
+/**
+ * BetterOptin Provider AWeber
+ *
+ * @package   BetterOptin/Provider/AWeber
+ * @author    ThemeAvenue <web@themeavenue.net>
+ * @license   GPL-2.0+
+ * @link      http://themeavenue.net
+ * @copyright 2015 ThemeAvenue
+ */
 
-	class WPBO_Provider_Aweber {
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
-		/**
-		 * Trigger form submission.
-		 *
-		 * Add a last couple of checks, set the redirects and
-		 * finally subscribe the visitor to the Aweber list.
-		 *
-		 * @since  1.0.0
-		 *
-		 * @param array $data Form post data
-		 *
-		 * @return bool
-		 */
-		public static function submit( $data ) {
+class WPBO_Provider_Aweber {
 
-			if ( ! wpbo_is_aweber_ready() ) {
-				return false;
-			}
+	/**
+	 * Trigger form submission.
+	 *
+	 * Add a last couple of checks, set the redirects and
+	 * finally subscribe the visitor to the Aweber list.
+	 *
+	 * @since  1.0.0
+	 *
+	 * @param array $data Form post data
+	 *
+	 * @return bool
+	 */
+	public static function submit( $data ) {
 
-			$aweber = new WPBO_Aweber();
-
-			return $aweber->subscribe( $data );
-
+		if ( ! wpbo_is_aweber_ready() ) {
+			return false;
 		}
 
+		$aweber = new WPBO_Aweber();
+
+		return $aweber->subscribe( $data );
+
 	}
+
 }
