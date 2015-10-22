@@ -106,6 +106,10 @@ class WPBO_Aweber {
 
 	public function __construct() {
 
+		if ( ! class_exists( 'AWeberAPI' ) ) {
+			require( WPBO_PATH . 'vendor/aweber/aweber/aweber_api/aweber.php' );
+		}
+
 		$this->auth_code  = trim( wpbo_get_option( 'aw_auth_code', '' ) );
 		$this->api_key    = false !== $this->get_credentials() ? $this->get_credentials()['consumerKey'] : '';
 		$this->api_secret = false !== $this->get_credentials() ? $this->get_credentials()['consumerSecret'] : '';
@@ -154,6 +158,10 @@ class WPBO_Aweber {
 	 */
 	protected function get_access_tokens() {
 
+		if ( is_wp_error( $this->aweber() ) ) {
+			return $this->aweber();
+		}
+
 		/* Get credentials from Aweber key */
 		$credentials = $this->get_credentials();
 
@@ -169,7 +177,7 @@ class WPBO_Aweber {
 		/* Request access tokens */
 		try {
 
-			$access_tokens = $this->aweber->getAccessToken();
+			$access_tokens = $this->aweber()->getAccessToken();
 			$this->access_token  = $access_tokens[0];
 			$this->access_secret = $access_tokens[1];
 
@@ -197,8 +205,8 @@ class WPBO_Aweber {
 		}
 
 		/* Make sure we have the tokens */
-		if ( empty( $this->access_token ) || empty( $this->access_secret ) ) {
-			return $this->error = new WP_Error( 'missing_tokens', __( 'Aweber access tokens are missing.', 'betteroptin' ) );
+		if ( empty( $this->api_key ) || empty( $this->api_secret ) ) {
+			return $this->error = new WP_Error( 'missing_tokens', __( 'Aweber API keys are missing.', 'betteroptin' ) );
 		}
 
 		return $this->aweber = new AWeberAPI( $this->api_key, $this->api_secret );
@@ -271,7 +279,7 @@ class WPBO_Aweber {
 		}
 
 		$account_id  = $this->account()->data['id'];
-		$list_custom = get_post_meta( (int) $_POST['wpbo_id'], 'wpbo_aw_list', true );
+		$list_custom = get_post_meta( (int) $data['wpbo_id'], 'wpbo_aw_list', true );
 		$list_id     = ( '' != $list_custom ) ? $list_custom : $this->list_id;
 		$list_url    = "/accounts/$account_id/lists/$list_id";
 		$subscriber  = array( 'email' => sanitize_email( $data['wpbo_email'] ), 'name' => $data['wpbo_name'] );
