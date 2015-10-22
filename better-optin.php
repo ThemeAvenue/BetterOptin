@@ -184,6 +184,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			require( WPBO_PATH . 'includes/providers/wordpress/load.php' );
 			require( WPBO_PATH . 'includes/providers/mailchimp/load.php' );
 			require( WPBO_PATH . 'includes/providers/mailpoet/load.php' );
+			require( WPBO_PATH . 'includes/providers/aweber/load.php' );
 		}
 
 		/**
