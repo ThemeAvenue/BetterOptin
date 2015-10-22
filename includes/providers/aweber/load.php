@@ -23,10 +23,10 @@ if ( 'aweber' === wpbo_get_option( 'mailing_provider', '' ) ) {
 			require( WPBO_PATH . 'includes/providers/aweber/settings.php' );
 			require( WPBO_PATH . 'includes/providers/aweber/functions-metabox.php' );
 			require( WPBO_PATH . 'includes/providers/aweber/functions-admin.php' );
-			require( WPBO_PATH . 'includes/providers/aweber/functions-aweber.php' );
-			require( WPBO_PATH . 'includes/providers/aweber/class-aweber.php' );
 		}
 
+		require( WPBO_PATH . 'includes/providers/aweber/functions-aweber.php' );
+		require( WPBO_PATH . 'includes/providers/aweber/class-aweber.php' );
 		require( WPBO_PATH . 'includes/providers/aweber/class-provider-aweber.php' );
 
 	}
