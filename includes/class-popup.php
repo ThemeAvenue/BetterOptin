@@ -103,6 +103,7 @@ class WPBO_Popup {
 		$fields = apply_filters( 'wpbo_wp_allowed_fields', array(
 			'first_name' => 'sanitize_text_field',
 			'last_name'  => 'sanitize_text_field',
+			'wpbo_name'  => 'sanitize_text_field',
 			'email'      => 'sanitize_email',
 			'wpbo_email' => 'sanitize_email',
 			'wpbo_id'    => 'intval',
