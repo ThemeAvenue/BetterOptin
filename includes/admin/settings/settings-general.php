@@ -27,42 +27,42 @@ function wpbo_settings_general( $settings ) {
 	$providers = apply_filters( 'wpbo_mailing_providers', array() );
 
 	$settings['general'] = array(
-		'name'    => __( 'General', 'wpbo' ),
+		'name'    => __( 'General', 'betteroptin' ),
 		'options' => array(
 			array(
-				'name'    => __( 'E-Mailing Provider', 'wpbo' ),
+				'name'    => __( 'E-Mailing Provider', 'betteroptin' ),
 				'id'      => 'mailing_provider',
 				'type'    => 'select',
 				'options' => $providers,
-				'desc'    => __( 'Which e-mailing provider do you use?', 'wpbo' ),
+				'desc'    => __( 'Which e-mailing provider do you use?', 'betteroptin' ),
 				'default' => 'wordpress'
 			),
 			array(
-				'name'    => __( 'Return URL', 'wpbo' ),
+				'name'    => __( 'Return URL', 'betteroptin' ),
 				'id'      => 'return_url',
 				'type'    => 'text',
-				'desc'    => __( 'Where should the user be redirected after subscribing?', 'wpbo' ),
+				'desc'    => __( 'Where should the user be redirected after subscribing? This can be overwritten in each popup.', 'betteroptin' ),
 				'default' => home_url()
 			),
 			array(
-				'name'    => __( 'Anonymize IPs', 'wpbo' ),
+				'name'    => __( 'Anonymize IPs', 'betteroptin' ),
 				'id'      => 'anonymize_ip',
 				'type'    => 'checkbox',
-				'desc'    => __( 'Delete the last byte(s) of stored IP addresses? This will remove the last digits of saved IP addresses to protect users privacy.', 'wpbo' ),
+				'desc'    => __( 'Delete the last byte(s) of stored IP addresses? This will remove the last digits of saved IP addresses to protect users privacy.', 'betteroptin' ),
 				'default' => false
 			),
 			array(
-				'name'    => __( 'Hide for Admins', 'wpbo' ),
+				'name'    => __( 'Hide for Admins', 'betteroptin' ),
 				'id'      => 'hide_admins',
 				'type'    => 'checkbox',
-				'desc'    => __( 'Hide the popups for admins? No popup will ever show up for site administrators.', 'wpbo' ),
+				'desc'    => __( 'Hide the popups for admins? No popup will ever show up for site administrators.', 'betteroptin' ),
 				'default' => true
 			),
 			array(
-				'name'    => __( 'Show Credit', 'wpbo' ),
+				'name'    => __( 'Show Credit', 'betteroptin' ),
 				'id'      => 'show_credit',
 				'type'    => 'checkbox',
-				'desc'    => __( 'Display a credit link at the bottom of the popups. <strong>Thanks for supporting the plugin</strong>.', 'wpbo' ),
+				'desc'    => __( 'Display a credit link at the bottom of the popups. <strong>Thanks for supporting the plugin</strong>.', 'betteroptin' ),
 				'default' => true
 			)
 		)
