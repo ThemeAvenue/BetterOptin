@@ -23,10 +23,12 @@ function wpbo_create_table() {
 
 	global $wpdb;
 
-	/* Prepare DB structure if not already existing */
-	if ( $wpdb->get_var( "show tables like 'wpbo_analytics_table'" ) != wpbo_analytics_table ) {
+	$table = wpbo_analytics_table;
 
-		$sql = "CREATE TABLE wpbo_analytics_table (
+	/* Prepare DB structure if not already existing */
+	if ( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
+
+		$sql = "CREATE TABLE $table (
 				data_id mediumint(9) NOT NULL AUTO_INCREMENT,
 				time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 				data_type VARCHAR(20) COLLATE utf8_general_ci NOT NULL,
