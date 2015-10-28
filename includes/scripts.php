@@ -47,7 +47,7 @@ function wpbo_enqueue_scripts() {
 	/**
 	 * Check if we can display the credit.
 	 */
-	$settings['credit'] = ( true === (bool) wpbo_get_option( 'show_credit', true ) ) ? true : false;
+	$settings['credit'] = apply_filters( 'wpbo_show_credit', true );
 
 	/**
 	 * Use booleans

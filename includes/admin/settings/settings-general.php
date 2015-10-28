@@ -77,13 +77,6 @@ function wpbo_settings_general( $settings ) {
 				'desc'    => __( 'Hide the popups for admins? No popup will ever show up for site administrators.', 'betteroptin' ),
 				'default' => true
 			),
-			array(
-				'name'    => __( 'Show Credit', 'betteroptin' ),
-				'id'      => 'show_credit',
-				'type'    => 'checkbox',
-				'desc'    => __( 'Display a credit link at the bottom of the popups. <strong>Thanks for supporting the plugin</strong>.', 'betteroptin' ),
-				'default' => true
-			)
 		)
 	);
 
