@@ -90,6 +90,7 @@ function wpbo_single_activate() {
 
 	/* Create database table */
 	wpbo_create_table();
+	wpbo_failsafe_create_table();
 
 	/* Write database version */
 	update_option( 'wpbo_db_version', WPBO_DB_VERSION );

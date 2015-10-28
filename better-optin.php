@@ -124,7 +124,9 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			global $wpdb;
 
 			define( 'wpbo_analytics_table_name', 'wpbo_analytics' );
+			define( 'wpbo_failsafe_table_name', 'wpbo_failsafe' );
 			define( 'wpbo_analytics_table', $wpdb->prefix . wpbo_analytics_table_name );
+			define( 'wpbo_failsafe_table', $wpdb->prefix . wpbo_failsafe_table_name );
 
 		}
 
@@ -149,6 +151,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			require( WPBO_PATH . 'includes/class-popup.php' );
 			require( WPBO_PATH . 'includes/functions-post-type.php' );
 			require( WPBO_PATH . 'includes/functions-analytics.php' );
+			require( WPBO_PATH . 'includes/functions-failsafe.php' );
 			require( WPBO_PATH . 'includes/functions-popup.php' );
 			require( WPBO_PATH . 'includes/functions-misc.php' );
 			require( WPBO_PATH . 'includes/functions-ajax.php' );
