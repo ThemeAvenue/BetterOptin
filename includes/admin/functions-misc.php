@@ -179,3 +179,24 @@ function wpbo_is_tour_completed() {
 	}
 
 }
+
+/**
+ * Get link to the plugin settings page
+ *
+ * @since 2.0
+ *
+ * @param string $tab Optional tab to link to
+ *
+ * @return string
+ */
+function wpbo_get_settings_page_link( $tab = '' ) {
+
+	$args = array( 'post_type' => 'wpbo-popup', 'page' => 'wpbo-settings' );
+
+	if ( ! empty( $tab ) ) {
+		$args['tab'] = sanitize_text_field( $tab );
+	}
+
+	return esc_url( add_query_arg( $args, admin_url( 'edit.php' ) ) );
+
+}
