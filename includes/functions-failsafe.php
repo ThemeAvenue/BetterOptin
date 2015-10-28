@@ -98,7 +98,8 @@ function wpbo_failsafe_add_subscriber( $data = array(), $wp_error = true ) {
 
 	// Make sure we have a provider
 	if ( empty( $data['provider'] ) ) {
-		$data['provider'] = wpbo_get_option( 'mailing_provider', '' );
+		$provider   = str_replace( ' ', '', ucwords( str_replace( array( '-', '_' ), ' ', sanitize_text_field( wpbo_get_option( 'mailing_provider', '' ) ) ) ) );
+		$data['provider'] = $provider;
 	}
 
 	// Set the status as failed by default
