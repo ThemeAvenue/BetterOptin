@@ -66,6 +66,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 				}
 
 				add_action( 'plugins_loaded', array( self::$instance, 'load_plugin_textdomain' ) );
+				add_action( 'admin_notices', array( self::$instance, 'license_notification' ) );
 
 			}
 
@@ -202,6 +203,38 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			load_plugin_textdomain( 'betteroptin', false, basename( plugin_dir_path( dirname( __FILE__ ) ) ) . '/languages/' );
 
 		}
+
+		/**
+		 * Display an admin notice if license key is missing
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		public function license_notification() {
+
+			/**
+			 * We only want to display the notice to the site admin.
+			 */
+			if ( ! current_user_can( 'administrator' ) ) {
+				return;
+			}
+
+			$license = wpbo_get_option( 'license_key', '' );
+
+			/**
+			 * Do not show the notice if the license key has already been entered.
+			 */
+			if ( ! empty( $license ) ) {
+				return;
+			}
+
+			$license_page = wpbo_get_settings_page_link(); ?>
+
+			<div class="updated error">
+				<p><?php printf( __( 'You haven&#039;t entered your BetterOptin license key. This means that you will not get automatic updates and you will not get technical support. <a %s>Click here to enter your license key</a>.', 'betteroptin' ), "href='$license_page'" ); ?></p>
+			</div>
+
+		<?php }
 
 	}
 
