@@ -282,7 +282,7 @@ class WPBO_Aweber {
 		$list_custom = get_post_meta( (int) $data['wpbo_id'], 'wpbo_aw_list', true );
 		$list_id     = ( '' != $list_custom ) ? $list_custom : $this->list_id;
 		$list_url    = "/accounts/$account_id/lists/$list_id";
-		$subscriber  = array( 'email' => sanitize_email( $data['wpbo_email'] ), 'name' => $data['wpbo_name'] );
+		$subscriber  = array( 'email' => sanitize_email( $data['email'] ), 'name' => $data['name'] );
 
 		/* Subscribe the new user */
 		try {

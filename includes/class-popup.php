@@ -93,28 +93,6 @@ class WPBO_Popup {
 	}
 
 	/**
-	 * Get field names allowed in popups
-	 *
-	 * @since 2.0
-	 * @return array
-	 */
-	public function get_fields() {
-
-		$fields = apply_filters( 'wpbo_wp_allowed_fields', array(
-			'first_name' => 'sanitize_text_field',
-			'last_name'  => 'sanitize_text_field',
-			'wpbo_name'  => 'sanitize_text_field',
-			'email'      => 'sanitize_email',
-			'wpbo_email' => 'sanitize_email',
-			'wpbo_id'    => 'intval',
-			'post_id'    => 'intval',
-		) );
-
-		return $fields;
-
-	}
-
-	/**
 	 * Get the popup template
 	 *
 	 * @since 2.0
@@ -346,22 +324,22 @@ class WPBO_Popup {
 	 */
 	protected function get_clean_fields( $data = array() ) {
 
+		$fields = wpbo_get_form_fields();
+
 		if ( empty( $data ) && ! empty( $_POST ) ) {
 			$data = $_POST;
 		}
 
-		$fields = $this->get_fields();
-
 		$clean = array();
 
-		foreach ( $fields as $field => $sanitize ) {
+		foreach ( $fields as $field_id => $atts ) {
 
-			if ( ! function_exists( $sanitize ) ) {
-				$sanitize = 'sanitize_text_field';
+			if ( ! function_exists( $atts['sanitize_callback'] ) ) {
+				$atts['sanitize_callback'] = 'sanitize_text_field';
 			}
 
-			if ( isset( $data[ $field ] ) ) {
-				$clean[ $field ] = call_user_func( $sanitize, $data[ $field ] );
+			if ( isset( $data[ $atts['form_name'] ] ) ) {
+				$clean[ $field_id ] = call_user_func( $atts['sanitize_callback'], $data[ $atts['form_name'] ] );
 			}
 
 		}
@@ -385,23 +363,33 @@ class WPBO_Popup {
 		$data   = $this->get_clean_fields();
 		$result = call_user_func( array( wpbo_get_provider_class(), 'submit' ), $data );
 
-		if ( true === $result ) {
+		// Log the conversion
+		$conversion = $this->new_conversion();
 
-			// Dismiss the popup
-			wpbo_dismiss_popup( $this->popup_id );
+		$first_name = isset( $data['first_name'] ) ? $data['first_name'] : $data['name'];
+		$last_name  = isset( $data['last_name'] ) ? $data['last_name'] : '';
 
-			// Log the conversion
-			$this->new_conversion();
+		// Dismiss the popup
+		wpbo_dismiss_popup( $this->popup_id );
 
-			// Redirect
-			wp_redirect( $this->get_return_url() );
-			exit;
+		// Backup the subscriber in case something went wrong
+		if ( true !== $result ) {
 
-		} else {
-			/**
-			 * Redirect error
-			 */
+			$failsafe = array(
+				'conversion_id' => $conversion,
+				'first_name'    => $first_name,
+				'last_name'     => $last_name,
+				'email'         => $data['email'],
+				'status'        => 'failed',
+			);
+
+			wpbo_failsafe_add_subscriber( $failsafe );
+
 		}
+
+		// Redirect
+		wp_redirect( $this->get_return_url() );
+		exit;
 
 	}
 

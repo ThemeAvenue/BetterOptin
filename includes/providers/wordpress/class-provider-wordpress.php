@@ -59,7 +59,7 @@ class WPBO_Provider_WordPress {
 
 		$password = wp_generate_password();
 		$role     = isset( $options['wp_default_role'] ) ? $options['wp_default_role'] : 'betteroptin';
-		$email    = isset( $data['email'] ) ? $data['email'] : $data['wpbo_email'];
+		$email    = $data['email'];
 
 		/* Extra verification to avoid giving admin cap to subscribers. */
 		if ( 'administrator' == $role ) {
@@ -69,7 +69,7 @@ class WPBO_Provider_WordPress {
 		$args = array(
 			'user_email'   => $email,
 			'user_login'   => $email,
-			'first_name'   => isset( $data['first_name'] ) ? $data['first_name'] : $email,
+			'first_name'   => isset( $data['first_name'] ) ? $data['first_name'] : $data['name'],
 			'display_name' => isset( $data['first_name'] ) ? $data['first_name'] : $email,
 			'user_pass'    => md5( $password ),
 			'role'         => $role

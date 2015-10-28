@@ -232,8 +232,8 @@ final class WPBO_MailChimp {
 
 		// Prepare e-mail content
 		$email = array(
-			'email' => sanitize_email( $data['wpbo_email'] ),
-			'euid'  => md5( sanitize_email( $data['wpbo_email'] ) ),
+			'email' => sanitize_email( $data['email'] ),
+			'euid'  => md5( sanitize_email( $data['email'] ) ),
 			'leid'  => false
 		);
 

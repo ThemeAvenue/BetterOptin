@@ -508,3 +508,42 @@ function wpbo_maybe_submit() {
 	$popup->submit();
 
 }
+
+/**
+ * Get all allowed form fields
+ *
+ * @since 2.0
+ * @return array
+ */
+function wpbo_get_form_fields() {
+
+	$fields = apply_filters( 'wpbo_form_fields', array(
+		'email'      => array(
+			'form_name'         => 'wpbo_email',
+			'sanitize_callback' => 'sanitize_email'
+		),
+		'first_name' => array(
+			'form_name'         => 'wpbo_first_name',
+			'sanitize_callback' => 'sanitize_text_field'
+		),
+		'last_name'  => array(
+			'form_name'         => 'wpbo_first_name',
+			'sanitize_callback' => 'sanitize_text_field'
+		),
+		'name'       => array(
+			'form_name'         => 'wpbo_name',
+			'sanitize_callback' => 'sanitize_text_field'
+		),
+		'wpbo_id'    => array(
+			'form_name'         => 'wpbo_id',
+			'sanitize_callback' => 'intval'
+		),
+		'post_id'    => array(
+			'form_name'         => 'post_id',
+			'sanitize_callback' => 'intval'
+		),
+	) );
+
+	return $fields;
+
+}
