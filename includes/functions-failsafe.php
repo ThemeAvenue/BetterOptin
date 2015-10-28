@@ -51,14 +51,14 @@ function wpbo_failsafe_create_table() {
 /**
  * Insert new subscriber.
  *
- * Add a new row of data in the analytics table.
+ * Add a new row of data in the failsafe table.
  *
  * @since  2.0
  *
  * @param  array   $data     Details of the subscriber
  * @param  boolean $wp_error Allow the function to return a WP_Error object
  *
- * @return mixed          Data ID on success or WP_Error on failure
+ * @return mixed          Subscriber ID on success or WP_Error on failure
  */
 function wpbo_failsafe_add_subscriber( $data = array(), $wp_error = true ) {
 
@@ -107,7 +107,7 @@ function wpbo_failsafe_add_subscriber( $data = array(), $wp_error = true ) {
 	}
 
 	/* Sanitize all data values */
-	$data = array_map( 'sanitize_text_field', $data ); print_r( $data ); exit;
+	$data = array_map( 'sanitize_text_field', $data );
 
 	$insert = $wpdb->insert( $table_name, $data, array( '%s', '%d', '%d', '%s', '%s', '%s', '%s', '%s' ) );
 
@@ -118,7 +118,7 @@ function wpbo_failsafe_add_subscriber( $data = array(), $wp_error = true ) {
 			return false;
 		}
 	} else {
-		return $insert;
+		return $wpdb->insert_id;
 	}
 
 }
