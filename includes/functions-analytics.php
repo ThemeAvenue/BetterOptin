@@ -105,7 +105,7 @@ function wpbo_db_insert_data( $data = array(), $wp_error = true ) {
 				return false;
 			}
 		} else {
-			return $insert;
+			return $wpdb->insert_id;
 		}
 
 	}
