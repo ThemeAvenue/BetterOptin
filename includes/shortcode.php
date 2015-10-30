@@ -14,7 +14,7 @@ function wpbo_trigger_popup( $atts = array() ) {
 	$defaults = array(
 		'popup_id'      => wpbo_page_has_popup(),
 		'type'          => 'button',
-		'label'         => __( 'Show Popup', 'wpbo' ),
+		'label'         => __( 'Show Popup', 'betteroptin' ),
 		'bypass_cookie' => true,
 		'btn_class'     => ''
 	);

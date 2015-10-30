@@ -1,0 +1,1368 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: BetterOptin\n"
+"POT-Creation-Date: 2015-10-30 15:13+0700\n"
+"PO-Revision-Date: 2014-10-06 12:02+0700\n"
+"Last-Translator: Julien Liabeuf <julien@liabeuf.fr>\n"
+"Language-Team: ThemeAvenue <web@themeavenue.net>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../better-optin.php:88 ../better-optin.php:99
+#: ../includes/providers/mailchimp/class-mailchimp.php:93
+#: ../includes/providers/mailchimp/class-mailchimp.php:104
+msgid "Cheatin&#8217; huh?"
+msgstr ""
+
+#: ../better-optin.php:234
+#, php-format
+msgid ""
+"You haven&#039;t entered your BetterOptin license key. This means that you "
+"will not get automatic updates and you will not get technical support. <a "
+"%s>Click here to enter your license key</a>."
+msgstr ""
+
+#: ../includes/admin/class-remote-notification.php:193
+#, php-format
+msgid "The server response was invalid (code %s)"
+msgstr ""
+
+#: ../includes/admin/class-remote-notification.php:199
+msgid "The server response is empty"
+msgstr ""
+
+#: ../includes/admin/class-remote-notification.php:205
+msgid "Cannot decode the response content"
+msgstr ""
+
+#: ../includes/admin/class-remote-notification.php:441
+msgid "Dismiss notification"
+msgstr ""
+
+#: ../includes/admin/class-remote-notification.php:443
+msgid "Dismiss"
+msgstr ""
+
+#: ../includes/admin/class-titan-framework.php:103
+#: ../includes/admin/functions-misc.php:48
+#: ../includes/admin/settings/settings-general.php:49
+#: ../includes/admin/views/analytics-stats.php:156
+#: ../includes/admin/views/analytics-stats.php:189
+msgid "Settings"
+msgstr ""
+
+#: ../includes/admin/class-titan-framework.php:104
+msgid "BetterOptin Settings"
+msgstr ""
+
+#: ../includes/admin/functions-list-table.php:37
+msgid "Appears On"
+msgstr ""
+
+#: ../includes/admin/functions-list-table.php:69
+#: ../includes/admin/views/metaboxes/display.php:13
+msgid "Everywhere"
+msgstr ""
+
+#: ../includes/admin/functions-list-table.php:88
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: ../includes/admin/functions-menu.php:31
+msgid "Analytics"
+msgstr ""
+
+#: ../includes/admin/functions-menu.php:32
+msgid "About"
+msgstr ""
+
+#: ../includes/admin/functions-menu.php:33
+#: ../vendor/gambitph/titan-framework/titan-framework.php:182
+msgid "Documentation"
+msgstr ""
+
+#: ../includes/admin/functions-metabox.php:27
+msgid "Step 1: Choose a Template"
+msgstr ""
+
+#: ../includes/admin/functions-metabox.php:28
+msgid "Step 2: Edit Settings"
+msgstr ""
+
+#: ../includes/admin/functions-metabox.php:29
+msgid "Step 3: Choose where to Display"
+msgstr ""
+
+#: ../includes/admin/functions-metabox.php:30
+msgid "Step 4: Customize the Design"
+msgstr ""
+
+#: ../includes/admin/functions-metabox.php:31
+msgid "Checklist"
+msgstr ""
+
+#: ../includes/admin/functions-misc.php:76
+#: ../includes/admin/views/metaboxes/checklist.php:26
+#: ../includes/admin/views/metaboxes/design.php:16
+#: ../includes/admin/views/metaboxes/template.php:21
+msgid "Customize"
+msgstr ""
+
+#: ../includes/admin/functions-misc.php:80
+msgid "Stats"
+msgstr ""
+
+#: ../includes/admin/functions-misc.php:106
+#: ../includes/admin/views/customizer-controls.php:27
+#: ../includes/providers/aweber/functions-admin.php:97
+#: ../includes/providers/mailchimp/functions-admin.php:133
+#: ../includes/providers/mailpoet/functions-admin.php:137
+msgid "Save"
+msgstr ""
+
+#: ../includes/admin/functions-misc.php:132
+#, php-format
+msgid "<a %s>BetterOptin</a> was made with &#10084; by <a %s>ThemeAvenue</a>."
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:30
+msgid "General"
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:34
+msgid "Licensing"
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:37
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:372
+msgid "License Key"
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:40
+#, php-format
+msgid "If you don&#039;t have one, you can get one at %s"
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:52
+msgid "E-Mailing Provider"
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:56
+msgid "Which e-mailing provider do you use?"
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:60
+#: ../includes/admin/views/metaboxes/settings.php:120
+msgid "Return URL"
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:63
+msgid ""
+"Where should the user be redirected after subscribing? This can be "
+"overwritten in each popup."
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:67
+msgid "Anonymize IPs"
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:70
+msgid ""
+"Delete the last byte(s) of stored IP addresses? This will remove the last "
+"digits of saved IP addresses to protect users privacy."
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:74
+msgid "Hide for Admins"
+msgstr ""
+
+#: ../includes/admin/settings/settings-general.php:77
+msgid ""
+"Hide the popups for admins? No popup will ever show up for site "
+"administrators."
+msgstr ""
+
+#: ../includes/admin/views/about.php:172
+msgid "No items"
+msgstr ""
+
+#: ../includes/admin/views/about.php:177
+#, php-format
+msgid "Posted %s"
+msgstr ""
+
+#: ../includes/admin/views/analytics-stats.php:151
+msgid "Popup Name"
+msgstr ""
+
+#: ../includes/admin/views/analytics-stats.php:152
+#: ../includes/functions-ajax.php:244
+msgid "Impressions"
+msgstr ""
+
+#: ../includes/admin/views/analytics-stats.php:153
+#: ../includes/functions-ajax.php:249
+msgid "Conversions"
+msgstr ""
+
+#: ../includes/admin/views/analytics-stats.php:154
+msgid "% Conversion"
+msgstr ""
+
+#: ../includes/admin/views/analytics-stats.php:155
+msgid "Status"
+msgstr ""
+
+#: ../includes/admin/views/analytics-stats.php:175
+msgid "Active"
+msgstr ""
+
+#: ../includes/admin/views/analytics-stats.php:175
+msgid "Inactive"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:40
+msgid "Analytics: Impression and Conversion Stats"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:45
+msgid "All popups"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:58
+msgid "View popup"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:61
+msgid "Today"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:62
+msgid "This Week"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:63
+msgid "Last Week"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:64
+msgid "This Month"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:65
+msgid "Last Month"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:66
+msgid "This Quarter"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:67
+msgid "Last Quarter"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:68
+msgid "This Year"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:69
+msgid "Last Year"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:71
+msgid "Filter by Date"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:73
+#: ../includes/admin/views/customizer-controls.php:29
+msgid "Reset"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:97
+msgid "Graph Statistics"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:115
+#, php-format
+msgid "%s's Stats Breakdown"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:122
+#, php-format
+msgid "Total impressions for %s: %s"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:123
+#, php-format
+msgid "Total conversions for %s: %s"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:124
+#, php-format
+msgid "Percentage of conversions for %s: %s"
+msgstr ""
+
+#: ../includes/admin/views/analytics.php:126
+#, php-format
+msgid "%s's conversion"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:20
+msgid "You are now editing"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:28
+msgid ""
+"Are you sure? You will lose all unsaved changes. You can't undo this action."
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:28
+msgid "Cancel"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:29
+msgid "Are you sure? This will reset to the original Template"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:41
+msgid "Popup Size (in <em>pixels</em>)"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:50
+msgid "Click here to reset to default size."
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:50
+#: ../includes/providers/mailpoet/metabox.php:21
+msgid "Default"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:56
+#: ../includes/admin/views/customizer-controls.php:61
+msgid "Edit content"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:57
+msgid "Error loading content"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:98
+msgid "Background Color"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:103
+msgid "Background Image"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:105
+#: ../includes/admin/views/customizer-controls.php:112
+msgid "Upload"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:105
+msgid "Upload a background image"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:105
+msgid "Apply background image"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:106
+#, php-format
+msgid ""
+"If you're looking for seamless patterns, take a look at <a href=\"%s\" "
+"target=\"_blank\">Subtle Patterns</a>"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:110
+msgid "Image URL"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:112
+msgid "Upload a new image"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:112
+msgid "Insert new image"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:113
+#, php-format
+msgid "The maximum width allowed is %s."
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:113
+msgid "Make sure to resize your image for maximum performance!"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:117
+msgid "Background Repeat"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:119
+msgid "Repeat"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:120
+msgid "No-Repeat"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:121
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:122
+msgid "Repeat Vertically"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:127
+msgid "Background Position"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:129
+msgid "Please use the following format: <code>horizontal vertical</code>"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:133
+msgid "Background Size"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:135
+msgid "Auto"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:136
+msgid "Cover"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:137
+msgid "Contain"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:139
+msgid "Specify the size of the background image"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:143
+msgid "Text Color"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:148
+msgid "Font Family"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:166
+msgid "Font Size"
+msgstr ""
+
+#: ../includes/admin/views/customizer-controls.php:172
+msgid "Text Alignment"
+msgstr ""
+
+#: ../includes/admin/views/customizer-template-selector.php:18
+msgid "Which popup would you like to customize?"
+msgstr ""
+
+#: ../includes/admin/views/customizer.php:19
+#, php-format
+msgid ""
+"There is no template selected for this popup. Please <a href=\"%s\">edit the "
+"popup settings</a>."
+msgstr ""
+
+#: ../includes/admin/views/customizer.php:28
+msgctxt "Popup template is loading"
+msgid "Please be patient"
+msgstr ""
+
+#: ../includes/admin/views/customizer.php:28
+msgid "Loading"
+msgstr ""
+
+#: ../includes/admin/views/customizer.php:31
+msgid "Back to popup settings"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/checklist.php:8
+msgid "Choose a template"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/checklist.php:14
+msgid "Define settings"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/checklist.php:20
+msgid "Choose Pages"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/checklist.php:32
+msgid "Launch"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/design.php:4
+msgid "You are now ready to customize the popup template."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/design.php:5
+msgid "Please click the below button to show the customizer."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/design.php:11
+msgid "Please select a template before customizing the popup."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/display.php:7
+msgid ""
+"Please select the pages where you want this popup to show up. You can select "
+"multiple posts in each post type."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/display.php:18
+msgid "Display this popup everywhere on the site."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/display.php:32
+#, php-format
+msgid "Select one or more %s"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/display.php:94
+#, php-format
+msgid "Display on all %s"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/display.php:108
+#, php-format
+msgid "Warning: other popups are already set to display on the following %s:"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/display.php:115
+#, php-format
+msgid ""
+"The %s <a href=\"%s\" target=\"_blank\">%s</a> already has popup <a href=\"%s"
+"\" target=\"_blank\">%s</a> set."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:41
+msgid "Close on Overlay"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:46
+#: ../includes/admin/views/metaboxes/settings.php:58
+#: ../includes/admin/views/metaboxes/settings.php:70
+msgid "Yes"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:48
+msgid "Popup closes when user clicks anywhere outside the popup."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:53
+msgid "Close on &laquo;ESC&raquo;"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:60
+msgid "Popup closes when user hits the \"Esc\" key."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:65
+msgid "Wiggle when Overlay Clicked"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:72
+msgid "Popup wiggles when the users clicks the overlay."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:77
+msgid "Cookie Lifetime"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:81
+msgid "Delay before a visitor sees the popup again after closing it (in days)."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:86
+msgid "Popup Animation"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:98
+msgid "Animation to use when the popup appears."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:103
+msgid "Overlay Color"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:111
+msgid "Overlay Opacity"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/settings.php:125
+#, php-format
+msgid ""
+"The return URL is optional. If not specified, the URL set in the general "
+"settings will be used (currently %s)"
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/template.php:7
+msgid "Click on a thumbnail to preview in full size."
+msgstr ""
+
+#: ../includes/admin/views/metaboxes/template.php:20
+#: ../vendor/gambitph/titan-framework/lib/class-option-select-categories.php:37
+#: ../vendor/gambitph/titan-framework/lib/class-option-select-categories.php:104
+#: ../vendor/gambitph/titan-framework/lib/class-option-select-pages.php:30
+#: ../vendor/gambitph/titan-framework/lib/class-option-select-posts.php:38
+#: ../vendor/gambitph/titan-framework/lib/class-option-select-posts.php:112
+msgid "Select"
+msgstr ""
+
+#: ../includes/class-popup.php:406
+msgid "You have successfully registered!"
+msgstr ""
+
+#: ../includes/class-popup.php:406
+msgid "Fail. Please try again."
+msgstr ""
+
+#: ../includes/functions-ajax.php:53
+#, php-format
+msgid ""
+"The page %s (#%s) is already used by the popup <a href=\"%s\" target=\"_blank"
+"\">%s</a> (#%s)."
+msgstr ""
+
+#: ../includes/functions-ajax.php:72
+msgid ""
+"TIP: If you keep the conflicting page(s) selected, they will be removed from "
+"the other popup(s)."
+msgstr ""
+
+#: ../includes/functions-ajax.php:349
+#, php-format
+msgid ""
+"Oops! We were unable to fetche the documentation from our support site. "
+"Please <a href=\"%s\" target=\"_blank\">click here to see the doc on our "
+"site</a>."
+msgstr ""
+
+#: ../includes/functions-analytics.php:103
+#: ../includes/functions-failsafe.php:117
+msgid "Whoops, we could not insert the data in the database."
+msgstr ""
+
+#: ../includes/functions-analytics.php:164
+msgid "Whoops, no data ID was provided."
+msgstr ""
+
+#: ../includes/functions-analytics.php:175
+msgid "You did not pass the ID of the data to update."
+msgstr ""
+
+#: ../includes/functions-analytics.php:194
+msgid "An error occured while trying to update the data."
+msgstr ""
+
+#: ../includes/functions-analytics.php:236
+#: ../includes/functions-failsafe.php:93
+msgid "Whoops, the provided date is invalid."
+msgstr ""
+
+#: ../includes/functions-misc.php:57
+#, php-format
+msgid "Today's Conversion: %s"
+msgstr ""
+
+#: ../includes/functions-popup.php:336
+msgid ""
+"This popup is still in draft mode and is <strong>not visible on the site</"
+"strong>. Don't forget to publish it when you're ready."
+msgstr ""
+
+#: ../includes/functions-post-type.php:29
+msgctxt "post type general name"
+msgid "Popups"
+msgstr ""
+
+#: ../includes/functions-post-type.php:30
+msgctxt "post type singular name"
+msgid "Popup"
+msgstr ""
+
+#: ../includes/functions-post-type.php:31
+msgctxt "admin menu"
+msgid "Popups"
+msgstr ""
+
+#: ../includes/functions-post-type.php:32
+msgctxt "add new on admin bar"
+msgid "Popup"
+msgstr ""
+
+#: ../includes/functions-post-type.php:33
+msgctxt "book"
+msgid "Add New"
+msgstr ""
+
+#: ../includes/functions-post-type.php:34
+msgid "Add New Popup"
+msgstr ""
+
+#: ../includes/functions-post-type.php:35
+msgid "New Popup"
+msgstr ""
+
+#: ../includes/functions-post-type.php:36
+msgid "Edit Popup"
+msgstr ""
+
+#: ../includes/functions-post-type.php:37
+msgid "View Popup"
+msgstr ""
+
+#: ../includes/functions-post-type.php:38
+msgid "All Popups"
+msgstr ""
+
+#: ../includes/functions-post-type.php:39
+msgid "Search Popups"
+msgstr ""
+
+#: ../includes/functions-post-type.php:40
+msgid "Parent Popups:"
+msgstr ""
+
+#: ../includes/functions-post-type.php:41
+msgid "No popup found."
+msgstr ""
+
+#: ../includes/functions-post-type.php:42
+msgid "No popups found in Trash."
+msgstr ""
+
+#: ../includes/functions-post-type.php:85
+#: ../includes/functions-post-type.php:88
+msgid "Popup updated."
+msgstr ""
+
+#: ../includes/functions-post-type.php:86
+msgid "Custom field updated."
+msgstr ""
+
+#: ../includes/functions-post-type.php:87
+msgid "Custom field deleted."
+msgstr ""
+
+#: ../includes/functions-post-type.php:90
+#, php-format
+msgid "Popup restored to revision from %s"
+msgstr ""
+
+#: ../includes/functions-post-type.php:91
+msgid "Popup published."
+msgstr ""
+
+#: ../includes/functions-post-type.php:92
+msgid "Popup saved."
+msgstr ""
+
+#: ../includes/functions-post-type.php:93
+msgid "Popup submitted."
+msgstr ""
+
+#: ../includes/functions-post-type.php:95
+#, php-format
+msgid "Popup scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#: ../includes/functions-post-type.php:97
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: ../includes/functions-post-type.php:99
+msgid "Popup draft updated."
+msgstr ""
+
+#: ../includes/providers/aweber/class-aweber.php:169
+msgid "Aweber authorization code is missing"
+msgstr ""
+
+#: ../includes/providers/aweber/class-aweber.php:190
+msgid ""
+"The Aweber authorization code you provided is incorrect or expired. Please "
+"authorize the plugin again."
+msgstr ""
+
+#: ../includes/providers/aweber/class-aweber.php:209
+msgid "Aweber API keys are missing."
+msgstr ""
+
+#: ../includes/providers/aweber/class-aweber.php:231
+msgid "Unable to connect to Aweber"
+msgstr ""
+
+#: ../includes/providers/aweber/class-titan-aweber.php:31
+msgid "Authorize"
+msgstr ""
+
+#: ../includes/providers/aweber/class-titan-aweber.php:34
+msgid "You did not enter your Envato purchase code."
+msgstr ""
+
+#: ../includes/providers/aweber/class-titan-aweber.php:35
+msgid "Validation of your Envato purchase code failed."
+msgstr ""
+
+#: ../includes/providers/aweber/class-titan-aweber.php:36
+msgid ""
+"We were not able to check your Envato purchase code. Please try again later."
+msgstr ""
+
+#: ../includes/providers/aweber/class-titan-aweber.php:37
+msgid "The license you entered is valid."
+msgstr ""
+
+#: ../includes/providers/aweber/functions-admin.php:34
+msgid "Setup Aweber"
+msgstr ""
+
+#: ../includes/providers/aweber/functions-admin.php:119
+#, php-format
+msgid ""
+"Aweber integration is not correctly setup. Your popups won't send "
+"subscribers anywhere! <a href=\"%s\">Click here to see the settings</a>."
+msgstr ""
+
+#: ../includes/providers/aweber/functions-metabox.php:25
+#: ../includes/providers/mailchimp/functions-metabox.php:68
+#: ../includes/providers/mailpoet/functions-metabox.php:25
+msgid "Mailing List <small>(Optional)</small>"
+msgstr ""
+
+#: ../includes/providers/aweber/metabox.php:13
+msgctxt "No mailing list selected"
+msgid "None"
+msgstr ""
+
+#: ../includes/providers/aweber/metabox.php:16
+#: ../includes/providers/mailpoet/metabox.php:16
+#, php-format
+msgid ""
+"If you don't select a list here, the default one will be used (currently %s)."
+msgstr ""
+
+#: ../includes/providers/aweber/metabox.php:20
+msgctxt "Default mailing list"
+msgid "Default"
+msgstr ""
+
+#: ../includes/providers/aweber/settings.php:41
+#: ../includes/providers/aweber/settings.php:59
+#: ../includes/providers/aweber/settings.php:69
+#: ../includes/providers/mailchimp/settings.php:36
+#: ../includes/providers/mailchimp/settings.php:54
+#: ../includes/providers/mailchimp/settings.php:64
+#: ../includes/providers/mailchimp/views/metabox-list.php:26
+msgid "List ID"
+msgstr ""
+
+#: ../includes/providers/aweber/settings.php:45
+msgid ""
+"Input your authorization code and save if you want to see a dropdown of all "
+"your lists. If you already entered your authorization code and the dropdown "
+"did not appear pleas refresh the page."
+msgstr ""
+
+#: ../includes/providers/aweber/settings.php:52
+#: ../includes/providers/mailchimp/settings.php:47
+msgid "Please select..."
+msgstr ""
+
+#: ../includes/providers/aweber/settings.php:73
+#: ../includes/providers/mailchimp/settings.php:68
+msgid ""
+"Input your API key and save if you want to see a dropdown of all your lists."
+msgstr ""
+
+#: ../includes/providers/aweber/settings.php:82
+msgid "AWeber"
+msgstr ""
+
+#: ../includes/providers/aweber/settings.php:85
+msgid "Authorization Code"
+msgstr ""
+
+#: ../includes/providers/aweber/settings.php:88
+msgid ""
+"AWeber requires you to authenticate this plugin with your account for "
+"security reasons. If you are not sure how to do it, please <a href=\"#\" "
+"target=\"_blank\">watch our video tutorial</a>."
+msgstr ""
+
+#: ../includes/providers/mailchimp/class-mailchimp.php:155
+msgid "The MailChimp credentials are missing. Please verify your settings."
+msgstr ""
+
+#: ../includes/providers/mailchimp/class-mailchimp.php:162
+msgid "An error occurred during submission."
+msgstr ""
+
+#: ../includes/providers/mailchimp/class-mailchimp.php:334
+#: ../includes/providers/mailchimp/class-mailchimp.php:391
+msgid "The list ID is missing."
+msgstr ""
+
+#: ../includes/providers/mailchimp/class-mailchimp.php:346
+msgid "The API credentials are missing."
+msgstr ""
+
+#: ../includes/providers/mailchimp/functions-admin.php:30
+#: ../includes/providers/mailchimp/views/metabox-list.php:6
+#, php-format
+msgid ""
+"MailChimp integration is not correctly setup. Your popups won't send "
+"subscribers anywhere! <a href=\"%s\">Click here to see the settings</a>."
+msgstr ""
+
+#: ../includes/providers/mailchimp/functions-admin.php:62
+msgid "Setup MailChimp"
+msgstr ""
+
+#: ../includes/providers/mailchimp/functions-ajax.php:31
+msgid "An error occurred during the request. The list ID is missing."
+msgstr ""
+
+#: ../includes/providers/mailchimp/functions-ajax.php:86
+msgid "This list does not have any groups."
+msgstr ""
+
+#: ../includes/providers/mailchimp/settings.php:40
+#, php-format
+msgid ""
+"Input your API key and save if you want to see a dropdown of all your lists. "
+"If you don't know how to get your API key please <a href=\"%s\" target="
+"\"_blank\">read this documentation</a>."
+msgstr ""
+
+#: ../includes/providers/mailchimp/settings.php:77
+msgid "MailChimp"
+msgstr ""
+
+#: ../includes/providers/mailchimp/settings.php:81
+msgid ""
+"First of all, please input your MailChimp API key. Then hit the blue &laquo;"
+"Save Changes&raquo; button at the bottom of the screen. On page refresh, the "
+"<code>List ID</code> field will turn into a select dropdown showing all your "
+"MailChimp lists. If something goes wrong and you don't see the select "
+"dropdown, you can always input the list ID manually."
+msgstr ""
+
+#: ../includes/providers/mailchimp/settings.php:84
+msgid "API Key"
+msgstr ""
+
+#: ../includes/providers/mailchimp/settings.php:88
+#, php-format
+msgid ""
+"If you don't know how to get your API key please <a href=\"%s\" target="
+"\"_blank\">read this documentation</a>."
+msgstr ""
+
+#: ../includes/providers/mailchimp/settings.php:92
+msgid "Double-Optin"
+msgstr ""
+
+#: ../includes/providers/mailchimp/settings.php:96
+msgid ""
+"MailChimp asks for a subscription confirmation. It is advised NOT to disable "
+"it."
+msgstr ""
+
+#: ../includes/providers/mailchimp/settings.php:99
+msgid "Update Existing"
+msgstr ""
+
+#: ../includes/providers/mailchimp/settings.php:103
+msgid "Update contacts if already subscribed."
+msgstr ""
+
+#: ../includes/providers/mailchimp/settings.php:106
+msgid "Welcome E-Mail"
+msgstr ""
+
+#: ../includes/providers/mailchimp/settings.php:110
+msgid "Send a welcome e-mail after subscription."
+msgstr ""
+
+#: ../includes/providers/mailchimp/views/metabox-list.php:25
+#, php-format
+msgid ""
+"If you don't specify a list here, the default one will be used (currently "
+"%s)."
+msgstr ""
+
+#: ../includes/providers/mailchimp/views/metabox-list.php:33
+msgid "If you don't select a list here, the default one will be used."
+msgstr ""
+
+#: ../includes/providers/mailchimp/views/metabox-list.php:36
+#, php-format
+msgid "Default (%s)"
+msgstr ""
+
+#: ../includes/providers/mailchimp/views/metabox-list.php:73
+#: ../includes/providers/mailchimp/views/metabox-list.php:92
+msgid "Loading..."
+msgstr ""
+
+#: ../includes/providers/mailchimp/views/metabox-list.php:91
+msgid "Select Group(s):"
+msgstr ""
+
+#: ../includes/providers/mailpoet/functions-admin.php:48
+#, php-format
+msgid ""
+"Please select a list for your new subscribers, otherwise your popups won't "
+"send subscribers anywhere! <a href=\"%s\">Click here to see the settings</a>."
+msgstr ""
+
+#: ../includes/providers/mailpoet/functions-admin.php:76
+msgid "Setup MailPoet"
+msgstr ""
+
+#: ../includes/providers/mailpoet/settings.php:32
+msgctxt "Select a MailPoet mailing list"
+msgid "Please select..."
+msgstr ""
+
+#: ../includes/providers/mailpoet/settings.php:39
+msgid "List"
+msgstr ""
+
+#: ../includes/providers/mailpoet/settings.php:47
+msgid "MailPoet"
+msgstr ""
+
+#: ../includes/providers/wordpress/load.php:58
+msgid "Leads"
+msgstr ""
+
+#: ../includes/providers/wordpress/settings.php:48
+msgid "WordPress"
+msgstr ""
+
+#: ../includes/providers/wordpress/settings.php:51
+msgid "Default Role"
+msgstr ""
+
+#: ../includes/providers/wordpress/settings.php:55
+msgid "Role attributed to all subscribers"
+msgstr ""
+
+#: ../includes/providers/wordpress/settings.php:59
+msgid "Uninstallation"
+msgstr ""
+
+#: ../includes/providers/wordpress/settings.php:64
+#, php-format
+msgid ""
+"When the plugin is uninstalled (deleted from your site, not just "
+"deactivated), how shall we deal with the subscribers saved in your database? "
+"Please <a href=\"%s\" target=\"_blank\">read the documentation</a> for a "
+"full understanding of what you're doing."
+msgstr ""
+
+#: ../includes/providers/wordpress/settings.php:67
+msgid "Delete Subscriber"
+msgstr ""
+
+#: ../includes/providers/wordpress/settings.php:71
+msgid "YES, DELETE subscribers from my database. Can NOT be undone."
+msgstr ""
+
+#: ../includes/providers/wordpress/settings.php:74
+msgid "Delete Marker"
+msgstr ""
+
+#: ../includes/providers/wordpress/settings.php:78
+msgid ""
+"DELETE the markers. You will NOT be able TO differentiate the subscribers "
+"FROM the rest of your users."
+msgstr ""
+
+#: ../includes/shortcode.php:17
+msgid "Show Popup"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/inc/edd-licensing/EDD_SL_Plugin_Updater.php:177
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a>."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/inc/edd-licensing/EDD_SL_Plugin_Updater.php:184
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a target=\"_blank\" class="
+"\"thickbox\" href=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s"
+"\">update now</a>."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/inc/edd-licensing/EDD_SL_Plugin_Updater.php:324
+msgid "You do not have permission to install plugin updates"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/inc/edd-licensing/EDD_SL_Plugin_Updater.php:324
+msgid "Error"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-admin-page.php:114
+msgid ""
+"<em>Options Page Created with <a href='http://titanframework.net?"
+"utm_source=admin&utm_medium=admin footer'>Titan Framework</a></em>"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-admin-page.php:333
+msgid "Settings saved."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-admin-page.php:335
+msgid "Settings reset to default."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-customizer.php:33
+#: ../vendor/gambitph/titan-framework/lib/class-meta-box.php:36
+msgid "More Options"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-ajax-button.php:29
+#: ../vendor/gambitph/titan-framework/lib/class-option-ajax-button.php:32
+msgid "Security check failed, please refresh the page and try again."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-ajax-button.php:86
+msgid "Something went wrong"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-ajax-button.php:91
+msgid "Click me"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-ajax-button.php:96
+msgid "Please wait..."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:131
+msgid "Your license is valid and active."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:135
+msgid "Your license is invalid."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:149
+msgid "Activate"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:150
+msgid ""
+"Your license is valid but inactive. Click the button above to activate it."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:155
+msgid ""
+"The remote server did not return a valid response. You can retry by hitting "
+"the &laquo;Save&raquo; button again."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:160
+msgid "Entering your license key is mandatory to get the product updates."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:370
+msgid "Theme License"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:371
+msgid "Enter your theme license key."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:373
+msgid "License Action"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:374
+msgid "Deactivate License"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:375
+msgid "Activate License"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:376
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:388
+msgid "License status is unknown."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:377
+msgid "Renew?"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:378
+msgid "unlimited"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:379
+msgid "License key is active."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:380
+#, php-format
+msgid "Expires %s."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:381
+#, php-format
+msgid "You have %1$s / %2$s sites activated."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:382
+#, php-format
+msgid "License key expired %s."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:383
+msgid "License key has expired."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:384
+msgid "License keys do not match."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:385
+msgid "License is inactive."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:386
+msgid "License key is disabled."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:387
+msgid "Site is inactive."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:389
+msgid ""
+"Updating this theme will lose any customizations you have made. 'Cancel' to "
+"stop, 'OK' to update."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-edd-license.php:390
+#, php-format
+msgid ""
+"<strong>%1$s %2$s</strong> is available. <a href=\"%3$s\" class=\"thickbox\" "
+"title=\"%4s\">Check out what's new</a> or <a href=\"%5$s\"%6$s>update now</"
+"a>."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-enable.php:62
+#: ../vendor/gambitph/titan-framework/lib/class-option-enable.php:141
+msgid "Enabled"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-enable.php:65
+#: ../vendor/gambitph/titan-framework/lib/class-option-enable.php:144
+msgid "Disabled"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-gallery.php:148
+#: ../vendor/gambitph/titan-framework/lib/class-option-upload.php:255
+msgid "Select Image"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-gallery.php:151
+#: ../vendor/gambitph/titan-framework/lib/class-option-upload.php:258
+msgid "Use image"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-multicheck-pages.php:27
+#: ../vendor/gambitph/titan-framework/lib/class-option-multicheck-pages.php:48
+#: ../vendor/gambitph/titan-framework/lib/class-option-multicheck-posts.php:34
+#: ../vendor/gambitph/titan-framework/lib/class-option-multicheck-posts.php:60
+#: ../vendor/gambitph/titan-framework/lib/class-option-select-pages.php:38
+#: ../vendor/gambitph/titan-framework/lib/class-option-select-posts.php:46
+#, php-format
+msgid "Untitled %s"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-save.php:21
+msgid "Save Changes"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-save.php:24
+msgid "Reset to Defaults"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option-save.php:27
+msgid "Are you sure you want to reset ALL options to their default values?"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-option.php:104
+#, php-format
+msgid "Option type or extended class %s does not exist."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-titan-framework.php:170
+#, php-format
+msgid ""
+"All option IDs per namespace must be unique. The id %s has been used "
+"multiple times."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-titan-framework.php:407
+#, php-format
+msgid "%s needs a %s parameter."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/lib/class-titan-framework.php:417
+#, php-format
+msgid "Container of type %s, does not exist."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/titan-framework-checker.php:72
+msgid "Titan Framework needs to be installed."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/titan-framework-checker.php:75
+msgid "Click here to search for the plugin."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/titan-framework-checker.php:82
+msgid "Titan Framework needs to be activated."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/titan-framework-checker.php:85
+msgid "Click here to go to the plugins page and activate it."
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/titan-framework.php:186
+msgid "GitHub Repo"
+msgstr ""
+
+#: ../vendor/gambitph/titan-framework/titan-framework.php:190
+msgid "Issue Tracker"
+msgstr ""
