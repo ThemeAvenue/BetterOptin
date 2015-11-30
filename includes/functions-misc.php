@@ -109,7 +109,7 @@ function wpbo_get_font_stack() {
 	/* Try to get body from the transient */
 	$body = get_transient( 'wpbo_fonts' );
 
-	if( false === $body ) {
+	if ( false === $body ) {
 
 		/* Prepare the HTTP request */
 		$route    = 'http://www.kimonolabs.com/api/8qckyf28?';
@@ -119,17 +119,15 @@ function wpbo_get_font_stack() {
 		$body     = wp_remote_retrieve_body( $response );
 
 		/* Get response from the request if it is valid */
-		if( !is_wp_error( $response ) && '' != $body ) {
+		if ( ! is_wp_error( $response ) && '' != $body ) {
 
 			/**
 			 * Set the cache
 			 */
-			set_transient( 'wpbo_fonts', $body, 60*60*60 );
+			set_transient( 'wpbo_fonts', $body, 60 * 60 * 60 );
 			update_option( 'wpbo_fonts', $body );
 
-		}
-
-		/* Otherwise get it from the options, even if deprecated */
+		} /* Otherwise get it from the options, even if deprecated */
 		else {
 			$body = get_option( 'wpbo_fonts', false );
 		}
@@ -137,12 +135,12 @@ function wpbo_get_font_stack() {
 	}
 
 	/* Decode the JSON */
-	$body = json_decode( $body, TRUE );
+	$body = json_decode( $body, true );
 
-	if( !is_array( $body ) )
+	if ( ! is_array( $body ) || ! isset( $body['results'] ) || ! isset( $body['results']['collection1'] ) ) {
 		return false;
+	}
 
-	/* Return fonts only */
 	return $body['results']['collection1'];
 
 }
