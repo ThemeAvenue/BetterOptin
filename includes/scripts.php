@@ -22,6 +22,10 @@ add_action( 'wp_enqueue_scripts', 'wpbo_enqueue_styles' );
  */
 function wpbo_enqueue_styles() {
 
+	if ( is_admin() ) {
+		return;
+	}
+
 	if ( ! wpbo_page_has_popup() ) {
 		return;
 	}
@@ -37,6 +41,10 @@ add_action( 'wp_enqueue_scripts', 'wpbo_enqueue_scripts' );
  * @since    1.0.0
  */
 function wpbo_enqueue_scripts() {
+
+	if ( is_admin() ) {
+		return;
+	}
 
 	if ( ! wpbo_page_has_popup() ) {
 		return;
