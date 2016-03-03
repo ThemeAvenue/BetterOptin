@@ -45,6 +45,14 @@ if ( ! class_exists( 'BetterOptin' ) ):
 		private static $instance;
 
 		/**
+		 * Possible error message.
+		 *
+		 * @since 2.0
+		 * @var null|WP_Error
+		 */
+		protected $error = null;
+
+		/**
 		 * Instantiate and return the unique BetterOptin object
 		 *
 		 * @since     2.0
@@ -56,21 +64,46 @@ if ( ! class_exists( 'BetterOptin' ) ):
 
 				// Instantiate
 				self::$instance = new BetterOptin;
-				self::$instance->setup_constants();
-				self::$instance->setup_database_constants();
-				self::$instance->includes();
-				self::$instance->load_providers();
+				self::$instance->init();
 
-				if ( is_admin() ) {
-					self::$instance->includes_admin();
-				}
-
-				add_action( 'plugins_loaded', array( self::$instance, 'load_plugin_textdomain' ) );
-				add_action( 'admin_notices', array( self::$instance, 'license_notification' ) );
 
 			}
 
 			return self::$instance;
+
+		}
+
+		/**
+		 * Instantiate the plugin
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		private function init() {
+
+			self::$instance->setup_constants();
+
+			// Make sure the WordPress version is recent enough
+			if ( ! self::$instance->are_dependencies_loaded() ) {
+				self::$instance->add_error( wp_kses_post( sprintf( __( 'BetterOptin cannot load because its dependencies are missing. If you don&#039;t know what this means, please purchase the pro version on %s', 'betteroptin' ), '<a href="https://betteropt.in/?utm_source=plugin&utm_medium=dependencies_nag&utm_campaign=upsell" target="_blank">https://betteropt.in</a>' ) ) );
+			}
+
+			// If we have any error, don't load the plugin
+			if ( is_a( self::$instance->error, 'WP_Error' ) ) {
+				add_action( 'admin_notices', array( self::$instance, 'display_error' ), 10, 0 );
+				return;
+			}
+
+			self::$instance->setup_database_constants();
+			self::$instance->includes();
+			self::$instance->load_providers();
+
+			if ( is_admin() ) {
+				self::$instance->includes_admin();
+			}
+
+			add_action( 'plugins_loaded', array( self::$instance, 'load_plugin_textdomain' ) );
+			add_action( 'admin_notices', array( self::$instance, 'license_notification' ) );
 
 		}
 
@@ -112,6 +145,65 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			define( 'WPBO_PLUGIN_FILE', __FILE__ );
 			define( 'WPBO_VERSION', '2.0.0' );
 			define( 'WPBO_DB_VERSION', '1' );
+		}
+
+		private function are_dependencies_loaded() {
+			return is_dir( WPBO_PATH . 'vendor' );
+		}
+
+		/**
+		 * Add error.
+		 *
+		 * Add a new error to the WP_Error object
+		 * and create the object if it doesn't exist yet.
+		 *
+		 * @since  2.0
+		 *
+		 * @param string $message Error message to add
+		 *
+		 * @return void
+		 */
+		private function add_error( $message ) {
+
+			if ( ! is_object( $this->error ) || ! is_a( $this->error, 'WP_Error' ) ) {
+				$this->error = new WP_Error();
+			}
+
+			$this->error->add( 'addon_error', $message );
+
+		}
+
+		/**
+		 * Display error.
+		 *
+		 * Get all the error messages and display them
+		 * in the admin notices.
+		 *
+		 * @since  2.0
+		 * @return void
+		 */
+		public function display_error() {
+			if ( ! is_a( $this->error, 'WP_Error' ) ) {
+				return;
+			}
+			$message = self::$instance->error->get_error_messages(); ?>
+
+			<div class="error">
+				<p>
+					<?php
+					if ( count( $message ) > 1 ) {
+						echo '<ul>';
+						foreach ( $message as $msg ) {
+							echo "<li>$msg</li>";
+						}
+						echo '</li>';
+					} else {
+						echo $message[0];
+					}
+					?>
+				</p>
+			</div>
+			<?php
 		}
 
 		/**
