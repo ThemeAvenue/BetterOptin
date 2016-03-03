@@ -37,7 +37,7 @@ function wpbo_settings_general( $settings ) {
 				'name'    => __( 'License Key', 'betteroptin' ),
 				'id'      => 'license_key',
 				'type'    => 'edd-license',
-				'desc'    => sprintf( esc_html__( 'If you don&#039;t have one, you can get one at %s', 'betteroptin' ), '<a href="https://betteropt.in/?utm_source=internal&utm_medium=settings&utm_campaign=get-license" target="_blank">https://betteropt.in</a>' ),
+				'desc'    => sprintf( esc_html__( 'If you don&#039;t have one, you can get one at %s', 'betteroptin' ), '<a href="https://betteropt.in/?utm_source=plugin&utm_medium=license_nag&utm_campaign=upsell" target="_blank">https://betteropt.in</a>' ),
 				'default' => '',
 				'server'    => esc_url( 'https://betteropt.in' ),
 				'item_name' => 'BetterOptin',
