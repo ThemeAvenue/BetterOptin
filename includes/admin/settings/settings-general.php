@@ -26,6 +26,19 @@ function wpbo_settings_general( $settings ) {
 
 	$providers = apply_filters( 'wpbo_mailing_providers', array() );
 
+	$providers_option = array(
+		'name'    => __( 'E-Mailing Provider', 'betteroptin' ),
+		'id'      => 'mailing_provider',
+		'type'    => 'select',
+		'options' => $providers,
+		'desc'    => __( 'Which e-mailing provider do you use?', 'betteroptin' ),
+		'default' => 'wordpress'
+	);
+
+	if (  wpbo_is_pro() ) {
+		$providers_option['desc'] = wp_kses_post( sprintf( __( 'Want to use a different provider than WordPress? Go pro! The pro version of BetterOptin gives you access to MailChimp, Aweber and MailPoet. <a href="%1$s" target="_blank">Click here to purchase the pro version</a>. Starting from %2$s.', 'betteroptin' ), esc_url( 'https://betteropt.in/?utm_source=plugin&utm_medium=providers_nag&utm_campaign=upsell' ), '$29' ) );
+	}
+
 	$settings['general'] = array(
 		'name'    => __( 'General', 'betteroptin' ),
 		'options' => array(
@@ -48,14 +61,7 @@ function wpbo_settings_general( $settings ) {
 				'type'    => 'heading',
 				'name'    => __( 'Settings', 'betteroptin' ),
 			),
-			array(
-				'name'    => __( 'E-Mailing Provider', 'betteroptin' ),
-				'id'      => 'mailing_provider',
-				'type'    => 'select',
-				'options' => $providers,
-				'desc'    => __( 'Which e-mailing provider do you use?', 'betteroptin' ),
-				'default' => 'wordpress'
-			),
+			$providers_option,
 			array(
 				'name'    => __( 'Return URL', 'betteroptin' ),
 				'id'      => 'return_url',
