@@ -95,6 +95,39 @@ function wpbo_single_activate() {
 	/* Write database version */
 	update_option( 'wpbo_db_version', WPBO_DB_VERSION );
 
+	$defaults = get_option( 'wpbo_options', array() );
+
+	// Register default options
+	if ( empty( $defaults ) ) {
+
+		// Get default options
+		if ( ! function_exists( 'wpbo_settings_general' ) ) {
+			require( WPBO_PATH . 'includes/admin/settings/settings-general.php' );
+		}
+
+		$options = apply_filters( 'wpbo_plugin_settings', array() );
+
+		foreach ( $options as $section_id => $section ) {
+
+			foreach ( $section['options'] as $option ) {
+
+				if ( ! isset( $option['id'] ) ) {
+					continue;
+				}
+
+				$value                     = isset( $option['default'] ) ? $option['default'] : '';
+				$defaults[ $option['id'] ] = $value;
+
+			}
+
+		}
+
+		if ( ! empty( $defaults ) ) {
+			update_option( 'wpbo_options', serialize( $defaults ) );
+		}
+
+	}
+
 	/**
 	 * Add an option in DB to know when the plugin has just been activated.
 	 *
