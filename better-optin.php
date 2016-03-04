@@ -103,7 +103,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			}
 
 			add_action( 'plugins_loaded', array( self::$instance, 'load_plugin_textdomain' ) );
-			add_action( 'admin_notices', array( self::$instance, 'license_notification' ) );
+			add_action( 'init', array( self::$instance, 'license_notification' ) );
 
 		}
 
@@ -259,10 +259,12 @@ if ( ! class_exists( 'BetterOptin' ) ):
 		 */
 		private function includes_admin() {
 
+			require( WPBO_PATH . 'includes/admin/functions-misc.php' );
+			require( WPBO_PATH . 'vendor/julien731/wp-dismissible-notices-handler/handler.php' );
+
 			if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
 				require( WPBO_PATH . 'includes/admin/class-titan-framework.php' );
 				require( WPBO_PATH . 'includes/admin/settings/settings-general.php' );
-				require( WPBO_PATH . 'includes/admin/functions-misc.php' );
 				require( WPBO_PATH . 'includes/admin/functions-menu.php' );
 				require( WPBO_PATH . 'includes/admin/functions-metabox.php' );
 				require( WPBO_PATH . 'includes/admin/functions-list-table.php' );
@@ -304,10 +306,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 		 */
 		public function license_notification() {
 
-			/**
-			 * We only want to display the notice to the site admin.
-			 */
-			if ( ! current_user_can( 'administrator' ) ) {
+			if ( ! function_exists( 'DNH' ) ) {
 				return;
 			}
 
@@ -320,13 +319,11 @@ if ( ! class_exists( 'BetterOptin' ) ):
 				return;
 			}
 
-			$license_page = wpbo_get_settings_page_link(); ?>
+			$license_page = wpbo_get_settings_page_link();
 
-			<div class="updated error">
-				<p><?php printf( __( 'You haven&#039;t entered your BetterOptin license key. This means that you will not get automatic updates and you will not get technical support. <a %s>Click here to enter your license key</a>.', 'betteroptin' ), "href='$license_page'" ); ?></p>
-			</div>
+			dnh_register_notice( 'wpbo_no_license', 'error', sprintf( __( 'You haven&#039;t entered your BetterOptin license key. This means that you will not get automatic updates and you will not get technical support. <a %s>Click here to enter your license key</a>.', 'betteroptin' ), "href='$license_page'" ), array( 'cap' => 'administrator' ) );
 
-		<?php }
+		}
 
 	}
 
