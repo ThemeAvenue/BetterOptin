@@ -237,7 +237,6 @@ if ( ! class_exists( 'BetterOptin' ) ):
 				require( WPBO_PATH . 'includes/shortcode.php' );
 				require( WPBO_PATH . 'includes/functions-templating.php' );
 				require( WPBO_PATH . 'includes/functions-dummy.php' );
-				require( WPBO_PATH . 'includes/install.php' );
 
 			}
 
@@ -268,6 +267,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 				require( WPBO_PATH . 'includes/admin/functions-menu.php' );
 				require( WPBO_PATH . 'includes/admin/functions-metabox.php' );
 				require( WPBO_PATH . 'includes/admin/functions-list-table.php' );
+				require( WPBO_PATH . 'includes/install.php' );
 			}
 
 		}

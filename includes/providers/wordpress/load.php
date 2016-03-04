@@ -14,7 +14,11 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-if ( 'word-press' === wpbo_get_option( 'mailing_provider', '' ) ) {
+// Get the current provider
+$provider = wpbo_get_option( 'mailing_provider', '' );
+
+// Default to WP provider settings if no provider is set (used during install)
+if ( 'word-press' === $provider || empty( $provider ) ) {
 
 	// Load provider files
 	require( WPBO_PATH . 'includes/providers/wordpress/settings.php' );
