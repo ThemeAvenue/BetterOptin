@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b310762342fbd9fd0a49a318d024f8a8",
+    "hash": "c3662ec87be8cda731916bafc4e83c78",
+    "content-hash": "4e64afd235ba61856c6629c9d04f7228",
     "packages": [
         {
             "name": "aweber/aweber",
@@ -45,21 +46,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/drewm/mailchimp-api.git",
-                "reference": "e5e16d2a7a456c282b1e160e70964eb9149e9968"
+                "reference": "452ccec87a00ce4b7ff6c8181d28ae79937cbb43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/e5e16d2a7a456c282b1e160e70964eb9149e9968",
-                "reference": "e5e16d2a7a456c282b1e160e70964eb9149e9968",
+                "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/452ccec87a00ce4b7ff6c8181d28ae79937cbb43",
+                "reference": "452ccec87a00ce4b7ff6c8181d28ae79937cbb43",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3"
             },
+            "require-dev": {
+                "phpunit/phpunit": "4.0.*",
+                "vlucas/phpdotenv": "^2.0"
+            },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Drewm": "src/"
+                "psr-4": {
+                    "DrewM\\MailChimp\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -69,12 +74,13 @@
             "authors": [
                 {
                     "name": "Drew McLellan",
+                    "email": "drew.mclellan@gmail.com",
                     "homepage": "http://allinthehead.com/"
                 }
             ],
-            "description": "Super-simple, minimum abstraction MailChimp API v2 wrapper",
+            "description": "Super-simple, minimum abstraction MailChimp API v3 wrapper",
             "homepage": "https://github.com/drewm/mailchimp-api",
-            "time": "2015-07-28 13:59:56"
+            "time": "2016-02-20 11:10:07"
         },
         {
             "name": "gambitph/titan-framework",
@@ -118,13 +124,48 @@
                 "wordpress"
             ],
             "time": "2015-10-06 16:21:47"
+        },
+        {
+            "name": "julien731/wp-dismissible-notices-handler",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/julien731/WP-Dismissible-Notices-Handler.git",
+                "reference": "5c3ec3e56171b7e5533c4023a3dd23b4523bb29e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/julien731/WP-Dismissible-Notices-Handler/zipball/5c3ec3e56171b7e5533c4023a3dd23b4523bb29e",
+                "reference": "5c3ec3e56171b7e5533c4023a3dd23b4523bb29e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Julien Liabeuf",
+                    "email": "julien@liabeuf.fr",
+                    "homepage": "https://julienliabeuf.com",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "A simple library to handle Ajax-dismissible admin notices for WordPress",
+            "homepage": "https://github.com/julien731/WP-Dismissible-Notices-Handler",
+            "time": "2016-03-04 09:48:53"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "drewm/mailchimp-api": 20
+        "drewm/mailchimp-api": 20,
+        "julien731/wp-dismissible-notices-handler": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

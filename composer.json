@@ -2,7 +2,8 @@
 	"require": {
 		"gambitph/titan-framework": "1.9.*",
 		"drewm/mailchimp-api": "dev-master",
-		"aweber/aweber" : "1.*"
+		"aweber/aweber" : "1.*",
+		"julien731/wp-dismissible-notices-handler": "dev-master"
 	},
 	"archive": {
 		"exclude": [".gitignore", "composer.json", "composer.lock", "/tests", "README.md", "bower.json"]
