@@ -19,7 +19,9 @@ add_filter( 'wpbo_plugin_settings', 'wpbo_settings_general', 9 );
  * Add general settings.
  *
  * @since  1.0.0
+ *
  * @param  array $settings Pre-existing settings
+ *
  * @return array           Updated plugin settings
  */
 function wpbo_settings_general( $settings ) {
@@ -31,11 +33,11 @@ function wpbo_settings_general( $settings ) {
 		'id'      => 'mailing_provider',
 		'type'    => 'select',
 		'options' => $providers,
-		'desc'    => __( 'Which e-mailing provider do you use?', 'betteroptin' ),
-		'default' => 'wordpress'
+		'desc'    => esc_html__( 'Which e-mailing provider do you use?', 'betteroptin' ),
+		'default' => 'word-press'
 	);
 
-	if (  wpbo_is_pro() ) {
+	if ( wpbo_is_pro() ) {
 		$providers_option['desc'] = wp_kses_post( sprintf( __( 'Want to use a different provider than WordPress? Go pro! The pro version of BetterOptin gives you access to MailChimp, Aweber and MailPoet. <a href="%1$s" target="_blank">Click here to purchase the pro version</a>. Starting from %2$s.', 'betteroptin' ), esc_url( 'https://betteropt.in/?utm_source=plugin&utm_medium=providers_nag&utm_campaign=upsell' ), '$29' ) );
 	}
 
@@ -43,44 +45,44 @@ function wpbo_settings_general( $settings ) {
 		'name'    => __( 'General', 'betteroptin' ),
 		'options' => array(
 			array(
-				'type'    => 'heading',
-				'name'    => __( 'Licensing', 'betteroptin' ),
+				'type' => 'heading',
+				'name' => esc_html__( 'Licensing', 'betteroptin' ),
 			),
 			array(
-				'name'    => __( 'License Key', 'betteroptin' ),
-				'id'      => 'license_key',
-				'type'    => 'edd-license',
-				'desc'    => sprintf( esc_html__( 'If you don&#039;t have one, you can get one at %s', 'betteroptin' ), '<a href="https://betteropt.in/?utm_source=plugin&utm_medium=license_nag&utm_campaign=upsell" target="_blank">https://betteropt.in</a>' ),
-				'default' => '',
+				'name'      => esc_html__( 'License Key', 'betteroptin' ),
+				'id'        => 'license_key',
+				'type'      => 'edd-license',
+				'desc'      => sprintf( esc_html__( 'If you don&#039;t have one, you can get one at %s', 'betteroptin' ), '<a href="https://betteropt.in/?utm_source=plugin&utm_medium=license_nag&utm_campaign=upsell" target="_blank">https://betteropt.in</a>' ),
+				'default'   => '',
 				'server'    => esc_url( 'https://betteropt.in' ),
 				'item_name' => 'BetterOptin',
 				'item_id'   => 81877,
 				'file'      => WPBO_PLUGIN_FILE
 			),
 			array(
-				'type'    => 'heading',
-				'name'    => __( 'Settings', 'betteroptin' ),
+				'type' => 'heading',
+				'name' => esc_html__( 'Settings', 'betteroptin' ),
 			),
 			$providers_option,
 			array(
-				'name'    => __( 'Return URL', 'betteroptin' ),
+				'name'    => esc_html__( 'Return URL', 'betteroptin' ),
 				'id'      => 'return_url',
 				'type'    => 'text',
-				'desc'    => __( 'Where should the user be redirected after subscribing? This can be overwritten in each popup.', 'betteroptin' ),
+				'desc'    => esc_html__( 'Where should the user be redirected after subscribing? This can be overwritten in each popup.', 'betteroptin' ),
 				'default' => home_url()
 			),
 			array(
-				'name'    => __( 'Anonymize IPs', 'betteroptin' ),
+				'name'    => esc_html__( 'Anonymize IPs', 'betteroptin' ),
 				'id'      => 'anonymize_ip',
 				'type'    => 'checkbox',
-				'desc'    => __( 'Delete the last byte(s) of stored IP addresses? This will remove the last digits of saved IP addresses to protect users privacy.', 'betteroptin' ),
+				'desc'    => esc_html__( 'Delete the last byte(s) of stored IP addresses? This will remove the last digits of saved IP addresses to protect users privacy.', 'betteroptin' ),
 				'default' => false
 			),
 			array(
-				'name'    => __( 'Hide for Admins', 'betteroptin' ),
+				'name'    => esc_html__( 'Hide for Admins', 'betteroptin' ),
 				'id'      => 'hide_admins',
 				'type'    => 'checkbox',
-				'desc'    => __( 'Hide the popups for admins? No popup will ever show up for site administrators.', 'betteroptin' ),
+				'desc'    => esc_html__( 'Hide the popups for admins? No popup will ever show up for site administrators.', 'betteroptin' ),
 				'default' => true
 			),
 		)
