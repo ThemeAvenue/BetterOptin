@@ -104,7 +104,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 
 			add_action( 'plugins_loaded', array( self::$instance, 'load_plugin_textdomain' ) );
 			add_action( 'init', array( self::$instance, 'license_notification' ) );
-
+			add_action( 'init', array( self::$instance, 'check_provider_ready' ) );
 		}
 
 		/**
@@ -322,6 +322,28 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			$license_page = wpbo_get_settings_page_link();
 
 			dnh_register_notice( 'wpbo_no_license', 'error', sprintf( __( 'You haven&#039;t entered your BetterOptin license key. This means that you will not get automatic updates and you will not get technical support. <a %s>Click here to enter your license key</a>.', 'betteroptin' ), "href='$license_page'" ), array( 'cap' => 'administrator' ) );
+
+		}
+
+		/**
+		 * Make sure a provider is selected for the lead collection
+		 *
+		 * @since 2.0
+		 * @return void
+		 */
+		public function check_provider_ready() {
+
+			if ( ! function_exists( 'DNH' ) ) {
+				return;
+			}
+
+			if ( false !== wpbo_is_provider_ready() ) {
+				return;
+			}
+
+			$license_page = wpbo_get_settings_page_link();
+
+			dnh_register_notice( 'wpbo_no_provider', 'error', sprintf( __( 'You haven&#039;t selected your provider for catching leads. <strong>BetterOptin will not work until you do so!</strong> <a %s>Click here to select your provider</a>.', 'betteroptin' ), "href='$license_page'" ) );
 
 		}
 
