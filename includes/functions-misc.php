@@ -343,3 +343,20 @@ function wpbo_is_popup_edit_screen() {
 	return false;
 
 }
+
+/**
+ * Check if the installed version of BetterOptin is the pro version
+ *
+ * @since 2.0
+ * @return bool
+ */
+function wpbo_is_pro() {
+
+	// Only test 2 providers, it should be enough
+	if ( is_dir( WPBO_PATH . 'includes/providers/mailchimp/' ) && is_dir( WPBO_PATH . 'includes/providers/aweber/' ) ) {
+		return true;
+	}
+
+	return false;
+
+}
