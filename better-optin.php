@@ -12,7 +12,7 @@
  * Plugin Name:       BetterOptin
  * Plugin URI:        https://betteropt.in/
  * Description:       BetterOptin helps you convert your visitors in subscribers and fill up your mailing lists.
- * Version:           2.0.0
+ * Version:           2.0.1
  * Author:            ThemeAvenue
  * Author URI:        https://themeavenue.net
  * Text Domain:       betteroptin
@@ -143,7 +143,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			define( 'WPBO_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 			define( 'WPBO_BASENAME', plugin_basename( __FILE__ ) );
 			define( 'WPBO_PLUGIN_FILE', __FILE__ );
-			define( 'WPBO_VERSION', '2.0.0' );
+			define( 'WPBO_VERSION', '2.0.1' );
 			define( 'WPBO_DB_VERSION', '1' );
 		}
 
