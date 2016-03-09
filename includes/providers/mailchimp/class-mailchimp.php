@@ -132,7 +132,7 @@ final class WPBO_MailChimp {
 		 * @link https://bitbucket.org/mailchimp/mailchimp-api-php
 		 */
 		if ( ! class_exists( 'Drewm\MailChimp' ) ) {
-			require( WPBO_PATH . 'vendor/drewm/mailchimp-api/src/Drewm/MailChimp.php' );
+			require( WPBO_PATH . 'vendor/drewm/mailchimp-api/src/MailChimp.php' );
 		}
 	}
 
