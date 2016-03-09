@@ -1,7 +1,7 @@
 {
 	"require": {
 		"gambitph/titan-framework": "1.9.*",
-		"drewm/mailchimp-api": "dev-master",
+		"drewm/mailchimp-api": "1.*",
 		"aweber/aweber" : "1.*",
 		"julien731/wp-dismissible-notices-handler": "dev-master"
 	},
