@@ -15,7 +15,7 @@
 	</div>
 
 	<script type="text/javascript" src="<?php echo WPBO_URL; ?>admin/assets/js/vendor/jquery.toc.js"></script>
-	<script type="text/javascript" src="<?php echo WPBO_URL; ?>admin/assets/js/vendor/jquery.smooth-scroll.js"></script>
+	<script type="text/javascript" src="<?php echo WPBO_URL; ?>admin/assets/js/vendor/jquery.smooth-scroll.min.js"></script>
 	<script type="text/javascript" src="<?php echo WPBO_URL; ?>admin/assets/js/part-documentation.js"></script>
 
 </div>
