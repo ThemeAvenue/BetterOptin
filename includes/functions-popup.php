@@ -547,3 +547,26 @@ function wpbo_get_form_fields() {
 	return $fields;
 
 }
+
+/**
+ * Helper function to get a popup's return URL
+ *
+ * @since 2.0.2
+ *
+ * @param int $popup_id Popup post ID
+ *
+ * @return bool|string
+ */
+function wpbo_get_return_url( $popup_id ) {
+
+	$popup = get_post( $popup_id );
+
+	if ( ! is_a( $popup, 'WP_Post' ) || 'wpbo-popup' !== $popup->post_type ) {
+		return false;
+	}
+
+	$object = new WPBO_Popup( $popup->ID );
+
+	return $object->get_return_url();
+
+}

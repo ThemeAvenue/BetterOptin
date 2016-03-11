@@ -157,17 +157,10 @@ function wpbo_relationships_column_content( $column, $post_id ) {
 
 		case 'returl':
 
-			$settings = get_post_meta( $post_id, '_wpbo_settings', true );
-			$returl   = '';
-
-			if ( is_array( $settings ) && isset( $settings['return_url'] ) ) {
-				$returl = esc_url( $settings['return_url'] );
-			} else {
-				$returl = esc_url( wpbo_get_option( 'return_url', home_url() ) );
-			}
+			$returl = wpbo_get_return_url( $post_id );
 
 			if ( ! empty( $returl ) ) {
-				printf( '<a href="%1$s" target="_blank">%1$s</a>', esc_url( $settings['return_url'] ) );
+				printf( '<a href="%1$s" target="_blank">%1$s</a>', esc_url( $returl ) );
 			}
 
 			break;

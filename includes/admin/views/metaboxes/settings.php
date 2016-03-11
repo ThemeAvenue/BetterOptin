@@ -132,8 +132,9 @@ $animations = array(
 					<label for="wpbo_return_url"><?php _e( 'Return URL', 'betteroptin' ); ?></label>
 				</th>
 				<td>
-					<input name="wpbo_settings[return_url]" type="url" class="regular-text" id="wpbo_return_url"value="<?php echo $popup->option( 'return_url', '' ); ?>">
+					<input name="wpbo_settings[return_url]" type="text" class="regular-text" id="wpbo_return_url"value="<?php echo $popup->option( 'return_url', '' ); ?>">
 					<?php $returl = '' == ( $url = wpbo_get_option( 'return_url' ) ) ? 'none' : esc_url( $url ); ?>
+					<p><?php wp_kses( printf( __( 'You can use the post ID, page ID or custom URL. <a href="%s" target="_blank">How To Find The Post ID In WordPress</a>.', 'betteroptin' ), esc_url( 'https://pagely.com/blog/2015/04/find-post-id-wordpress/' ) ), array(  'a' => array( 'href' => array() ) ) ); ?></p>
 					<p><?php printf( __( 'The return URL is optional. If not specified, the URL set in the general settings will be used (currently %s)', 'betteroptin' ), "<code>$returl</code>" ); ?></p>
 				</td>
 			</tr>

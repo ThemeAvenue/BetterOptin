@@ -196,12 +196,22 @@ class WPBO_Popup {
 	 * @since 2.0
 	 * @return string
 	 */
-	private function get_return_url() {
+	public function get_return_url() {
 
 		$returl = $this->option( 'return_url', '' );
 
 		if ( empty( $returl ) ) {
 			$returl = wpbo_get_option( 'return_url', home_url() );
+		}
+
+		if ( is_numeric( $returl ) ) {
+
+			$post = get_post( (int) $returl );
+
+			if ( ! is_null( $post ) ) {
+				$returl = get_permalink( $post->ID );
+			}
+
 		}
 
 		return esc_url( $returl );
