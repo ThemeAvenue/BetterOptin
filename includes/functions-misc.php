@@ -112,11 +112,10 @@ function wpbo_get_font_stack() {
 	if ( false === $body ) {
 
 		/* Prepare the HTTP request */
-		$response = wp_remote_get( WPBO_URL . 'admin/assets/cssfontstack.json' );
-		$body     = wp_remote_retrieve_body( $response );
+		$body = file_get_contents( WPBO_PATH . 'admin/assets/cssfontstack.json' );
 
 		/* Get response from the request if it is valid */
-		if ( ! is_wp_error( $response ) && '' != $body ) {
+		if ( false !== $body ) {
 
 			/**
 			 * Set the cache
