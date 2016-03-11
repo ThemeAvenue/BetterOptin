@@ -262,7 +262,7 @@ var DEBUG = false;
 						});
 					} else {
 						formControl.autosize();
-						formControl.val($this.text()).trigger('autosize.resize');
+						formControl.val($this.html().replace(/<br>/gi, '\n')).trigger('autosize.resize');
 						formControl.on('change keyup', function (e) {
 							e.preventDefault();
 
@@ -273,13 +273,18 @@ var DEBUG = false;
 							formControl.trigger('autosize.resize');
 
 							/*
+							Add line breaks
+							 */
+							var value = $(this).val().replace(/\n/g, '<br>');
+
+							/*
 							Make sure to only edit the editable part
 							And prevent the icon from being wiped out
 							 */
 							if ($this.find('span.taed-textEdit').length !== 0) {
-								$(document).find('.taed-elem-active span.taed-textEdit').text($(this).val());
+								$(document).find('.taed-elem-active span.taed-textEdit').html(value);
 							} else {
-								$(document).find('.taed-elem-active').text($(this).val());
+								$(document).find('.taed-elem-active').html(value);
 							}
 						});
 					}
