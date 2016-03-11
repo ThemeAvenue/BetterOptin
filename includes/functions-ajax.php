@@ -330,15 +330,15 @@ function wpbo_get_documentation() {
 
 	if ( false === $doc ) {
 
-		$post_id  = 15151;
-		$route    = 'http://support.themeavenue.net/wp-json/posts/';
+		$post_id  = 91149;
+		$route    = 'https://betteropt.in/wp-json/wp/v2/pages/';
 		$response = wp_remote_get( $route . $post_id );
 
 		if ( 200 === $response['response']['code'] ) {
 
 			$doc = wp_remote_retrieve_body( $response );
 			$doc = json_decode( $doc );
-			$doc = $doc->content;
+			$doc = $doc->content->rendered;
 			set_transient( 'wpbo_documentation', $doc, 60 * 60 * 72 );
 
 		}
@@ -346,7 +346,7 @@ function wpbo_get_documentation() {
 	}
 
 	if ( false === $doc ) {
-		printf( __( 'Oops! We were unable to fetche the documentation from our support site. Please <a href="%s" target="_blank">click here to see the doc on our site</a>.', 'betteroptin' ), esc_url( 'http://support.themeavenue.net/plugins/betteroptin/getting-started/' ) );
+		printf( __( 'Oops! We were unable to fetch the documentation from our support site. Please <a href="%s" target="_blank">click here to see the doc on our site</a>.', 'betteroptin' ), esc_url( 'https://betteropt.in/documentation/' ) );
 	} else {
 		echo $doc;
 	}
