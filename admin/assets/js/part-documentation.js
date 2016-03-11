@@ -7,7 +7,8 @@
 		var docWrapper = $('#ta-doc'),
 			docToC = $('#ta-doc-toc'),
 			docContent = $('#ta-doc-content'),
-			adminBar = $('#wpadminbar');
+			adminBar = $('#wpadminbar'),
+			buttonFetch = $('#ta-doc-refresh');
 
 		$.post(ajaxurl, {
 
@@ -36,6 +37,16 @@
 				return this.hostname && this.hostname !== location.hostname;
 			}).attr('target', '_blank');
 
+		});
+
+		// Fetch latest documentation
+		buttonFetch.on('click', function (event) {
+			buttonFetch.prop('disabled', true);
+			$.post(ajaxurl, {
+				action: 'wpbo_refresh_doc'
+			}).done(function (response) {
+				location.reload();
+			});
 		});
 
 	});

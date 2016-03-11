@@ -355,6 +355,21 @@ function wpbo_get_documentation() {
 
 }
 
+add_action( 'wp_ajax_wpbo_refresh_doc', 'wpbo_refresh_documentation' );
+/**
+ * Delete transient options for documentation.
+ *
+ * @since  2.0.2
+ * @return void
+ */
+function wpbo_refresh_documentation() {
+
+	delete_transient( 'wpbo_documentation' );
+
+	die;
+
+}
+
 add_action( 'wp_ajax_wpbo_new_impression', 'wpbo_new_impression' );
 add_action( 'wp_ajax_nopriv_wpbo_new_impression', 'wpbo_new_impression' );
 /**

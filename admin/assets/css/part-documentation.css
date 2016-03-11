@@ -98,3 +98,10 @@
 	list-style-position: inside; 
 	margin-left: 15px; 
 }
+
+/* Fetch latest doc button */
+#ta-doc-refresh {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+}

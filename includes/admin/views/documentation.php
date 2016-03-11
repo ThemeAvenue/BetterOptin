@@ -14,6 +14,8 @@
 		<div id="ta-doc-content">Fetching documentation... Please wait. <img src="<?php echo admin_url(); ?>/images/spinner-2x.gif" class="ta-doc-loading-img" alt="Loading..."></div>
 	</div>
 
+	<button id="ta-doc-refresh" class="button-secondary">Fetch latest documentation</button>
+
 	<script type="text/javascript" src="<?php echo WPBO_URL; ?>admin/assets/js/vendor/jquery.toc.js"></script>
 	<script type="text/javascript" src="<?php echo WPBO_URL; ?>admin/assets/js/vendor/jquery.smooth-scroll.min.js"></script>
 	<script type="text/javascript" src="<?php echo WPBO_URL; ?>admin/assets/js/part-documentation.js"></script>
