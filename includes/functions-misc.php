@@ -112,10 +112,7 @@ function wpbo_get_font_stack() {
 	if ( false === $body ) {
 
 		/* Prepare the HTTP request */
-		$route    = 'http://www.kimonolabs.com/api/8qckyf28?';
-		$api_key  = '34f710899fb2424aeb213c881ff10109';
-		$endpoint = $route . http_build_query( array( 'apikey' => $api_key ) );
-		$response = wp_remote_get( $endpoint );
+		$response = wp_remote_get( WPBO_URL . 'admin/assets/cssfontstack.json' );
 		$body     = wp_remote_retrieve_body( $response );
 
 		/* Get response from the request if it is valid */
