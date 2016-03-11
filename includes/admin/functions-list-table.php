@@ -35,6 +35,8 @@ function wpbo_relationships_column( $columns ) {
 
 		if ( 'title' == $key ) {
 			$new['relationship'] = esc_html__( 'Appears On', 'betteroptin' );
+			$new['template']     = esc_html__( 'Template', 'betteroptin' );
+			$new['returl']       = esc_html__( 'Return URL', 'betteroptin' );
 		}
 
 	}
@@ -53,92 +55,123 @@ add_action( 'manage_wpbo-popup_posts_custom_column', 'wpbo_relationships_column_
  *
  * @since  1.0.0
  *
- * @param  array   Current column ID
- * @param  integer Current post ID
+ * @param  array   $column  Current column ID
+ * @param  integer $post_id Current post ID
  */
 function wpbo_relationships_column_content( $column, $post_id ) {
 
-	if ( 'relationship' != $column ) {
-		return;
-	}
+	switch ( $column ) {
 
-	/**
-	 * First we check if it is "display everywhere".
-	 */
-	if ( 'yes' == get_post_meta( $post_id, '_wpbo_display_all', true ) ) {
-		esc_html_e( 'Everywhere', 'betteroptin' );
+		case 'relationship':
 
-		return;
-	}
+			/**
+			 * First we check if it is "display everywhere".
+			 */
+			if ( 'yes' == get_post_meta( $post_id, '_wpbo_display_all', true ) ) {
+				esc_html_e( 'Everywhere', 'betteroptin' );
 
-	/**
-	 * Second we check if it displays everywhere for a specific post type.
-	 */
-	$post_types = get_post_types( array( 'public' => true ) );
-	$except     = array( 'attachment', 'wpbo-popup' );
-	$pts        = array();
+				return;
+			}
 
-	foreach ( $post_types as $key => $pt ) {
+			/**
+			 * Second we check if it displays everywhere for a specific post type.
+			 */
+			$post_types = get_post_types( array( 'public' => true ) );
+			$except     = array( 'attachment', 'wpbo-popup' );
+			$pts        = array();
 
-		if ( in_array( $key, $except ) ) {
-			continue;
-		}
+			foreach ( $post_types as $key => $pt ) {
 
-		if ( 'all' == get_post_meta( $post_id, '_wpbo_display_' . $pt, true ) ) {
-			array_push( $pts, sprintf( esc_html__( 'All %s', 'betteroptin' ), ucwords( $pt ) ) );
-		}
+				if ( in_array( $key, $except ) ) {
+					continue;
+				}
 
-	}
+				if ( 'all' == get_post_meta( $post_id, '_wpbo_display_' . $pt, true ) ) {
+					array_push( $pts, sprintf( esc_html__( 'All %s', 'betteroptin' ), ucwords( $pt ) ) );
+				}
 
-	if ( count( $pts ) > 0 ) {
-		echo implode( ', ', $pts );
+			}
 
-		return;
-	}
+			if ( count( $pts ) > 0 ) {
+				echo implode( ', ', $pts );
 
-	/**
-	 * Third we check the individual relationships.
-	 */
-	$relationships = get_option( 'wpbo_popup_relationships', array() );
-	$reverse       = array();
-	$list          = array();
+				return;
+			}
 
-	/**
-	 * Switch keys and values without erasing duplicate values
-	 * (which is why array_flip() would not work).
-	 */
-	foreach ( $relationships as $page => $popup ) {
+			/**
+			 * Third we check the individual relationships.
+			 */
+			$relationships = get_option( 'wpbo_popup_relationships', array() );
+			$reverse       = array();
+			$list          = array();
 
-		if ( ! isset( $reverse[ $popup ] ) ) {
-			$reverse[ $popup ] = array();
-		}
+			/**
+			 * Switch keys and values without erasing duplicate values
+			 * (which is why array_flip() would not work).
+			 */
+			foreach ( $relationships as $page => $popup ) {
 
-		array_push( $reverse[ $popup ], $page );
+				if ( ! isset( $reverse[ $popup ] ) ) {
+					$reverse[ $popup ] = array();
+				}
 
-	}
+				array_push( $reverse[ $popup ], $page );
 
-	/* No relationships at all */
-	if ( ! array_key_exists( $post_id, $reverse ) ) {
-		echo '-';
+			}
 
-		return;
-	}
+			/* No relationships at all */
+			if ( ! array_key_exists( $post_id, $reverse ) ) {
+				echo '-';
 
-	/**
-	 * Print all the relationships in a table.
-	 */
-	foreach ( $reverse[ $post_id ] as $key => $page ) {
+				return;
+			}
 
-		$page  = get_post( $page );
-		$link  = add_query_arg( array( 'post' => $page->ID, 'action' => 'edit' ), admin_url( 'post.php' ) );
-		$title = $page->post_title;
+			/**
+			 * Print all the relationships in a table.
+			 */
+			foreach ( $reverse[ $post_id ] as $key => $page ) {
 
-		array_push( $list, "<a href='$link' class='wpbo-tag'>$title</a>" );
+				$page  = get_post( $page );
+				$link  = add_query_arg( array( 'post' => $page->ID, 'action' => 'edit' ), admin_url( 'post.php' ) );
+				$title = $page->post_title;
 
-	}
+				array_push( $list, "<a href='$link' class='wpbo-tag'>$title</a>" );
 
-	if ( count( $list ) > 0 ) {
-		echo implode( ' ', $list );
+			}
+
+			if ( count( $list ) > 0 ) {
+				echo implode( ' ', $list );
+			}
+
+			break;
+
+		case 'template':
+
+			$template = get_post_meta( $post_id, 'wpbo_template', true );
+
+			if ( ! empty( $template ) ) {
+				printf( '<code>%s</code>', $template );
+			}
+
+			break;
+
+		case 'returl':
+
+			$settings = get_post_meta( $post_id, '_wpbo_settings', true );
+			$returl   = '';
+
+			if ( is_array( $settings ) && isset( $settings['return_url'] ) ) {
+				$returl = esc_url( $settings['return_url'] );
+			} else {
+				$returl = esc_url( wpbo_get_option( 'return_url', home_url() ) );
+			}
+
+			if ( ! empty( $returl ) ) {
+				printf( '<a href="%1$s" target="_blank">%1$s</a>', esc_url( $settings['return_url'] ) );
+			}
+
+			break;
+
 	}
 
 }
