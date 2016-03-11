@@ -75,7 +75,17 @@ function wpbo_enqueue_scripts() {
 	 */
 	$settings['ajaxurl'] = admin_url( 'admin-ajax.php' );
 
-	wp_enqueue_script( 'wpbo-script', WPBO_URL . 'public/assets/js/betterOptin.min.js', array( 'jquery' ), WPBO_VERSION );
+	/**
+	 * Load un-minified scripts if debug mode is enabled 
+	 */
+	if (defined('WP_DEBUG') && true === WP_DEBUG) {
+		wp_enqueue_script( 'wpbo-easyModal', WPBO_URL . 'bower_components/easyModal.js/jquery.easyModal.js', array( 'jquery' ), '1.3.2' );
+		wp_enqueue_script( 'wpbo-cookie', WPBO_URL . 'bower_components/jquery.cookie/jquery.cookie.js', array( 'jquery' ), '1.4.1' );
+		wp_enqueue_script( 'wpbo-matchHeight', WPBO_URL . 'bower_components/matchHeight/jquery.matchHeight.js', array( 'jquery' ), '0.5.2' );
+		wp_enqueue_script( 'wpbo-script', WPBO_URL . 'public/assets/js/betterOptin.js', array( 'jquery' ), WPBO_VERSION );
+	} else {
+		wp_enqueue_script( 'wpbo-script', WPBO_URL . 'public/assets/js/betterOptin.min.js', array( 'jquery' ), WPBO_VERSION );
+	}
 	wp_localize_script( 'wpbo-script', 'wpbo', json_encode( $settings ) );
 
 }
