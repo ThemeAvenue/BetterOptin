@@ -126,6 +126,11 @@ var DEBUG = false;
 			wpboModal.trigger('openModal').addClass('wpbo-modal-active');
 		});
 
+		// Hide close icon if option is enabled
+		if (wpboObj.hide_close_button) {
+			$('.wpbo-close').hide();
+		}
+
 	});
 
 }(jQuery));
