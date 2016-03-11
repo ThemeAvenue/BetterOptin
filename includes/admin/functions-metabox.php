@@ -125,6 +125,7 @@ function wpbo_save_custom_fields( $post_id ) {
 	$step2    = array(
 		'close_overlay',
 		'close_esc',
+		'hide_close_button',
 		'cookie_lifetime',
 		'animation',
 		'close_button',

@@ -62,6 +62,18 @@ $animations = array(
 			</tr>
 			<tr valign="top">
 				<th scope="row">
+					<label for="wpbo_close_esc"><?php _e( 'Hide Close Button', 'betteroptin' ); ?></label>
+				</th>
+				<td>
+					<label for="wpbo_hide_close_button">
+						<input name="wpbo_settings[hide_close_button]" type="checkbox" id="wpbo_hide_close_button" value="1" <?php if( '1' == $popup->option( 'hide_close_button', '0' ) ): ?>checked="checked"<?php endif; ?>>
+						<?php _e( 'Yes', 'betteroptin' ); ?>
+					</label>
+					<p class="description"><?php _e( 'Do you want to hide the close button that appears on the top right corner of the popup.', 'betteroptin' ); ?></p>
+				</td>
+			</tr>
+			<tr valign="top">
+				<th scope="row">
 					<label for="wpbo_close_esc"><?php _e( 'Wiggle when Overlay Clicked', 'betteroptin' ); ?></label>
 				</th>
 				<td>

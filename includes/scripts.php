@@ -60,10 +60,11 @@ function wpbo_enqueue_scripts() {
 	/**
 	 * Use booleans
 	 */
-	$settings['close_overlay']   = isset( $settings['close_overlay'] ) ? true : false;
-	$settings['close_esc']       = isset( $settings['close_esc'] ) ? true : false;
-	$settings['wiggle']          = isset( $settings['wiggle'] ) ? true : false;
-	$settings['cookie_lifetime'] = isset( $settings['cookie_lifetime'] ) ? intval( $settings['cookie_lifetime'] ) : 30;
+	$settings['close_overlay']     = isset( $settings['close_overlay'] ) ? true : false;
+	$settings['close_esc']         = isset( $settings['close_esc'] ) ? true : false;
+	$settings['hide_close_button'] = isset( $settings['hide_close_button'] ) ? true : false;
+	$settings['wiggle']            = isset( $settings['wiggle'] ) ? true : false;
+	$settings['cookie_lifetime']   = isset( $settings['cookie_lifetime'] ) ? intval( $settings['cookie_lifetime'] ) : 30;
 
 	/**
 	 * Add popup ID
