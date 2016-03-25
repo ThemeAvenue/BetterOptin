@@ -105,6 +105,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			add_action( 'plugins_loaded', array( self::$instance, 'load_plugin_textdomain' ) );
 			add_action( 'init', array( self::$instance, 'license_notification' ) );
 			add_action( 'init', array( self::$instance, 'check_provider_ready' ) );
+			add_filter( 'pre_set_site_transient_update_plugins', array( self::$instance, 'maybe_disable_wordpress_updates' ) );
 		}
 
 		/**
@@ -345,6 +346,63 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			$license_page = wpbo_get_settings_page_link();
 
 			dnh_register_notice( 'wpbo_no_provider', 'error', sprintf( __( 'You haven&#039;t selected your provider for catching leads. <strong>BetterOptin will not work until you do so!</strong> <a %s>Click here to select your provider</a>.', 'betteroptin' ), "href='$license_page'" ) );
+
+		}
+
+		/**
+		 * Disable WordPress auto-update if the user has the pro version
+		 *
+		 * For pro version, the updates will come directly from our server.
+		 * With the custom EDD SL Updater updates should only come through https://betteropt.in
+		 * but just to make sure nobody gets downgraded to the lite version
+		 * we double check that no update comes from WP.org for BetterOptin.
+		 *
+		 * @since 2.0.3
+		 *
+		 * @param object $value Auto-update object
+		 *
+		 * @return object
+		 */
+		public function maybe_disable_wordpress_updates( $value ) {
+
+			// Get the product license
+			$license = wpbo_get_option( 'license_key', '' );
+
+			// If no license is entered we're on the lite version and need WP.org updates
+			if ( empty( $license ) ) {
+				return $value;
+			}
+
+			// Get the license hash/ID
+			$key = substr( md5( $license ), 0, 10 );
+
+			// Try and get the activation status from the transient
+			// @see TitanFrameworkOptionEddLicense::check()
+			$status = get_transient( "tf_edd_license_status_$key" );
+
+			if ( false === $status ) {
+
+				$edd_license = new TitanFrameworkOptionEddLicense( array(
+					'server'  => esc_url( 'https://betteropt.in' ),
+					'item_id' => 81877,
+					'file'    => WPBO_PLUGIN_FILE
+				), 'me' );
+
+				$status = $edd_license->check( $license );
+
+			}
+
+			// This is a pro version, we make sure no auto-update comes from WP.org
+			if ( 'valid' === $status && is_object( $value ) && is_array( $value->response ) && array_key_exists( plugin_basename( __FILE__ ), $value->response ) ) {
+
+				// Remove the download package if it comes from WP.org
+				if ( false === strpos( $value->response[ plugin_basename( __FILE__ ) ]->url, 'betteropt.in' ) ) {
+					unset( $value->response[ plugin_basename( __FILE__ ) ] );
+				}
+
+			}
+
+			return $value;
 
 		}
 
