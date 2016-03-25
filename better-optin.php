@@ -262,6 +262,7 @@ if ( ! class_exists( 'BetterOptin' ) ):
 			require( WPBO_PATH . 'vendor/julien731/wp-dismissible-notices-handler/handler.php' );
 
 			if ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) {
+				require( WPBO_PATH . 'includes/admin/EDD_SL_Plugin_Updater.php' ); // Load before Titan Framework to override the one bundled with the framework
 				require( WPBO_PATH . 'includes/admin/class-titan-framework.php' );
 				require( WPBO_PATH . 'includes/admin/settings/settings-general.php' );
 				require( WPBO_PATH . 'includes/admin/functions-menu.php' );
