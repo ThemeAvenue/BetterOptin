@@ -57,7 +57,8 @@ function wpbo_settings_general( $settings ) {
 				'server'    => esc_url( 'https://betteropt.in' ),
 				'item_name' => 'BetterOptin',
 				'item_id'   => 81877,
-				'file'      => WPBO_PLUGIN_FILE
+				'file'      => WPBO_PLUGIN_FILE,
+				'update_check_license_required' => true,
 			),
 			array(
 				'type' => 'heading',
